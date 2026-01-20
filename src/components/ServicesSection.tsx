@@ -12,8 +12,10 @@ import {
   Workflow,
   ShieldCheck,
   Zap,
+  ArrowRight,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { Button } from '@/components/ui/button'
 
 // Visual Components for Headers
 const BrowserMockup = () => (
@@ -225,6 +227,16 @@ export default function ServicesSection() {
             />
           ))}
         </BentoGrid>
+
+        <div className="flex justify-center">
+          <Button
+            onClick={() => (window.location.href = '/services')}
+            className="bg-transparent border border-crimson/30 text-crimson hover:bg-crimson/10 hover:text-crimson-glow font-mono tracking-wider px-8 py-6 rounded-none transition-all duration-300 group"
+          >
+            EXPLORAR CAPACIDADES TÉCNICAS
+            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Button>
+        </div>
       </div>
     </section>
   )

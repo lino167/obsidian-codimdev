@@ -4,10 +4,10 @@ import { Menu, X } from "lucide-react";
 import logoHorizontal from "@/assets/logo-horizontal.png";
 
 const navItems = [
-  { label: "Sobre", href: "#sobre" },
-  { label: "Serviços", href: "#servicos" },
-  { label: "Portfólio", href: "#portfolio" },
-  { label: "Contato", href: "#contato" },
+  { label: "Sobre", href: "/#sobre" },
+  { label: "Serviços", href: "/services" },
+  { label: "Portfólio", href: "/#portfolio" },
+  { label: "Contato", href: "/#contato" },
 ];
 
 const Header = () => {
@@ -22,7 +22,7 @@ const Header = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex items-center justify-between py-4 px-6 glass rounded"
         >
-          <a href="#" className="flex items-center">
+          <a href="/" className="flex items-center">
             <img 
               src={logoHorizontal} 
               alt="CODIM DEV" 
