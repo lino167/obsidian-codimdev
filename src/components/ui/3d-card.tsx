@@ -1,9 +1,6 @@
 import { cn } from '@/lib/utils'
-import { createContext, useState, useContext, useRef, useEffect } from 'react'
-
-const MouseEnterContext = createContext<
-  [boolean, React.Dispatch<React.SetStateAction<boolean>>] | undefined
->(undefined)
+import { useState, useRef, useEffect } from 'react'
+import { MouseEnterContext, useMouseEnter } from './3d-card-context'
 
 export const CardContainer = ({
   children,
@@ -140,12 +137,4 @@ export const CardItem = ({
       {children}
     </Tag>
   )
-}
-
-export const useMouseEnter = () => {
-  const context = useContext(MouseEnterContext)
-  if (context === undefined) {
-    throw new Error('useMouseEnter must be used within a MouseEnterProvider')
-  }
-  return context
 }
