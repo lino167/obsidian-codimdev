@@ -1,24 +1,24 @@
-import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { cn } from '@/lib/utils'
+import { motion } from 'framer-motion'
 
 export const BentoGrid = ({
   className,
   children,
 }: {
-  className?: string;
-  children?: React.ReactNode;
+  className?: string
+  children?: React.ReactNode
 }) => {
   return (
     <div
       className={cn(
-        "grid md:auto-rows-[22rem] grid-cols-1 md:grid-cols-3 gap-4 max-w-7xl mx-auto",
-        className
+        'grid auto-rows-auto grid-cols-1 md:grid-cols-3 gap-4 max-w-7xl mx-auto',
+        className,
       )}
     >
       {children}
     </div>
-  );
-};
+  )
+}
 
 export const BentoGridItem = ({
   className,
@@ -30,14 +30,14 @@ export const BentoGridItem = ({
   load,
   version,
 }: {
-  className?: string;
-  title?: string | React.ReactNode;
-  description?: string | React.ReactNode;
-  header?: React.ReactNode;
-  icon?: React.ReactNode;
-  status?: string;
-  load?: string;
-  version?: string;
+  className?: string
+  title?: string | React.ReactNode
+  description?: string | React.ReactNode
+  header?: React.ReactNode
+  icon?: React.ReactNode
+  status?: string
+  load?: string
+  version?: string
 }) => {
   return (
     <motion.div
@@ -46,14 +46,13 @@ export const BentoGridItem = ({
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
       className={cn(
-        "group relative row-span-1 flex flex-col justify-between p-6 border border-border bg-card overflow-hidden hover:border-primary/30 transition-all duration-500",
-        className
+        'group relative row-span-1 flex flex-col justify-between p-6 border border-border bg-card overflow-hidden hover:border-primary/30 transition-all duration-500',
+        className,
       )}
     >
       {/* Hover gradient border effect */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5" />
-        <div className="absolute inset-[1px] bg-card" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/10" />
       </div>
 
       {/* Status bar */}
@@ -65,7 +64,9 @@ export const BentoGridItem = ({
           </span>
         )}
         {load && <span className="text-primary">{load}</span>}
-        {version && <span className="border border-border px-1.5 py-0.5">{version}</span>}
+        {version && (
+          <span className="border border-border px-1.5 py-0.5">{version}</span>
+        )}
       </div>
 
       {/* Content */}
@@ -91,5 +92,5 @@ export const BentoGridItem = ({
       {/* Bottom scan line on hover */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
     </motion.div>
-  );
-};
+  )
+}
