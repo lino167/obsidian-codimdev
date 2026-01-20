@@ -5,81 +5,81 @@ import { TypewriterEffect } from '@/components/ui/text-generate-effect' // Assum
 import { ArrowRight } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
+const phrases = [
+  [
+    {
+      text: 'Engenharia',
+      className: 'text-neutral-400 font-mono text-sm md:text-xl',
+    },
+    {
+      text: 'de',
+      className: 'text-neutral-400 font-mono text-sm md:text-xl',
+    },
+    {
+      text: 'Software',
+      className: 'text-neutral-400 font-mono text-sm md:text-xl',
+    },
+    { text: '&', className: 'text-red-600 font-mono text-sm md:text-xl' },
+    {
+      text: 'Full-Stack',
+      className: 'text-neutral-400 font-mono text-sm md:text-xl',
+    },
+    {
+      text: 'Development.',
+      className: 'text-neutral-400 font-mono text-sm md:text-xl',
+    },
+  ],
+  [
+    {
+      text: 'Automação',
+      className: 'text-neutral-400 font-mono text-sm md:text-xl',
+    },
+    {
+      text: 'de',
+      className: 'text-neutral-400 font-mono text-sm md:text-xl',
+    },
+    {
+      text: 'Processos',
+      className: 'text-neutral-400 font-mono text-sm md:text-xl',
+    },
+    {
+      text: 'com',
+      className: 'text-neutral-400 font-mono text-sm md:text-xl',
+    },
+    { text: 'IA', className: 'text-red-600 font-mono text-sm md:text-xl' },
+    { text: '&', className: 'text-red-600 font-mono text-sm md:text-xl' },
+    { text: 'n8n.', className: 'text-red-600 font-mono text-sm md:text-xl' },
+  ],
+  [
+    {
+      text: 'Design',
+      className: 'text-neutral-400 font-mono text-sm md:text-xl',
+    },
+    {
+      text: 'de',
+      className: 'text-neutral-400 font-mono text-sm md:text-xl',
+    },
+    {
+      text: 'Interfaces',
+      className: 'text-neutral-400 font-mono text-sm md:text-xl',
+    },
+    {
+      text: 'de',
+      className: 'text-neutral-400 font-mono text-sm md:text-xl',
+    },
+    {
+      text: 'Alta',
+      className: 'text-neutral-400 font-mono text-sm md:text-xl',
+    },
+    {
+      text: 'Precisão.',
+      className: 'text-red-600 font-mono text-sm md:text-xl',
+    },
+  ],
+]
+
 const HeroSection = () => {
   const [phraseIndex, setPhraseIndex] = useState(0)
-
-  const phrases = [
-    [
-      {
-        text: 'Engenharia',
-        className: 'text-neutral-400 font-mono text-sm md:text-xl',
-      },
-      {
-        text: 'de',
-        className: 'text-neutral-400 font-mono text-sm md:text-xl',
-      },
-      {
-        text: 'Software',
-        className: 'text-neutral-400 font-mono text-sm md:text-xl',
-      },
-      { text: '&', className: 'text-red-600 font-mono text-sm md:text-xl' },
-      {
-        text: 'Full-Stack',
-        className: 'text-neutral-400 font-mono text-sm md:text-xl',
-      },
-      {
-        text: 'Development.',
-        className: 'text-neutral-400 font-mono text-sm md:text-xl',
-      },
-    ],
-    [
-      {
-        text: 'Automação',
-        className: 'text-neutral-400 font-mono text-sm md:text-xl',
-      },
-      {
-        text: 'de',
-        className: 'text-neutral-400 font-mono text-sm md:text-xl',
-      },
-      {
-        text: 'Processos',
-        className: 'text-neutral-400 font-mono text-sm md:text-xl',
-      },
-      {
-        text: 'com',
-        className: 'text-neutral-400 font-mono text-sm md:text-xl',
-      },
-      { text: 'IA', className: 'text-red-600 font-mono text-sm md:text-xl' },
-      { text: '&', className: 'text-red-600 font-mono text-sm md:text-xl' },
-      { text: 'n8n.', className: 'text-red-600 font-mono text-sm md:text-xl' },
-    ],
-    [
-      {
-        text: 'Design',
-        className: 'text-neutral-400 font-mono text-sm md:text-xl',
-      },
-      {
-        text: 'de',
-        className: 'text-neutral-400 font-mono text-sm md:text-xl',
-      },
-      {
-        text: 'Interfaces',
-        className: 'text-neutral-400 font-mono text-sm md:text-xl',
-      },
-      {
-        text: 'de',
-        className: 'text-neutral-400 font-mono text-sm md:text-xl',
-      },
-      {
-        text: 'Alta',
-        className: 'text-neutral-400 font-mono text-sm md:text-xl',
-      },
-      {
-        text: 'Precisão.',
-        className: 'text-red-600 font-mono text-sm md:text-xl',
-      },
-    ],
-  ]
 
   useEffect(() => {
     const interval = setInterval(() => {
