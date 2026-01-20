@@ -1,35 +1,36 @@
-import { useEffect, useState } from "react";
-import { motion, stagger, useAnimate } from "framer-motion";
+import { useEffect, useState } from 'react'
+import { motion, stagger, useAnimate } from 'framer-motion'
+import { cn } from '@/lib/utils'
 
 interface TextGenerateEffectProps {
-  words: string;
-  className?: string;
-  filter?: boolean;
-  duration?: number;
+  words: string
+  className?: string
+  filter?: boolean
+  duration?: number
 }
 
 export const TextGenerateEffect = ({
   words,
-  className = "",
+  className = '',
   filter = true,
   duration = 0.5,
 }: TextGenerateEffectProps) => {
-  const [scope, animate] = useAnimate();
-  const wordsArray = words.split(" ");
+  const [scope, animate] = useAnimate()
+  const wordsArray = words.split(' ')
 
   useEffect(() => {
     animate(
-      "span",
+      'span',
       {
         opacity: 1,
-        filter: filter ? "blur(0px)" : "none",
+        filter: filter ? 'blur(0px)' : 'none',
       },
       {
         duration: duration,
         delay: stagger(0.1),
-      }
-    );
-  }, [animate, duration, filter]);
+      },
+    )
+  }, [animate, duration, filter])
 
   return (
     <motion.div ref={scope} className={className}>
@@ -38,98 +39,124 @@ export const TextGenerateEffect = ({
           key={word + idx}
           className="opacity-0"
           style={{
-            filter: filter ? "blur(10px)" : "none",
+            filter: filter ? 'blur(10px)' : 'none',
           }}
         >
-          {word}{" "}
+          {word}{' '}
         </motion.span>
       ))}
     </motion.div>
-  );
-};
+  )
+}
 
 // Typewriter effect for terminal-style text
 export const TypewriterEffect = ({
   words,
-  className = "",
-  cursorClassName = "",
+  className = '',
+  cursorClassName = '',
 }: {
-  words: { text: string; className?: string }[];
-  className?: string;
-  cursorClassName?: string;
+  words: { text: string; className?: string }[]
+  className?: string
+  cursorClassName?: string
 }) => {
-  const [displayedText, setDisplayedText] = useState("");
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [currentCharIndex, setCurrentCharIndex] = useState(0);
-  const [isComplete, setIsComplete] = useState(false);
+  const [currentTick, setCurrentTick] = useState(0)
 
-  const fullText = words.map((w) => w.text).join(" ");
+  // Calculate total characters including spaces (if we want to account for gaps conceptually,
+  // but here we just count characters in words)
+  const totalChars = words.reduce((acc, word) => acc + word.text.length, 0)
 
   useEffect(() => {
-    if (currentCharIndex < fullText.length) {
+    if (currentTick < totalChars) {
       const timeout = setTimeout(() => {
-        setDisplayedText(fullText.slice(0, currentCharIndex + 1));
-        setCurrentCharIndex(currentCharIndex + 1);
-      }, 50);
-      return () => clearTimeout(timeout);
-    } else {
-      setIsComplete(true);
+        setCurrentTick((prev) => prev + 1)
+      }, 50) // Typing speed
+      return () => clearTimeout(timeout)
     }
-  }, [currentCharIndex, fullText]);
+  }, [currentTick, totalChars])
+
+  let charCount = 0
 
   return (
-    <div className={`inline-flex items-center ${className}`}>
-      <span>{displayedText}</span>
+    <div
+      className={cn(
+        'inline-flex items-center flex-wrap justify-center gap-2',
+        className,
+      )}
+    >
+      {words.map((word, wordIdx) => {
+        return (
+          <span key={wordIdx} className={cn('inline-block', word.className)}>
+            {word.text.split('').map((char, charIdx) => {
+              const isVisible = charCount < currentTick
+              charCount++
+              return (
+                <span
+                  key={charIdx}
+                  className={cn(
+                    'transition-opacity duration-0',
+                    isVisible ? 'opacity-100' : 'opacity-0 hidden',
+                  )}
+                >
+                  {char}
+                </span>
+              )
+            })}
+          </span>
+        )
+      })}
       <motion.span
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{
           duration: 0.5,
           repeat: Infinity,
-          repeatType: "reverse",
+          repeatType: 'reverse',
         }}
-        className={`ml-1 inline-block h-[1em] w-[3px] bg-primary ${cursorClassName}`}
+        className={cn(
+          'ml-1 inline-block h-[1em] w-[3px] bg-primary',
+          cursorClassName,
+        )}
       />
     </div>
-  );
-};
+  )
+}
 
 // Scramble/decrypt text effect
 export const ScrambleText = ({
   text,
-  className = "",
+  className = '',
 }: {
-  text: string;
-  className?: string;
+  text: string
+  className?: string
 }) => {
-  const [displayText, setDisplayText] = useState("");
-  const chars = "!@#$%^&*()_+-=[]{}|;:,.<>?0123456789";
+  const [displayText, setDisplayText] = useState('')
+  const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?0123456789'
 
   useEffect(() => {
-    let iteration = 0;
+    let iteration = 0
     const interval = setInterval(() => {
       setDisplayText(
         text
-          .split("")
+          .split('')
           .map((char, index) => {
-            if (char === " ") return " ";
+            if (char === ' ') return ' '
             if (index < iteration) {
-              return text[index];
+              return text[index]
             }
-            return chars[Math.floor(Math.random() * chars.length)];
+            return chars[Math.floor(Math.random() * chars.length)]
           })
-          .join("")
-      );
+          .join(''),
+      )
 
       if (iteration >= text.length) {
-        clearInterval(interval);
+        clearInterval(interval)
       }
 
-      iteration += 1 / 3;
-    }, 30);
+      iteration += 1 / 3
+    }, 30)
 
-    return () => clearInterval(interval);
-  }, [text]);
+    return () => clearInterval(interval)
+  }, [text])
 
-  return <span className={className}>{displayText}</span>;
-};
+  return <span className={className}>{displayText}</span>
+}
