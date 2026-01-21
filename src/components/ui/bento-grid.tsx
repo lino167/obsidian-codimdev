@@ -82,9 +82,9 @@ export const BentoGridItem = ({
             <h3 className="font-display text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
               {title}
             </h3>
-            <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+            <div className="text-sm text-muted-foreground mt-2 leading-relaxed">
               {description}
-            </p>
+            </div>
           </div>
         </div>
       </div>
