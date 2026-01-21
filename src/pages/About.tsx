@@ -10,7 +10,6 @@ import {
   IconTool,
   IconCertificate,
 } from '@tabler/icons-react'
-import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ceoCodim from '@/assets/ceo-codim.png'
 
@@ -198,7 +197,6 @@ export default function About() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white font-sans flex flex-col">
-      <Header />
       <main className="flex-grow pt-20">
         {/* HERO SECTION */}
         <div className="container mx-auto px-4 py-12 lg:py-24">

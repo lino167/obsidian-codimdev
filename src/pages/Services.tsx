@@ -1,5 +1,4 @@
 import React from 'react'
-import Header from '@/components/Header'
 import { TracingBeam } from '@/components/ui/tracing-beam'
 import { cn } from '@/lib/utils'
 import {
@@ -15,7 +14,6 @@ import { Button } from '@/components/ui/button'
 const Services = () => {
   return (
     <div className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-[#BA0C10] selection:text-white">
-      <Header />
       {/* HEADER */}
       <div className="w-full max-w-4xl mx-auto px-6 pt-28 pb-10">
         <div className="border-b border-neutral-800 pb-8">
