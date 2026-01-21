@@ -1,13 +1,12 @@
-import SystemStatus from "@/components/SystemStatus";
-import Header from "@/components/Header";
-import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import ServicesSection from "@/components/ServicesSection";
-import TechStackSection from "@/components/TechStackSection";
-import PortfolioSection from "@/components/PortfolioSection";
-import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
-import { CornerBrackets, GridLines } from "@/components/ui/hud-elements";
+import SystemStatus from '@/components/SystemStatus'
+import Header from '@/components/Header'
+import HeroSection from '@/components/HeroSection'
+import ServicesSection from '@/components/ServicesSection'
+import TechStackSection from '@/components/TechStackSection'
+import PortfolioSection from '@/components/PortfolioSection'
+import ContactSection from '@/components/ContactSection'
+import Footer from '@/components/Footer'
+import { CornerBrackets, GridLines } from '@/components/ui/hud-elements'
 
 const Index = () => {
   return (
@@ -15,13 +14,12 @@ const Index = () => {
       {/* HUD Elements */}
       <CornerBrackets />
       <GridLines />
-      
+
       {/* Main Content */}
       <SystemStatus />
       <Header />
       <main>
         <HeroSection />
-        <AboutSection />
         <ServicesSection />
         <TechStackSection />
         <PortfolioSection />
@@ -29,7 +27,7 @@ const Index = () => {
       </main>
       <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default Index;
+export default Index
