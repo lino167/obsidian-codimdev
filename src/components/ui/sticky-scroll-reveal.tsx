@@ -1,62 +1,63 @@
-"use client";
-import React, { useRef } from "react";
-import { useMotionValueEvent, useScroll } from "framer-motion";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+'use client'
+import React, { useRef } from 'react'
+import { useMotionValueEvent, useScroll } from 'framer-motion'
+import { motion } from 'framer-motion'
+import { cn } from '@/lib/utils'
+
+const linearGradients = [
+  'linear-gradient(to bottom right, var(--cyan-500), var(--emerald-500))',
+  'linear-gradient(to bottom right, var(--pink-500), var(--indigo-500))',
+  'linear-gradient(to bottom right, var(--orange-500), var(--yellow-500))',
+]
 
 export const StickyScroll = ({
   content,
   contentClassName,
 }: {
   content: {
-    title: string;
-    description: string;
-    content?: React.ReactNode;
-  }[];
-  contentClassName?: string;
+    title: string
+    description: string
+    content?: React.ReactNode
+  }[]
+  contentClassName?: string
 }) => {
-  const [activeCard, setActiveCard] = React.useState(0);
-  const ref = useRef<any>(null);
+  const [activeCard, setActiveCard] = React.useState(0)
+  const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     // target: ref,
     container: ref,
-    offset: ["start start", "end end"],
-  });
-  const cardLength = content.length;
+    offset: ['start start', 'end end'],
+  })
+  const cardLength = content.length
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const cardsBreakpoints = content.map((_, index) => index / cardLength);
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    const cardsBreakpoints = content.map((_, index) => index / cardLength)
     const closestBreakpointIndex = cardsBreakpoints.reduce(
       (acc, breakpoint, index) => {
-        const distance = Math.abs(latest - breakpoint);
+        const distance = Math.abs(latest - breakpoint)
         if (distance < Math.abs(latest - cardsBreakpoints[acc])) {
-          return index;
+          return index
         }
-        return acc;
+        return acc
       },
-      0
-    );
-    setActiveCard(closestBreakpointIndex);
-  });
+      0,
+    )
+    setActiveCard(closestBreakpointIndex)
+  })
 
   const backgroundColors = [
-    "var(--slate-900)",
-    "var(--black)",
-    "var(--neutral-900)",
-  ];
-  const linearGradients = [
-    "linear-gradient(to bottom right, var(--cyan-500), var(--emerald-500))",
-    "linear-gradient(to bottom right, var(--pink-500), var(--indigo-500))",
-    "linear-gradient(to bottom right, var(--orange-500), var(--yellow-500))",
-  ];
+    'var(--slate-900)',
+    'var(--black)',
+    'var(--neutral-900)',
+  ]
 
   const [backgroundGradient, setBackgroundGradient] = React.useState(
-    linearGradients[0]
-  );
+    linearGradients[0],
+  )
 
   React.useEffect(() => {
-    setBackgroundGradient(linearGradients[activeCard % linearGradients.length]);
-  }, [activeCard]);
+    setBackgroundGradient(linearGradients[activeCard % linearGradients.length])
+  }, [activeCard])
 
   return (
     <motion.div
@@ -100,12 +101,12 @@ export const StickyScroll = ({
       <div
         style={{ background: backgroundGradient }}
         className={cn(
-          "hidden lg:block h-60 w-80 rounded-md bg-white sticky top-10 overflow-hidden",
-          contentClassName
+          'hidden lg:block h-60 w-80 rounded-md bg-white sticky top-10 overflow-hidden',
+          contentClassName,
         )}
       >
         {content[activeCard].content ?? null}
       </div>
     </motion.div>
-  );
-};
+  )
+}

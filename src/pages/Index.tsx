@@ -2,7 +2,6 @@ import SystemStatus from '@/components/SystemStatus'
 import HeroSection from '@/components/HeroSection'
 import FeaturedWork from '@/components/FeaturedWork'
 import TechStackSection from '@/components/TechStackSection'
-import ContactSection from '@/components/ContactSection'
 import Footer from '@/components/Footer'
 import { CornerBrackets, GridLines } from '@/components/ui/hud-elements'
 
@@ -19,7 +18,6 @@ const Index = () => {
         <HeroSection />
         <FeaturedWork />
         <TechStackSection />
-        <ContactSection />
       </main>
       <Footer />
     </div>

@@ -3,10 +3,11 @@ import { TracingBeam } from '@/components/ui/tracing-beam'
 import { MoveRight, Database, Workflow, PenTool, Code2 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
+import Footer from '@/components/Footer'
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen bg-[#050505] pt-32 pb-20">
+    <div className="min-h-screen bg-[#050505] pt-32">
       {/* Header Simples */}
       <div className="container mx-auto px-6 mb-16 text-center">
         <span className="text-crimson font-mono text-xs tracking-widest uppercase mb-4 block">
@@ -128,7 +129,7 @@ export default function ServicesPage() {
           </div>
 
           {/* CTA FINAL */}
-          <div className="mt-12 p-8 rounded-2xl border border-white/10 bg-gradient-to-br from-neutral-900 to-black text-center">
+          <div className="mt-12 mb-24 p-8 rounded-2xl border border-white/10 bg-gradient-to-br from-neutral-900 to-black text-center">
             <h3 className="text-2xl font-display font-bold text-white mb-4">
               Seu sistema precisa de um upgrade?
             </h3>
@@ -143,6 +144,7 @@ export default function ServicesPage() {
           </div>
         </div>
       </TracingBeam>
+      <Footer />
     </div>
   )
 }
