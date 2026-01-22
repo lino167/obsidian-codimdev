@@ -1,6 +1,7 @@
 import SystemStatus from '@/components/SystemStatus'
 import HeroSection from '@/components/HeroSection'
 import ServicesSection from '@/components/ServicesSection'
+import FeaturedWork from '@/components/FeaturedWork'
 import TechStackSection from '@/components/TechStackSection'
 import PortfolioSection from '@/components/PortfolioSection'
 import ContactSection from '@/components/ContactSection'
@@ -19,6 +20,7 @@ const Index = () => {
       <main>
         <HeroSection />
         <ServicesSection />
+        <FeaturedWork />
         <TechStackSection />
         <PortfolioSection />
         <ContactSection />

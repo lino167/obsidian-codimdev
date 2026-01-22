@@ -8,6 +8,8 @@ import { Navbar } from './components/ui/Navbar'
 import Index from './pages/Index'
 import Services from './pages/Services'
 import About from './pages/About'
+import Work from './pages/Work'
+import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
 import PageTransition from './components/PageTransition'
 
@@ -36,10 +38,26 @@ const AnimatedRoutes = () => {
           }
         />
         <Route
+          path="/work"
+          element={
+            <PageTransition>
+              <Work />
+            </PageTransition>
+          }
+        />
+        <Route
           path="/about"
           element={
             <PageTransition>
               <About />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <PageTransition>
+              <Contact />
             </PageTransition>
           }
         />
