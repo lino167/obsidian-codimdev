@@ -3,197 +3,63 @@ import { Timeline } from '@/components/ui/timeline'
 import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid'
 import {
   IconBrandHtml5,
-  IconBrandCss3,
-  IconBrandJavascript,
-  IconBrandPython,
   IconBrain,
   IconTool,
   IconCertificate,
 } from '@tabler/icons-react'
 import Footer from '@/components/Footer'
 import ceoCodim from '@/assets/ceo-codim.png'
+import { useLanguage } from '@/hooks/use-language'
 
 export default function About() {
-  const timelineData = [
-    {
-      title: '2006',
-      content: (
-        <div>
-          <h4 className="text-xl md:text-2xl font-bold text-white mb-2 font-display">
-            INITIALIZATION (13 Anos)
-          </h4>
-          <h5 className="text-lg text-[#BA0C10] font-mono mb-2">
-            O Primeiro Hardware
-          </h5>
-          <p className="text-neutral-300 font-sans text-base md:text-lg leading-relaxed">
-            Aos 13 anos, montei meu primeiro computador. O fascínio pela lógica
-            binária foi imediato. O desejo de cursar Ciência da Computação
-            existia, mas restrições orçamentárias forçaram um desvio de rota. O
-            sistema entrou em 'Sleep Mode', mas o kernel permaneceu ativo.
-          </p>
-        </div>
-      ),
-    },
-    {
-      title: '2011',
-      content: (
-        <div>
-          <h4 className="text-xl md:text-2xl font-bold text-white mb-2 font-display">
-            MANUAL OVERRIDE (18 Anos)
-          </h4>
-          <h5 className="text-lg text-[#BA0C10] font-mono mb-2">
-            A Forja Industrial
-          </h5>
-          <p className="text-neutral-300 font-sans text-base md:text-lg leading-relaxed mb-4">
-            Aos 18 anos, a realidade exigiu ação. Ingressei no chão de fábrica
-            como ajudante. Foi o início de uma carreira de mais de uma década na
-            Mecânica Industrial Pesada (Passaúra, Santos CMI). Aprendi na
-            prática como grandes sistemas funcionam sob pressão.
-          </p>
-          <div className="flex gap-2 flex-wrap">
-            <span className="text-xs font-mono bg-neutral-800 text-neutral-300 px-2 py-1 rounded">
-              Chão de Fábrica
-            </span>
-            <span className="text-xs font-mono bg-neutral-800 text-neutral-300 px-2 py-1 rounded">
-              Resiliência
-            </span>
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: '2014-2016',
-      content: (
-        <div>
-          <h4 className="text-xl md:text-2xl font-bold text-white mb-2 font-display">
-            PRECISION PROTOCOL
-          </h4>
-          <h5 className="text-lg text-[#BA0C10] font-mono mb-2">
-            Turbinas & Siderurgia
-          </h5>
-          <p className="text-neutral-300 font-sans text-base md:text-lg leading-relaxed mb-4">
-            Atuando na montagem crítica de turbinas a gás e manutenção
-            siderúrgica. Onde um erro de milímetros pode custar milhões. Essa
-            experiência moldou meu caráter profissional: a busca obsessiva pela
-            precisão e a tolerância zero para falhas.
-          </p>
-          <div className="flex gap-2 flex-wrap">
-            <span className="text-xs font-mono bg-neutral-800 text-neutral-300 px-2 py-1 rounded">
-              Turbinas a Gás
-            </span>
-            <span className="text-xs font-mono bg-neutral-800 text-neutral-300 px-2 py-1 rounded">
-              Tolerância Zero
-            </span>
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: '2023',
-      content: (
-        <div>
-          <h4 className="text-xl md:text-2xl font-bold text-white mb-2 font-display">
-            SYSTEM REBOOT
-          </h4>
-          <h5 className="text-lg text-[#BA0C10] font-mono mb-2">
-            Retorno ao Código
-          </h5>
-          <p className="text-neutral-300 font-sans text-base md:text-lg leading-relaxed mb-4">
-            Com a estabilidade alcançada, reativei o protocolo original.
-            Investimento pesado em formação Full-Stack (OneBitCode), Design e
-            IA. A lógica mecânica foi finalmente traduzida para JavaScript,
-            Python e Automação.
-          </p>
-          <div className="flex gap-2 flex-wrap">
-            <span className="text-xs font-mono bg-[#BA0C10]/20 text-[#BA0C10] border border-[#BA0C10]/50 px-2 py-1 rounded">
-              OneBitCode
-            </span>
-            <span className="text-xs font-mono bg-[#BA0C10]/20 text-[#BA0C10] border border-[#BA0C10]/50 px-2 py-1 rounded">
-              Python
-            </span>
-            <span className="text-xs font-mono bg-[#BA0C10]/20 text-[#BA0C10] border border-[#BA0C10]/50 px-2 py-1 rounded">
-              Sass
-            </span>
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: 'CURRENT',
-      content: (
-        <div>
-          <h4 className="text-xl md:text-2xl font-bold text-white mb-2 font-display">
-            PARALLEL PROCESSING
-          </h4>
-          <h5 className="text-lg text-[#BA0C10] font-mono mb-2">
-            Operação Híbrida (Mecânica + Dev)
-          </h5>
-          <p className="text-neutral-300 font-sans text-base md:text-lg leading-relaxed mb-4">
-            Atualmente operando em 'Dual-Core'. Mantenho a precisão de teares
-            industriais na Karsten durante o dia e construo softwares complexos
-            como CODIM DEV nos ciclos livres. Essa vivência dupla me dá uma
-            vantagem única: eu resolvo problemas reais do mundo físico usando
-            soluções digitais.
-          </p>
-          <div className="flex gap-2 flex-wrap">
-            <span className="text-xs font-mono bg-emerald-900/30 text-emerald-500 border border-emerald-500/50 px-2 py-1 rounded">
-              Dual-Core
-            </span>
-            <span className="text-xs font-mono bg-emerald-900/30 text-emerald-500 border border-emerald-500/50 px-2 py-1 rounded">
-              Karsten
-            </span>
-            <span className="text-xs font-mono bg-emerald-900/30 text-emerald-500 border border-emerald-500/50 px-2 py-1 rounded">
-              CODIM DEV
-            </span>
-          </div>
-        </div>
-      ),
-    },
-  ]
+  const { t } = useLanguage()
 
-  const certificates = [
-    {
-      title: 'DEVELOPMENT CORE',
-      description: 'HTML5, CSS3 Moderno, JavaScript I, Bootstrap, Sass.',
-      header: (
-        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-900 to-neutral-800" />
+  const timelineData = t.about.timeline.map((item) => ({
+    title: item.year,
+    content: (
+      <div>
+        <h4 className="text-xl md:text-2xl font-bold text-white mb-2 font-display">
+          {item.title}
+        </h4>
+        <h5 className="text-lg text-[#BA0C10] font-mono mb-2">
+          {item.subtitle}
+        </h5>
+        <p className="text-neutral-300 font-sans text-base md:text-lg leading-relaxed mb-4">
+          {item.description}
+        </p>
+        {item.tags && (
+          <div className="flex gap-2 flex-wrap">
+            {item.tags.map((tag, i) => (
+              <span
+                key={i}
+                className="text-xs font-mono bg-neutral-800 text-neutral-300 px-2 py-1 rounded"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    ),
+  }))
+
+  const certificates = t.about.certificates.items.map((item, i) => ({
+    ...item,
+    header: (
+      <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-900 to-neutral-800" />
+    ),
+    icon:
+      i === 0 ? (
+        <IconBrandHtml5 className="h-4 w-4 text-neutral-500" />
+      ) : i === 1 ? (
+        <IconBrain className="h-4 w-4 text-neutral-500" />
+      ) : i === 2 ? (
+        <IconCertificate className="h-4 w-4 text-neutral-500" />
+      ) : (
+        <IconTool className="h-4 w-4 text-neutral-500" />
       ),
-      icon: <IconBrandHtml5 className="h-4 w-4 text-neutral-500" />,
-      status: 'COMPLETED',
-      version: 'v1.0',
-    },
-    {
-      title: 'INTELLIGENCE & LOGIC',
-      description:
-        'Python I, Dominando ChatGPT, Entendendo as IAs, Planejando Projetos.',
-      header: (
-        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-900 to-neutral-800" />
-      ),
-      icon: <IconBrain className="h-4 w-4 text-neutral-500" />,
-      status: 'ACTIVE',
-      version: 'v2.0',
-    },
-    {
-      title: 'VISUAL ENGINEERING',
-      description: 'Adobe Photoshop, Adobe Illustrator.',
-      header: (
-        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-900 to-neutral-800" />
-      ),
-      icon: <IconCertificate className="h-4 w-4 text-neutral-500" />,
-      status: 'VERIFIED',
-      version: 'v1.5',
-    },
-    {
-      title: 'INDUSTRIAL BASE',
-      description: 'Técnico em Mecânica Industrial.',
-      header: (
-        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-900 to-neutral-800" />
-      ),
-      icon: <IconTool className="h-4 w-4 text-neutral-500" />,
-      status: 'LEGACY',
-      version: 'v0.9',
-    },
-  ]
+    version: i === 0 ? 'v1.0' : i === 1 ? 'v2.0' : i === 2 ? 'v1.5' : 'v0.9',
+  }))
 
   return (
     <div className="min-h-screen bg-[#050505] text-white font-sans flex flex-col">
@@ -203,7 +69,7 @@ export default function About() {
           {/* Header Line */}
           <div className="w-full border-b border-white/10 pb-4 mb-12 font-mono">
             <p className="text-xs text-neutral-500 tracking-widest">
-              // ACCESSING PERSONNEL FILE: 001
+              {t.about.hero.access_file}
             </p>
           </div>
 
@@ -229,21 +95,16 @@ export default function About() {
             <div className="space-y-8">
               <div>
                 <h1 className="text-5xl lg:text-7xl font-bold tracking-tighter mb-2 text-white font-display">
-                  THE OPERATOR
+                  {t.about.hero.title}
                 </h1>
                 <h2 className="text-xl lg:text-2xl text-[#BA0C10] font-medium tracking-wide font-mono">
-                  ZACARIAS LINO // FULL-STACK ENGINEER
+                  {t.about.hero.subtitle}
                 </h2>
               </div>
 
               <div className="prose prose-invert max-w-none">
                 <p className="text-[#E5E5E5] text-lg leading-relaxed">
-                  De Mecânico Industrial a Arquiteto de Software. Unindo a
-                  precisão do chão de fábrica com a escalabilidade do código.
-                  Hoje, aplico essa mentalidade de engenharia na CODIM DEV.
-                  Especialista em criar ecossistemas digitais que funcionam
-                  sozinhos, utilizando Python para lógica robusta e Automação
-                  Inteligente com n8n e Supabase.
+                  {t.about.hero.description}
                 </p>
               </div>
             </div>
@@ -252,6 +113,11 @@ export default function About() {
 
         {/* TIMELINE SECTION */}
         <section className="w-full bg-[#050505]">
+          <div className="container mx-auto px-4 mb-8">
+             <h2 className="text-3xl md:text-4xl font-bold text-white font-display text-center">
+               {t.about.timeline_title}
+             </h2>
+          </div>
           <Timeline data={timelineData} />
         </section>
 
@@ -259,10 +125,10 @@ export default function About() {
         <section className="w-full py-20 bg-[#050505]">
           <div className="container mx-auto px-4 mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-display">
-              CERTIFIED PROTOCOLS
+              {t.about.certificates.title}
             </h2>
             <p className="text-neutral-500 font-mono text-sm">
-              // VERIFIED CREDENTIALS DATABASE
+              {t.about.certificates.subtitle}
             </p>
           </div>
           <BentoGrid className="max-w-6xl mx-auto px-4">
