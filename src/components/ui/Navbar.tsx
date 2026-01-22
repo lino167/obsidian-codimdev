@@ -4,22 +4,25 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { Terminal, Code2, Briefcase, User, Mail } from 'lucide-react'
 import logoHorizontal from '@/assets/logo-horizontal.png'
+import { useLanguage } from '@/hooks/use-language'
+import { LanguageToggle } from '@/components/LanguageToggle'
 
-const navItems = [
-  { name: 'Home', path: '/', icon: Terminal },
-  { name: 'Services', path: '/services', icon: Code2 },
-  { name: 'Work', path: '/work', icon: Briefcase },
-  { name: 'About', path: '/about', icon: User },
-  { name: 'Contact', path: '/contact', icon: Mail },
-]
+const navConfig = [
+  { key: 'home', path: '/', icon: Terminal },
+  { key: 'services', path: '/services', icon: Code2 },
+  { key: 'work', path: '/work', icon: Briefcase },
+  { key: 'about', path: '/about', icon: User },
+  { key: 'contact', path: '/contact', icon: Mail },
+] as const
 
 export function Navbar() {
   const location = useLocation()
   const pathname = location.pathname
   const [hoveredPath, setHoveredPath] = useState<string | null>(null)
+  const { t } = useLanguage()
 
   return (
-    <div className="fixed top-10 inset-x-0 max-w-2xl mx-auto z-[100] px-4 pointer-events-none">
+    <div className="fixed top-10 inset-x-0 max-w-4xl mx-auto z-[100] px-4 pointer-events-none">
       <nav
         className="
           pointer-events-auto
@@ -45,9 +48,10 @@ export function Navbar() {
 
         {/* Navigation Links */}
         <div className="flex items-center gap-1">
-          {navItems.map((item) => {
+          {navConfig.map((item) => {
             const isActive = pathname === item.path
             const Icon = item.icon
+            const itemName = t.navbar[item.key]
 
             return (
               <Link
@@ -95,7 +99,7 @@ export function Navbar() {
                   className="relative z-10 flex items-center gap-2"
                   whileTap={{ scale: 0.95 }}
                 >
-                  <span className="hidden sm:inline">{item.name}</span>
+                  <span className="hidden sm:inline">{itemName}</span>
                   <span className="sm:hidden">
                     <Icon size={18} />
                   </span>
@@ -105,9 +109,16 @@ export function Navbar() {
           })}
         </div>
 
-        {/* Status Indicator */}
-        <div className="pr-2 pl-2 border-l border-white/10 hidden sm:block">
-          <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_#22c55e]" />
+        {/* Right Section: Language Toggle & Status */}
+        <div className="flex items-center gap-3 pr-2 pl-2 border-l border-white/10 ml-2">
+          <div className="hidden sm:block">
+            <LanguageToggle />
+          </div>
+
+          {/* Status Indicator */}
+          <div className="hidden sm:block">
+            <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_#22c55e]" />
+          </div>
         </div>
       </nav>
     </div>

@@ -12,6 +12,7 @@ import Work from './pages/Work'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
 import PageTransition from './components/PageTransition'
+import { LanguageProvider } from '@/context/LanguageContext'
 
 const queryClient = new QueryClient()
 
@@ -78,12 +79,14 @@ const AnimatedRoutes = () => {
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Navbar />
-        <AnimatedRoutes />
-      </BrowserRouter>
+      <LanguageProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Navbar />
+          <AnimatedRoutes />
+        </BrowserRouter>
+      </LanguageProvider>
     </TooltipProvider>
   </QueryClientProvider>
 )
