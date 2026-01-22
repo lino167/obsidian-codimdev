@@ -10,9 +10,11 @@ export interface LanguageContextType {
   t: Translations
 }
 
-export const LanguageContext = createContext<LanguageContextType | undefined>(
+const LanguageContext = createContext<LanguageContextType | undefined>(
   undefined,
 )
+
+export { LanguageContext }
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState<Language>('pt')
