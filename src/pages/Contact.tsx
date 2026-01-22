@@ -6,8 +6,11 @@ import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import { Mail, Linkedin, Github, Smartphone } from 'lucide-react'
 import Footer from '@/components/Footer'
+import { useLanguage } from '@/hooks/use-language'
 
 export default function Contact() {
+  const { t } = useLanguage()
+
   return (
     <div className="min-h-screen bg-black relative font-mono">
       <BackgroundBeamsWithCollision className="min-h-screen h-auto flex-col justify-start items-center pt-24 md:pt-32 pb-12">
@@ -17,12 +20,14 @@ export default function Contact() {
             <div className="space-y-12 animate-fade-in">
               <div className="space-y-4">
                 <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">
-                  COMMUNICATION
+                  {t.contact.title}
                   <br />
-                  <span className="text-crimson">CHANNELS</span>
+                  <span className="text-crimson">
+                    {t.contact.title_highlight}
+                  </span>
                 </h1>
                 <p className="text-muted-foreground text-lg border-l-2 border-crimson pl-4">
-                  Blumenau, SC // Industrial Tech Hub
+                  {t.contact.location}
                 </p>
               </div>
 
@@ -76,7 +81,7 @@ export default function Contact() {
 
               <div className="pt-8 border-t border-neutral-800">
                 <p className="text-sm text-neutral-500 uppercase tracking-widest">
-                  Disponível para projetos Freelancer e Consultoria Industrial.
+                  {t.contact.availability}
                 </p>
               </div>
             </div>
@@ -88,7 +93,7 @@ export default function Contact() {
             >
               <div className="mb-8 flex items-center justify-between border-b border-neutral-800 pb-4">
                 <span className="text-xs text-crimson font-bold tracking-widest">
-                  SECURE_TRANSMISSION_PROTOCOL
+                  {t.contact.form.header_badge}
                 </span>
                 <div className="flex gap-2">
                   <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
@@ -103,11 +108,11 @@ export default function Contact() {
                     htmlFor="name"
                     className="text-xs uppercase tracking-widest text-neutral-400"
                   >
-                    Operator ID
+                    {t.contact.form.label_name}
                   </Label>
                   <Input
                     id="name"
-                    placeholder="IDENTIFY YOURSELF"
+                    placeholder={t.contact.form.placeholder_name}
                     className="bg-neutral-950 border-neutral-800 focus:border-crimson text-white placeholder:text-neutral-700 h-12 font-mono rounded-none border-b-2 focus:ring-0"
                   />
                 </div>
@@ -117,12 +122,12 @@ export default function Contact() {
                     htmlFor="email"
                     className="text-xs uppercase tracking-widest text-neutral-400"
                   >
-                    Return Address
+                    {t.contact.form.label_email}
                   </Label>
                   <Input
                     id="email"
                     type="email"
-                    placeholder="ENTER_FREQUENCY (EMAIL)"
+                    placeholder={t.contact.form.placeholder_email}
                     className="bg-neutral-950 border-neutral-800 focus:border-crimson text-white placeholder:text-neutral-700 h-12 font-mono rounded-none border-b-2 focus:ring-0"
                   />
                 </div>
@@ -132,11 +137,11 @@ export default function Contact() {
                     htmlFor="message"
                     className="text-xs uppercase tracking-widest text-neutral-400"
                   >
-                    Message Payload
+                    {t.contact.form.label_message}
                   </Label>
                   <Textarea
                     id="message"
-                    placeholder="INITIATE DATA TRANSFER..."
+                    placeholder={t.contact.form.placeholder_message}
                     className="bg-neutral-950 border-neutral-800 focus:border-crimson text-white placeholder:text-neutral-700 min-h-[150px] font-mono rounded-none border-b-2 focus:ring-0 resize-none"
                   />
                 </div>
@@ -145,7 +150,7 @@ export default function Contact() {
                   type="submit"
                   className="w-full h-14 bg-gradient-to-r from-red-900 to-crimson hover:from-crimson hover:to-red-600 text-white font-bold tracking-widest border border-crimson/50 uppercase transition-all duration-300 hover:shadow-[0_0_20px_rgba(186,12,16,0.5)] rounded-sm"
                 >
-                  TRANSMIT DATA {'>'}
+                  {t.contact.form.button}
                 </Button>
               </form>
             </div>
