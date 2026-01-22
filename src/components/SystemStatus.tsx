@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
+import { useLanguage } from "@/hooks/use-language";
 
 const SystemStatus = () => {
+  const { t } = useLanguage();
+
   return (
     <motion.div 
       initial={{ opacity: 0 }}
@@ -12,15 +15,15 @@ const SystemStatus = () => {
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-2 font-mono text-muted-foreground">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 status-pulse" />
-            <span>SYSTEM: ONLINE</span>
+            <span>{t.system_status.online}</span>
           </div>
           <div className="hidden sm:flex items-center gap-2 font-mono text-muted-foreground">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 status-pulse" />
-            <span>SERVER: ACTIVE</span>
+            <span>{t.system_status.server}</span>
           </div>
         </div>
         <div className="font-mono text-muted-foreground">
-          <span className="text-primary">v1.0</span> // BUILD STABLE
+          <span className="text-primary">v1.0</span> // {t.system_status.build}
         </div>
       </div>
     </motion.div>
