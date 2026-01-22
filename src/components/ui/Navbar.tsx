@@ -110,14 +110,14 @@ export function Navbar() {
         </div>
 
         {/* Right Section: Language Toggle & Status */}
-        <div className="flex items-center gap-3 pr-2 pl-2 border-l border-white/10 ml-2">
-          <div className="hidden sm:block">
+        <div className="flex items-center gap-2 sm:gap-3 pr-1 sm:pr-2 pl-2 border-l border-white/10 ml-1 sm:ml-2">
+          <div>
             <LanguageToggle />
           </div>
-
+          
           {/* Status Indicator */}
           <div className="hidden sm:block">
-            <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_#22c55e]" />
+             <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_#22c55e]" />
           </div>
         </div>
       </nav>
