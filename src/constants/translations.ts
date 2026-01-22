@@ -1,11 +1,11 @@
 export const translations = {
   pt: {
     navbar: {
-      home: 'Home',
-      services: 'Módulos',
-      work: 'Projetos',
-      about: 'Sobre',
-      contact: 'Contato',
+      home: 'INÍCIO',
+      services: 'CAPACIDADES',
+      work: 'PROJETOS',
+      about: 'OPERADOR',
+      contact: 'CONTATO',
     },
     hero: {
       badge: 'SISTEMA ONLINE // V2.0',
@@ -24,73 +24,22 @@ export const translations = {
             text: 'Software',
             className: 'text-neutral-400 font-mono text-sm md:text-xl',
           },
-          { text: '&', className: 'text-crimson font-mono text-sm md:text-xl' },
-          {
-            text: 'Full-Stack',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
-          {
-            text: 'Development.',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
         ],
         [
+          { text: '&', className: 'text-crimson font-mono text-sm md:text-xl' },
           {
             text: 'Automação',
             className: 'text-neutral-400 font-mono text-sm md:text-xl',
           },
           {
-            text: 'de',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
-          {
-            text: 'Processos',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
-          {
-            text: 'com',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
-          {
-            text: 'IA',
-            className: 'text-crimson font-mono text-sm md:text-xl',
-          },
-          { text: '&', className: 'text-crimson font-mono text-sm md:text-xl' },
-          {
-            text: 'n8n.',
-            className: 'text-crimson font-mono text-sm md:text-xl',
-          },
-        ],
-        [
-          {
-            text: 'Design',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
-          {
-            text: 'de',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
-          {
-            text: 'Interfaces',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
-          {
-            text: 'de',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
-          {
-            text: 'Alta',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
-          {
-            text: 'Precisão.',
+            text: 'Industrial.',
             className: 'text-crimson font-mono text-sm md:text-xl',
           },
         ],
       ],
       description:
         'Transformo complexidade em sistemas autônomos. Da identidade visual ao banco de dados, construo infraestruturas digitais que unem a lógica da engenharia com a estética do design industrial.',
-      cta_primary: 'INICIAR PROJETO',
+      cta_primary: 'ACESSAR MÓDULOS',
       cta_secondary: 'VER STACK TÉCNICA',
     },
     system_status: {
@@ -123,29 +72,30 @@ export const translations = {
       hero: {
         access_file: '// ACESSANDO ARQUIVO DE PESSOAL: 001',
         title: 'O OPERADOR',
-        subtitle: 'ZACARIAS LINO // ENGENHEIRO FULL-STACK',
+        subtitle: 'ZACARIAS LINO // ENG. DE SOFTWARE FULL-STACK',
         description:
           'De Mecânico Industrial a Arquiteto de Software. Unindo a precisão do chão de fábrica com a escalabilidade do código. Hoje, aplico essa mentalidade de engenharia na CODIM DEV. Especialista em criar ecossistemas digitais que funcionam sozinhos, utilizando Python para lógica robusta e Automação Inteligente com n8n e Supabase.',
       },
+      timeline_title: 'LOGS DO SISTEMA: TRAJETÓRIA',
       timeline: [
         {
           year: '2006',
-          title: 'INICIALIZAÇÃO (13 Anos)',
+          title: 'Inicialização (13 Anos)',
           subtitle: 'O Primeiro Hardware',
           description:
             "Aos 13 anos, montei meu primeiro computador. O fascínio pela lógica binária foi imediato. O desejo de cursar Ciência da Computação existia, mas restrições orçamentárias forçaram um desvio de rota. O sistema entrou em 'Sleep Mode', mas o kernel permaneceu ativo.",
         },
         {
           year: '2011',
-          title: 'SOBREPOSIÇÃO MANUAL (18 Anos)',
-          subtitle: 'A Forja Industrial',
+          title: 'A Forja Industrial',
+          subtitle: 'Sobreposição Manual (18 Anos)',
           description:
             'Aos 18 anos, a realidade exigiu ação. Ingressei no chão de fábrica como ajudante. Foi o início de uma carreira de mais de uma década na Mecânica Industrial Pesada (Passaúra, Santos CMI). Aprendi na prática como grandes sistemas funcionam sob pressão.',
           tags: ['Chão de Fábrica', 'Resiliência'],
         },
         {
           year: '2014-2016',
-          title: 'PROTOCOLO DE PRECISÃO',
+          title: 'Protocolo de Precisão',
           subtitle: 'Turbinas & Siderurgia',
           description:
             'Atuando na montagem crítica de turbinas a gás e manutenção siderúrgica. Onde um erro de milímetros pode custar milhões. Essa experiência moldou meu caráter profissional: a busca obsessiva pela precisão e a tolerância zero para falhas.',
@@ -153,7 +103,7 @@ export const translations = {
         },
         {
           year: '2023',
-          title: 'REINICIALIZAÇÃO DO SISTEMA',
+          title: 'Reboot do Sistema (Transição)',
           subtitle: 'Retorno ao Código',
           description:
             'Com a estabilidade alcançada, reativei o protocolo original. Investimento pesado em formação Full-Stack (OneBitCode), Design e IA. A lógica mecânica foi finalmente traduzida para JavaScript, Python e Automação.',
@@ -161,7 +111,7 @@ export const translations = {
         },
         {
           year: 'ATUAL',
-          title: 'PROCESSAMENTO PARALELO',
+          title: 'Processamento Paralelo (Atual)',
           subtitle: 'Operação Híbrida (Mecânica + Dev)',
           description:
             "Atualmente operando em 'Dual-Core'. Mantenho a precisão de teares industriais na Karsten durante o dia e construo softwares complexos como CODIM DEV nos ciclos livres. Essa vivência dupla me dá uma vantagem única: eu resolvo problemas reais do mundo físico usando soluções digitais.",
@@ -169,7 +119,7 @@ export const translations = {
         },
       ],
       certificates: {
-        title: 'PROTOCOLOS CERTIFICADOS',
+        title: 'CERTIFICAÇÕES TÉCNICAS',
         subtitle: '// BANCO DE DADOS DE CREDENCIAIS VERIFICADAS',
         items: [
           {
@@ -199,8 +149,8 @@ export const translations = {
     services: {
       header: {
         badge: '// Documentação Técnica',
-        title: 'Capacidades',
-        title_highlight: 'Operacionais',
+        title: 'CAPACIDADES',
+        title_highlight: 'OPERACIONAIS',
         description:
           'Arquitetura detalhada dos módulos de serviço. Da concepção visual à automação backend.',
       },
@@ -232,15 +182,14 @@ export const translations = {
       cta: {
         title: 'Seu sistema precisa de um upgrade?',
         subtitle: 'Vamos discutir a arquitetura do seu próximo projeto.',
-        button: 'INICIAR PROTOCOLO',
+        button: 'INICIAR DIAGNÓSTICO',
       },
     },
     work: {
       header: {
-        badge: '// NÍVEL DE ACESSO: DESCLASSIFICADO',
+        badge: '// NÍVEL DE ACESSO: PÚBLICO',
         title: 'SISTEMAS IMPLANTADOS',
-        description:
-          'Estudos de caso de arquitetura de software, automação e design industrial.',
+        description: 'Estudos de caso de arquitetura, automação e design.',
       },
       projects: {
         kraflo: {
@@ -290,23 +239,26 @@ export const translations = {
         'Disponível para projetos Freelancer e Consultoria Industrial.',
       form: {
         header_badge: 'PROTOCOLO_TRANSMISSÃO_SEGURO',
-        label_name: 'ID do Operador',
+        label_name: 'IDENTIFICAÇÃO (NOME)',
         placeholder_name: 'IDENTIFIQUE-SE',
-        label_email: 'Endereço de Retorno',
+        label_email: 'ENDEREÇO DE RETORNO (EMAIL)',
         placeholder_email: 'INSIRA_FREQUÊNCIA (EMAIL)',
-        label_message: 'Carga da Mensagem',
+        label_message: 'CARGA DE DADOS (MENSAGEM)',
         placeholder_message: 'INICIAR TRANSFERÊNCIA DE DADOS...',
-        button: 'TRANSMITIR DADOS',
+        button: 'TRANSMITIR DADOS >',
       },
+    },
+    cta_global: {
+      button: 'INICIAR PROTOCOLO',
     },
   },
   en: {
     navbar: {
-      home: 'Home',
-      services: 'Services',
-      work: 'Work',
-      about: 'About',
-      contact: 'Contact',
+      home: 'HOME',
+      services: 'MODULES',
+      work: 'PROJECTS',
+      about: 'OPERATOR',
+      contact: 'CONTACT',
     },
     hero: {
       badge: 'SYSTEM ONLINE // V2.0',
@@ -321,61 +273,22 @@ export const translations = {
             text: 'Engineering',
             className: 'text-neutral-400 font-mono text-sm md:text-xl',
           },
-          { text: '&', className: 'text-crimson font-mono text-sm md:text-xl' },
-          {
-            text: 'Full-Stack',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
-          {
-            text: 'Development.',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
         ],
         [
-          {
-            text: 'Process',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
-          {
-            text: 'Automation',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
-          {
-            text: 'with',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
-          {
-            text: 'AI',
-            className: 'text-crimson font-mono text-sm md:text-xl',
-          },
           { text: '&', className: 'text-crimson font-mono text-sm md:text-xl' },
           {
-            text: 'n8n.',
-            className: 'text-crimson font-mono text-sm md:text-xl',
-          },
-        ],
-        [
-          {
-            text: 'High',
+            text: 'Industrial',
             className: 'text-neutral-400 font-mono text-sm md:text-xl',
           },
           {
-            text: 'Precision',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
-          {
-            text: 'Interface',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
-          {
-            text: 'Design.',
+            text: 'Automation.',
             className: 'text-crimson font-mono text-sm md:text-xl',
           },
         ],
       ],
       description:
         'Transforming complexity into autonomous systems. From visual identity to databases, I build digital infrastructures that unite engineering logic with industrial design aesthetics.',
-      cta_primary: 'INITIATE PROJECT',
+      cta_primary: 'ACCESS MODULES',
       cta_secondary: 'VIEW TECH STACK',
     },
     system_status: {
@@ -385,7 +298,7 @@ export const translations = {
     },
     featured_work: {
       title: 'RECENT DEPLOYMENTS',
-      subtitle: 'Operational systems and delivered architectures.',
+      subtitle: 'Deployed systems and architecture.',
       projects: {
         kraflo: {
           title: 'Industrial Maintenance SaaS',
@@ -412,25 +325,26 @@ export const translations = {
         description:
           'From Industrial Mechanic to Software Architect. Uniting factory floor precision with code scalability. Today, I apply this engineering mindset at CODIM DEV. Specialist in creating digital ecosystems that run themselves, using Python for robust logic and Intelligent Automation with n8n and Supabase.',
       },
+      timeline_title: 'SYSTEM LOGS: TRAJECTORY',
       timeline: [
         {
           year: '2006',
-          title: 'INITIALIZATION (13 Years Old)',
+          title: 'Initialization (13 Years Old)',
           subtitle: 'The First Hardware',
           description:
             "At 13, I built my first computer. The fascination with binary logic was immediate. The desire to study Computer Science existed, but budget constraints forced a detour. The system entered 'Sleep Mode', but the kernel remained active.",
         },
         {
           year: '2011',
-          title: 'MANUAL OVERRIDE (18 Years Old)',
-          subtitle: 'The Industrial Forge',
+          title: 'The Industrial Forge',
+          subtitle: 'Manual Override (18 Years Old)',
           description:
             'At 18, reality demanded action. I joined the factory floor as a helper. It was the start of a decade-long career in Heavy Industrial Mechanics (Passaúra, Santos CMI). I learned in practice how large systems work under pressure.',
           tags: ['Factory Floor', 'Resilience'],
         },
         {
           year: '2014-2016',
-          title: 'PRECISION PROTOCOL',
+          title: 'Precision Protocol',
           subtitle: 'Turbines & Steelworks',
           description:
             'Working on critical gas turbine assembly and steelworks maintenance. Where a millimeter error can cost millions. This experience shaped my professional character: the obsessive search for precision and zero tolerance for failure.',
@@ -438,7 +352,7 @@ export const translations = {
         },
         {
           year: '2023',
-          title: 'SYSTEM REBOOT',
+          title: 'System Reboot (Transition)',
           subtitle: 'Return to Code',
           description:
             'With stability achieved, I reactivated the original protocol. Heavy investment in Full-Stack training (OneBitCode), Design, and AI. Mechanical logic was finally translated into JavaScript, Python, and Automation.',
@@ -446,7 +360,7 @@ export const translations = {
         },
         {
           year: 'CURRENT',
-          title: 'PARALLEL PROCESSING',
+          title: 'Parallel Processing (Current)',
           subtitle: 'Hybrid Operation (Mechanic + Dev)',
           description:
             "Currently operating in 'Dual-Core'. I maintain industrial looms' precision at Karsten during the day and build complex software like CODIM DEV in free cycles. This dual life gives me a unique advantage: I solve real physical world problems using digital solutions.",
@@ -454,7 +368,7 @@ export const translations = {
         },
       ],
       certificates: {
-        title: 'CERTIFIED PROTOCOLS',
+        title: 'TECHNICAL CERTIFICATIONS',
         subtitle: '// VERIFIED CREDENTIALS DATABASE',
         items: [
           {
@@ -484,8 +398,8 @@ export const translations = {
     services: {
       header: {
         badge: '// Technical Documentation',
-        title: 'Operational',
-        title_highlight: 'Capabilities',
+        title: 'OPERATIONAL',
+        title_highlight: 'CAPABILITIES',
         description:
           'Detailed service architecture. From visual conception to backend automation.',
       },
@@ -517,12 +431,12 @@ export const translations = {
       cta: {
         title: 'Does your system need an upgrade?',
         subtitle: "Let's discuss the architecture of your next project.",
-        button: 'INITIATE PROTOCOL',
+        button: 'INITIATE DIAGNOSIS',
       },
     },
     work: {
       header: {
-        badge: '// ACCESS LEVEL: UNCLASSIFIED',
+        badge: '// ACCESS LEVEL: PUBLIC',
         title: 'DEPLOYED SYSTEMS',
         description:
           'Case studies of software architecture, automation, and industrial design.',
@@ -575,14 +489,17 @@ export const translations = {
         'Available for Freelance projects and Industrial Consulting.',
       form: {
         header_badge: 'SECURE_TRANSMISSION_PROTOCOL',
-        label_name: 'Operator ID',
+        label_name: 'IDENTIFICATION (NAME)',
         placeholder_name: 'IDENTIFY YOURSELF',
-        label_email: 'Return Address',
+        label_email: 'RETURN ADDRESS (EMAIL)',
         placeholder_email: 'ENTER_FREQUENCY (EMAIL)',
-        label_message: 'Message Payload',
+        label_message: 'DATA PAYLOAD (MESSAGE)',
         placeholder_message: 'INITIATE DATA TRANSFER...',
-        button: 'TRANSMIT DATA',
+        button: 'TRANSMIT DATA >',
       },
+    },
+    cta_global: {
+      button: 'START PROTOCOL',
     },
   },
 }
