@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { Terminal, Code2, Briefcase, User, Mail } from 'lucide-react'
 import logoHorizontal from '@/assets/logo-horizontal.png'
+import logoIcon from '@/assets/logo-icon.png'
 import { useLanguage } from '@/hooks/use-language'
 import { LanguageToggle } from '@/components/LanguageToggle'
 
@@ -26,28 +27,38 @@ export function Navbar() {
       <nav
         className="
           pointer-events-auto
-          flex items-center justify-between p-2 rounded-full
+          flex items-center justify-between p-1.5 sm:p-2 rounded-full
           bg-black/50 backdrop-blur-md border border-white/[0.1]
           shadow-[0_0_20px_-10px_rgba(186,12,16,0.3)]
         "
       >
         {/* Logo Section */}
-        <Link to="/" className="pl-4 pr-6 group relative overflow-hidden">
+        <Link
+          to="/"
+          className="pl-2 sm:pl-4 pr-2 sm:pr-6 group relative overflow-hidden shrink-0"
+        >
           <motion.div
             className="flex items-center"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
+            {/* Desktop / Tablet Logo (Horizontal) */}
             <img
               src={logoHorizontal}
               alt="CODIM DEV Logo"
-              className="h-12 w-auto object-contain"
+              className="hidden md:block h-8 sm:h-12 w-auto object-contain"
+            />
+            {/* Mobile Logo (Icon Only) */}
+            <img
+              src={logoIcon}
+              alt="CODIM DEV Icon"
+              className="block md:hidden h-8 w-auto object-contain"
             />
           </motion.div>
         </Link>
 
         {/* Navigation Links */}
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-0.5 sm:gap-1 overflow-x-auto no-scrollbar">
           {navConfig.map((item) => {
             const isActive = pathname === item.path
             const Icon = item.icon
@@ -58,7 +69,7 @@ export function Navbar() {
                 key={item.path}
                 to={item.path}
                 className={cn(
-                  'relative px-4 py-2 rounded-full text-sm font-medium font-mono transition-colors duration-200',
+                  'relative px-2 sm:px-4 py-2 rounded-full text-sm font-medium font-mono transition-colors duration-200 shrink-0',
                   isActive ? 'text-white' : 'text-neutral-400 hover:text-white',
                 )}
                 onMouseEnter={() => setHoveredPath(item.path)}
@@ -114,10 +125,10 @@ export function Navbar() {
           <div>
             <LanguageToggle />
           </div>
-          
+
           {/* Status Indicator */}
           <div className="hidden sm:block">
-             <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_#22c55e]" />
+            <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_#22c55e]" />
           </div>
         </div>
       </nav>
