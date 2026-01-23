@@ -46,6 +46,7 @@ const Index = () => {
               {t.work.cta.title || 'Precisa de uma solução robusta?'}
             </h2>
             <p className="text-white/60 text-lg mb-10 font-light max-w-2xl mx-auto">
+              {/* @ts-expect-error: subtitle property exists but typescript is not picking it up yet */}
               {t.work.cta.subtitle ||
                 'Vamos discutir a arquitetura do seu próximo sistema industrial ou digital.'}
             </p>
