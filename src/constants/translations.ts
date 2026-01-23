@@ -80,42 +80,41 @@ export const translations = {
       timeline: [
         {
           year: '2006',
-          title: 'Inicialização (13 Anos)',
-          subtitle: 'O Primeiro Hardware',
+          title: 'Inicialização',
+          subtitle: 'Hardware & Logic',
           description:
-            "Aos 13 anos, montei meu primeiro computador. O fascínio pela lógica binária foi imediato. O desejo de cursar Ciência da Computação existia, mas restrições orçamentárias forçaram um desvio de rota. O sistema entrou em 'Sleep Mode', mas o kernel permaneceu ativo.",
+            "Primeiro contato com hardware aos 13 anos. O 'Boot' inicial da paixão por tecnologia.",
         },
         {
-          year: '2011',
+          year: '2011-2016',
           title: 'A Forja Industrial',
-          subtitle: 'Sobreposição Manual (18 Anos)',
+          subtitle: 'Santos CMI // Enesa',
           description:
-            'Aos 18 anos, a realidade exigiu ação. Ingressei no chão de fábrica como ajudante. Foi o início de uma carreira de mais de uma década na Mecânica Industrial Pesada (Passaúra, Santos CMI). Aprendi na prática como grandes sistemas funcionam sob pressão.',
-          tags: ['Chão de Fábrica', 'Resiliência'],
+            'Início pesado. Montador na Santos CMI (Turbinas a Gás) e Irmãos Passaúra. Aprendizado sobre pressão crítica.',
+          tags: ['Santos CMI', 'Enesa', 'Industrial'],
         },
         {
-          year: '2014-2016',
-          title: 'Protocolo de Precisão',
-          subtitle: 'Turbinas & Siderurgia',
+          year: '2019-2023',
+          title: 'Operação Polivalente',
+          subtitle: 'Fiação Fio Puro',
           description:
-            'Atuando na montagem crítica de turbinas a gás e manutenção siderúrgica. Onde um erro de milímetros pode custar milhões. Essa experiência moldou meu caráter profissional: a busca obsessiva pela precisão e a tolerância zero para falhas.',
-          tags: ['Turbinas a Gás', 'Tolerância Zero'],
+            'Atuação diversificada em montagem de estruturas metálicas e operação têxtil (Fiação Fio Puro).',
         },
         {
           year: '2023',
-          title: 'Reboot do Sistema (Transição)',
-          subtitle: 'Retorno ao Código',
+          title: 'Reboot de Software',
+          subtitle: 'Full Stack & Design',
           description:
-            'Com a estabilidade alcançada, reativei o protocolo original. Investimento pesado em formação Full-Stack (OneBitCode), Design e IA. A lógica mecânica foi finalmente traduzida para JavaScript, Python e Automação.',
-          tags: ['OneBitCode', 'Python', 'Sass'],
+            'Certificações Intensivas: OneBitCode (Full Stack), Adobe (Design) e IBQP (Técnico Mecânica).',
+          tags: ['OneBitCode', 'Adobe', 'IBQP'],
         },
         {
-          year: 'ATUAL',
-          title: 'Processamento Paralelo (Atual)',
-          subtitle: 'Operação Híbrida (Mecânica + Dev)',
+          year: 'Atual',
+          title: 'Processamento Paralelo',
+          subtitle: 'Karsten S.A. // CODIM DEV',
           description:
-            "Atualmente operando em 'Dual-Core'. Mantenho a precisão de teares industriais na Karsten durante o dia e construo softwares complexos como CODIM DEV nos ciclos livres. Essa vivência dupla me dá uma vantagem única: eu resolvo problemas reais do mundo físico usando soluções digitais.",
-          tags: ['Dual-Core', 'Karsten', 'CODIM DEV'],
+            'Mecânico de Produção na KARSTEN S.A. e Engenheiro de Software Freelancer (CODIM DEV).',
+          tags: ['Karsten S.A.', 'CODIM DEV'],
         },
       ],
       certificates: {
@@ -478,6 +477,7 @@ export const translations = {
       },
       cta: {
         title: 'Have a complex problem to solve?',
+        subtitle: "Let's discuss the architecture of your next project.",
         button: 'INITIATE PROJECT ANALYSIS',
       },
     },

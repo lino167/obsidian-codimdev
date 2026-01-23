@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, ReactNode } from 'react'
 import { translations } from '@/constants/translations'
 
 type Language = 'pt' | 'en'
-type Translations = typeof translations.pt
+export type Translations = typeof translations.pt
 
 export interface LanguageContextType {
   language: Language

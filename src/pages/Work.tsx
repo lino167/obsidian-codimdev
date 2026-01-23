@@ -5,17 +5,87 @@ import { Button } from '@/components/ui/button'
 import { Link } from 'react-router-dom'
 import Footer from '@/components/Footer'
 import { CornerBrackets, GridLines } from '@/components/ui/hud-elements'
-import {
-  Code,
-  Terminal,
-  Globe,
-  ArrowRight,
-  BarChart3,
-  Activity,
-  Layers,
-  Cpu,
-} from 'lucide-react'
+import { Code, Terminal, Globe, ArrowRight } from 'lucide-react'
 import { useLanguage } from '@/hooks/use-language'
+
+const KrafloMockup = () => (
+  <div className="h-full w-full bg-neutral-900 border border-neutral-800 rounded-md p-4 flex flex-col font-mono text-[10px] text-green-500/80 overflow-hidden relative">
+    <div className="absolute inset-0 bg-grid-white/[0.05]" />
+    <div className="flex justify-between border-b border-white/10 pb-2 mb-2 z-10">
+      <span>KRAFLO_SYS // MAIN_DASHBOARD</span>
+      <span className="text-green-400">● ONLINE</span>
+    </div>
+    <div className="grid grid-cols-2 gap-2 z-10">
+      <div className="bg-black/40 p-2 border border-white/5">
+        <div className="text-white/50 mb-1">TORQUE_LOAD</div>
+        <div className="text-xl text-white">1,240 Nm</div>
+        <div className="h-1 w-full bg-neutral-800 mt-2">
+          <div className="h-full w-[70%] bg-crimson" />
+        </div>
+      </div>
+      <div className="bg-black/40 p-2 border border-white/5">
+        <div className="text-white/50 mb-1">OS_STATUS</div>
+        <div className="text-xl text-white">Pending: 4</div>
+      </div>
+      <div className="col-span-2 bg-black/40 p-2 border border-white/5 h-24">
+        <div className="text-white/50 mb-1">PREDICTIVE_ANALYSIS</div>
+        <div className="flex items-end gap-1 h-12 mt-2">
+          {[40, 60, 30, 80, 50, 90, 70].map((h, i) => (
+            <div
+              key={i}
+              style={{ height: `${h}%` }}
+              className="w-full bg-green-500/20 border-t border-green-500"
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+)
+
+const TerminalMockup = () => (
+  <div className="h-full w-full bg-[#0c0c0c] border border-neutral-800 rounded-md p-4 font-mono text-xs overflow-hidden relative shadow-2xl">
+    <div className="flex gap-1.5 mb-4">
+      <div className="w-2.5 h-2.5 rounded-full bg-red-500/20 border border-red-500/50" />
+      <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/20 border border-yellow-500/50" />
+      <div className="w-2.5 h-2.5 rounded-full bg-green-500/20 border border-green-500/50" />
+    </div>
+    <div className="space-y-2 text-neutral-300">
+      <div className="flex">
+        <span className="text-cyan-500 mr-2">➜</span>
+        <span>n8n-worker start --workflow=crm-agent</span>
+      </div>
+      <div className="text-neutral-500">Initializing Neural Agents v2.4...</div>
+      <div className="text-green-500/80">
+        [SUCCESS] Connection to OpenAI established.
+      </div>
+      <div className="text-green-500/80">
+        [SUCCESS] Supabase Webhook listening port 3000.
+      </div>
+      <div className="flex mt-4 animate-pulse">
+        <span className="text-purple-500 mr-2">ai-agent@server:~$</span>
+        <span className="w-2 h-4 bg-purple-500 block"></span>
+      </div>
+    </div>
+  </div>
+)
+
+const BrandMockup = () => (
+  <div className="h-full w-full bg-neutral-900 border border-neutral-800 rounded-md p-6 flex flex-col items-center justify-center relative overflow-hidden">
+    <div className="absolute -right-10 -top-10 w-40 h-40 bg-crimson/20 blur-[50px] rounded-full" />
+    <div className="text-4xl font-display font-bold text-white tracking-tighter z-10">
+      CODIM<span className="text-crimson">.</span>DEV
+    </div>
+    <div className="mt-4 flex gap-2 z-10">
+      <div className="w-8 h-8 bg-[#050505] border border-white/20 rounded-sm" />
+      <div className="w-8 h-8 bg-[#BA0C10] border border-white/20 rounded-sm" />
+      <div className="w-8 h-8 bg-[#E5E5E5] border border-white/20 rounded-sm" />
+    </div>
+    <div className="mt-6 font-mono text-[10px] text-white/40 tracking-[0.2em] border-t border-white/10 pt-2">
+      VISUAL IDENTITY SYSTEM
+    </div>
+  </div>
+)
 
 export default function Work() {
   const { t } = useLanguage()
@@ -24,174 +94,17 @@ export default function Work() {
     {
       title: t.work.projects.kraflo.title,
       description: t.work.projects.kraflo.description,
-      content: (
-        <div className="h-full w-full bg-neutral-900 border border-neutral-800 p-4 flex flex-col gap-4 relative overflow-hidden group">
-          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
-          {/* Header */}
-          <div className="flex justify-between items-center border-b border-white/10 pb-2 z-10">
-            <div className="flex gap-2">
-              <div className="w-2 h-2 rounded-full bg-red-500/20 border border-red-500" />
-              <div className="w-2 h-2 rounded-full bg-yellow-500/20 border border-yellow-500" />
-              <div className="w-2 h-2 rounded-full bg-green-500/20 border border-green-500" />
-            </div>
-            <span className="font-mono text-[10px] text-emerald-500 tracking-wider flex items-center gap-1">
-              <Activity className="h-3 w-3" /> SYSTEM: ONLINE
-            </span>
-          </div>
-
-          {/* Content */}
-          <div className="grid grid-cols-2 gap-2 font-mono text-xs z-10 h-full">
-            <div className="bg-black/40 p-3 border border-white/5 rounded-sm flex flex-col justify-between">
-              <div className="text-white/40 mb-1 flex items-center gap-1">
-                <Layers className="h-3 w-3" /> TORQUE
-              </div>
-              <div className="text-xl text-white font-bold">85%</div>
-              <div className="h-1 w-full bg-white/10 mt-2 overflow-hidden rounded-full">
-                <div className="h-full w-[85%] bg-[#BA0C10]" />
-              </div>
-            </div>
-            <div className="bg-black/40 p-3 border border-white/5 rounded-sm flex flex-col justify-between">
-              <div className="text-white/40 mb-1 flex items-center gap-1">
-                <BarChart3 className="h-3 w-3" /> PRESSURE
-              </div>
-              <div className="text-xl text-white font-bold">120 PSI</div>
-              <div className="h-1 w-full bg-white/10 mt-2 overflow-hidden rounded-full">
-                <div className="h-full w-[60%] bg-emerald-500" />
-              </div>
-            </div>
-            <div className="col-span-2 bg-black/40 p-3 border border-white/5 rounded-sm overflow-hidden">
-              <div className="flex justify-between border-b border-white/10 pb-2 mb-2 text-white/40 text-[10px] tracking-wider">
-                <span>ID</span>
-                <span>STATUS</span>
-                <span>ZONE</span>
-              </div>
-              <div className="space-y-2">
-                <div className="flex justify-between text-white/80 items-center">
-                  <span className="bg-white/5 px-1 rounded">#8821</span>
-                  <span className="text-emerald-500">ACTIVE</span>
-                  <span>A-1</span>
-                </div>
-                <div className="flex justify-between text-white/80 items-center">
-                  <span className="bg-white/5 px-1 rounded">#8822</span>
-                  <span className="text-yellow-500">MAINT</span>
-                  <span>B-3</span>
-                </div>
-                <div className="flex justify-between text-white/80 items-center opacity-50">
-                  <span className="bg-white/5 px-1 rounded">#8823</span>
-                  <span className="text-white">IDLE</span>
-                  <span>C-2</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      ),
+      content: <KrafloMockup />,
     },
     {
       title: t.work.projects.agents.title,
       description: t.work.projects.agents.description,
-      content: (
-        <div className="h-full w-full bg-black border border-white/10 p-5 font-mono text-xs flex flex-col relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#BA0C10] to-transparent opacity-50" />
-          <div className="absolute -right-10 -top-10 w-32 h-32 bg-[#BA0C10] opacity-5 blur-[50px] pointer-events-none" />
-
-          <div className="space-y-4 mt-2 z-10">
-            <div className="text-white/40 flex gap-2 items-center">
-              <span className="animate-pulse">_</span>{' '}
-              <span>Incoming Lead Signal...</span>
-            </div>
-
-            <div className="pl-3 border-l-2 border-white/10 ml-1">
-              <div className="text-white/40 mb-1 text-[10px] uppercase">
-                User Input
-              </div>
-              <div className="text-white bg-white/5 p-2 rounded inline-block">
-                Tenho interesse na solução enterprise.
-              </div>
-            </div>
-
-            <div className="text-emerald-500/80 flex gap-2 items-center">
-              <Cpu className="h-3 w-3" />{' '}
-              <span>AI Agent analyzing intent...</span>
-            </div>
-
-            <div className="bg-[#BA0C10]/10 p-3 rounded border border-[#BA0C10]/20 text-white/90 shadow-[0_0_15px_rgba(186,12,16,0.1)]">
-              <div className="flex justify-between items-center border-b border-[#BA0C10]/20 pb-2 mb-2">
-                <span className="text-[10px] text-[#BA0C10] uppercase font-bold">
-                  Analysis Result
-                </span>
-                <span className="text-[10px] bg-[#BA0C10] text-white px-1 rounded">
-                  CONFIRMED
-                </span>
-              </div>
-              <div className="grid grid-cols-2 gap-2">
-                <div>
-                  <span className="text-white/40 block text-[10px]">
-                    Intent
-                  </span>
-                  <span>Purchase</span>
-                </div>
-                <div>
-                  <span className="text-white/40 block text-[10px]">
-                    Confidence
-                  </span>
-                  <span>98.5%</span>
-                </div>
-              </div>
-              <div className="mt-2 pt-2 border-t border-[#BA0C10]/20 text-emerald-500 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
-                Action: Schedule_Meeting
-              </div>
-            </div>
-          </div>
-        </div>
-      ),
+      content: <TerminalMockup />,
     },
     {
       title: t.work.projects.identity.title,
       description: t.work.projects.identity.description,
-      content: (
-        <div className="h-full w-full bg-neutral-900 border border-neutral-800 p-6 flex flex-col justify-center gap-6 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.02)_50%,transparent_75%,transparent_100%)] bg-[length:20px_20px]"></div>
-
-          <div className="grid grid-cols-3 gap-3 z-10">
-            <div className="group relative aspect-square bg-black border border-white/10 flex items-center justify-center hover:border-white/30 transition-colors cursor-crosshair">
-              <span className="text-[10px] text-white/40 font-mono opacity-0 group-hover:opacity-100 transition-opacity">
-                #000000
-              </span>
-            </div>
-            <div className="group relative aspect-square bg-[#BA0C10] flex items-center justify-center shadow-[0_0_20px_rgba(186,12,16,0.3)] cursor-crosshair">
-              <span className="text-[10px] text-white/80 font-mono opacity-0 group-hover:opacity-100 transition-opacity">
-                #BA0C10
-              </span>
-            </div>
-            <div className="group relative aspect-square bg-white flex items-center justify-center cursor-crosshair">
-              <span className="text-[10px] text-black/60 font-mono opacity-0 group-hover:opacity-100 transition-opacity">
-                #FFFFFF
-              </span>
-            </div>
-          </div>
-
-          <div className="space-y-3 z-10 bg-black/40 p-4 border border-white/5 backdrop-blur-sm">
-            <div className="flex items-end justify-between">
-              <div className="font-display text-3xl text-white leading-none">
-                Aa
-              </div>
-              <div className="text-right">
-                <div className="text-[10px] text-white/40 font-mono uppercase">
-                  Primary Font
-                </div>
-                <div className="text-sm font-bold">Space Grotesk</div>
-              </div>
-            </div>
-            <div className="h-px w-full bg-white/10" />
-            <div className="flex justify-between text-[10px] text-white/40 font-mono">
-              <span>ABCDEFGHIJKLM</span>
-              <span>0123456789</span>
-            </div>
-          </div>
-        </div>
-      ),
+      content: <BrandMockup />,
     },
   ]
 
