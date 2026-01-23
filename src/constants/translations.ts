@@ -83,37 +83,45 @@ export const translations = {
           title: 'Inicialização',
           subtitle: 'Hardware & Logic',
           description:
-            "Primeiro contato com hardware aos 13 anos. O 'Boot' inicial da paixão por tecnologia.",
+            'Primeiro contato com hardware aos 13 anos. Montagem de computadores e fascínio pela lógica binária.',
         },
         {
-          year: '2011-2016',
+          year: '2014-2016',
           title: 'A Forja Industrial',
-          subtitle: 'Santos CMI // Enesa',
+          subtitle: 'SANTOS CMI // Turbinas a Gás',
           description:
-            'Início pesado. Montador na Santos CMI (Turbinas a Gás) e Irmãos Passaúra. Aprendizado sobre pressão crítica.',
-          tags: ['Santos CMI', 'Enesa', 'Industrial'],
+            'SANTOS CMI: Montador de Máquinas em Siderúrgica. Atuação crítica na montagem e alinhamento de Turbinas a Gás.',
+          tags: ['SANTOS CMI', 'Turbinas', 'Zero Falhas'],
         },
         {
-          year: '2019-2023',
-          title: 'Operação Polivalente',
-          subtitle: 'Fiação Fio Puro',
+          year: '2020-2023',
+          title: 'Operação Têxtil',
+          subtitle: 'Fiação Fio Puro // GSB',
           description:
-            'Atuação diversificada em montagem de estruturas metálicas e operação têxtil (Fiação Fio Puro).',
+            'FIAÇÃO FIO PURO: Operador Polivalente. Controle de qualidade e operação de máquinas complexas na indústria têxtil.',
         },
         {
-          year: '2023',
-          title: 'Reboot de Software',
+          year: '2024',
+          title: 'Missões Críticas',
+          subtitle: 'ENESA ENGENHARIA',
+          description:
+            'ENESA ENGENHARIA: Montagem de precipitadores eletrostáticos em planta de Papel e Celulose.',
+          tags: ['ENESA', 'Montagem Industrial'],
+        },
+        {
+          year: '2023-2025',
+          title: 'System Upgrade',
           subtitle: 'Full Stack & Design',
           description:
-            'Certificações Intensivas: OneBitCode (Full Stack), Adobe (Design) e IBQP (Técnico Mecânica).',
-          tags: ['OneBitCode', 'Adobe', 'IBQP'],
+            'Transição de carreira com certificações OneBitCode (Full Stack), Design e IA. Traduzindo a lógica mecânica para código.',
+          tags: ['OneBitCode', 'Adobe', 'IA'],
         },
         {
           year: 'Atual',
           title: 'Processamento Paralelo',
           subtitle: 'Karsten S.A. // CODIM DEV',
           description:
-            'Mecânico de Produção na KARSTEN S.A. e Engenheiro de Software Freelancer (CODIM DEV).',
+            'KARSTEN S.A.: Mecânico de Produção I. Manutenção de teares + Engenharia de Software Freelancer (CODIM DEV).',
           tags: ['Karsten S.A.', 'CODIM DEV'],
         },
       ],
