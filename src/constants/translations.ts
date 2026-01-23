@@ -77,54 +77,31 @@ export const translations = {
           'De Mecânico Industrial a Arquiteto de Software. Unindo a precisão do chão de fábrica com a escalabilidade do código. Hoje, aplico essa mentalidade de engenharia na CODIM DEV. Especialista em criar ecossistemas digitais que funcionam sozinhos, utilizando Python para lógica robusta e Automação Inteligente com n8n e Supabase.',
       },
       timeline_title: 'LOGS DO SISTEMA: TRAJETÓRIA',
-      timeline: [
-        {
-          year: '2006',
-          title: 'Inicialização',
-          subtitle: 'Hardware & Logic',
-          description:
-            'Primeiro contato com hardware aos 13 anos. Montagem de computadores e fascínio pela lógica binária.',
-        },
-        {
-          year: '2014-2016',
-          title: 'A Forja Industrial',
-          subtitle: 'SANTOS CMI // Turbinas a Gás',
-          description:
-            'SANTOS CMI: Montador de Máquinas em Siderúrgica. Atuação crítica na montagem e alinhamento de Turbinas a Gás.',
-          tags: ['SANTOS CMI', 'Turbinas', 'Zero Falhas'],
-        },
-        {
-          year: '2020-2023',
-          title: 'Operação Têxtil',
-          subtitle: 'Fiação Fio Puro // GSB',
-          description:
-            'FIAÇÃO FIO PURO: Operador Polivalente. Controle de qualidade e operação de máquinas complexas na indústria têxtil.',
-        },
-        {
-          year: '2024',
-          title: 'Missões Críticas',
-          subtitle: 'ENESA ENGENHARIA',
-          description:
-            'ENESA ENGENHARIA: Montagem de precipitadores eletrostáticos em planta de Papel e Celulose.',
-          tags: ['ENESA', 'Montagem Industrial'],
-        },
-        {
-          year: '2023-2025',
-          title: 'System Upgrade',
-          subtitle: 'Full Stack & Design',
-          description:
-            'Transição de carreira com certificações OneBitCode (Full Stack), Design e IA. Traduzindo a lógica mecânica para código.',
-          tags: ['OneBitCode', 'Adobe', 'IA'],
-        },
-        {
-          year: 'Atual',
-          title: 'Processamento Paralelo',
-          subtitle: 'Karsten S.A. // CODIM DEV',
-          description:
-            'KARSTEN S.A.: Mecânico de Produção I. Manutenção de teares + Engenharia de Software Freelancer (CODIM DEV).',
-          tags: ['Karsten S.A.', 'CODIM DEV'],
-        },
-      ],
+      timeline: {
+        t1_title: 'Inicialização (2006)',
+        t1_desc:
+          'Primeiro contato com hardware aos 13 anos. Montagem de computadores e o início do fascínio pela lógica binária.',
+
+        t2_title: 'A Forja Industrial (2014-2016)',
+        t2_desc:
+          'SANTOS CMI: Montador de Máquinas. Atuação crítica na montagem e alinhamento de Turbinas a Gás em Siderúrgica.',
+
+        t3_title: 'Operação Polivalente (2020-2023)',
+        t3_desc:
+          'FIAÇÃO FIO PURO: Operador Industrial. Controle de qualidade rigoroso e operação de maquinário têxtil complexo.',
+
+        t4_title: 'Missões Críticas (2024)',
+        t4_desc:
+          'ENESA ENGENHARIA: Montagem de precipitadores eletrostáticos em planta de Papel e Celulose. Trabalho de alta precisão.',
+
+        t5_title: 'Reboot do Sistema (2023-2025)',
+        t5_desc:
+          'Certificações Técnicas: OneBitCode (Full Stack), Adobe (Design) e IBQP (Técnico Mecânica).',
+
+        t6_title: 'Processamento Paralelo (Atual)',
+        t6_desc:
+          'KARSTEN S.A.: Mecânico de Produção I (Teares) + Engenharia de Software na CODIM DEV (Freelancer).',
+      },
       certificates: {
         title: 'CERTIFICAÇÕES TÉCNICAS',
         subtitle: '// BANCO DE DADOS DE CREDENCIAIS VERIFICADAS',

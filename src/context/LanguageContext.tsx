@@ -22,7 +22,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const value = {
     language,
     setLanguage,
-    t: translations[language],
+    t: translations[language] as Translations,
   }
 
   return (

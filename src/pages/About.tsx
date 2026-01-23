@@ -14,34 +14,86 @@ import { useLanguage } from '@/hooks/use-language'
 export default function About() {
   const { t } = useLanguage()
 
-  const timelineData = t.about.timeline.map((item) => ({
-    title: item.year,
-    content: (
-      <div>
-        <h4 className="text-xl md:text-2xl font-bold text-white mb-2 font-display">
-          {item.title}
-        </h4>
-        <h5 className="text-lg text-[#BA0C10] font-mono mb-2">
-          {item.subtitle}
-        </h5>
-        <p className="text-neutral-300 font-sans text-base md:text-lg leading-relaxed mb-4">
-          {item.description}
-        </p>
-        {item.tags && (
-          <div className="flex gap-2 flex-wrap">
-            {item.tags.map((tag, i) => (
-              <span
-                key={i}
-                className="text-xs font-mono bg-neutral-800 text-neutral-300 px-2 py-1 rounded"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
-      </div>
-    ),
-  }))
+  const timelineData = [
+    {
+      title: '2006',
+      content: (
+        <div>
+          <h4 className="text-xl md:text-2xl font-bold text-white mb-2 font-display">
+            {t.about.timeline.t1_title}
+          </h4>
+          <p className="text-neutral-300 font-sans text-base md:text-lg leading-relaxed mb-4">
+            {t.about.timeline.t1_desc}
+          </p>
+        </div>
+      ),
+    },
+    {
+      title: '2014-2016',
+      content: (
+        <div>
+          <h4 className="text-xl md:text-2xl font-bold text-white mb-2 font-display">
+            {t.about.timeline.t2_title}
+          </h4>
+          <p className="text-neutral-300 font-sans text-base md:text-lg leading-relaxed mb-4">
+            {t.about.timeline.t2_desc}
+          </p>
+        </div>
+      ),
+    },
+    {
+      title: '2020-2023',
+      content: (
+        <div>
+          <h4 className="text-xl md:text-2xl font-bold text-white mb-2 font-display">
+            {t.about.timeline.t3_title}
+          </h4>
+          <p className="text-neutral-300 font-sans text-base md:text-lg leading-relaxed mb-4">
+            {t.about.timeline.t3_desc}
+          </p>
+        </div>
+      ),
+    },
+    {
+      title: '2024',
+      content: (
+        <div>
+          <h4 className="text-xl md:text-2xl font-bold text-white mb-2 font-display">
+            {t.about.timeline.t4_title}
+          </h4>
+          <p className="text-neutral-300 font-sans text-base md:text-lg leading-relaxed mb-4">
+            {t.about.timeline.t4_desc}
+          </p>
+        </div>
+      ),
+    },
+    {
+      title: '2023-2025',
+      content: (
+        <div>
+          <h4 className="text-xl md:text-2xl font-bold text-white mb-2 font-display">
+            {t.about.timeline.t5_title}
+          </h4>
+          <p className="text-neutral-300 font-sans text-base md:text-lg leading-relaxed mb-4">
+            {t.about.timeline.t5_desc}
+          </p>
+        </div>
+      ),
+    },
+    {
+      title: 'Atual',
+      content: (
+        <div>
+          <h4 className="text-xl md:text-2xl font-bold text-white mb-2 font-display">
+            {t.about.timeline.t6_title}
+          </h4>
+          <p className="text-neutral-300 font-sans text-base md:text-lg leading-relaxed mb-4">
+            {t.about.timeline.t6_desc}
+          </p>
+        </div>
+      ),
+    },
+  ]
 
   const certificates = t.about.certificates.items.map((item, i) => ({
     ...item,
