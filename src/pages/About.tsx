@@ -16,81 +16,51 @@ export default function About() {
 
   const timelineData = [
     {
-      title: '2006',
+      title: t.about.timeline.t1_title,
       content: (
-        <div>
-          <h4 className="text-xl md:text-2xl font-bold text-white mb-2 font-display">
-            {t.about.timeline.t1_title}
-          </h4>
-          <p className="text-neutral-300 font-sans text-base md:text-lg leading-relaxed mb-4">
-            {t.about.timeline.t1_desc}
-          </p>
-        </div>
+        <p className="text-neutral-300 text-base md:text-lg font-sans leading-relaxed">
+          {t.about.timeline.t1_desc}
+        </p>
       ),
     },
     {
-      title: '2014-2016',
+      title: t.about.timeline.t2_title,
       content: (
-        <div>
-          <h4 className="text-xl md:text-2xl font-bold text-white mb-2 font-display">
-            {t.about.timeline.t2_title}
-          </h4>
-          <p className="text-neutral-300 font-sans text-base md:text-lg leading-relaxed mb-4">
-            {t.about.timeline.t2_desc}
-          </p>
-        </div>
+        <p className="text-neutral-300 text-base md:text-lg font-sans leading-relaxed">
+          {t.about.timeline.t2_desc}
+        </p>
       ),
     },
     {
-      title: '2020-2023',
+      title: t.about.timeline.t3_title,
       content: (
-        <div>
-          <h4 className="text-xl md:text-2xl font-bold text-white mb-2 font-display">
-            {t.about.timeline.t3_title}
-          </h4>
-          <p className="text-neutral-300 font-sans text-base md:text-lg leading-relaxed mb-4">
-            {t.about.timeline.t3_desc}
-          </p>
-        </div>
+        <p className="text-neutral-300 text-base md:text-lg font-sans leading-relaxed">
+          {t.about.timeline.t3_desc}
+        </p>
       ),
     },
     {
-      title: '2024',
+      title: t.about.timeline.t4_title,
       content: (
-        <div>
-          <h4 className="text-xl md:text-2xl font-bold text-white mb-2 font-display">
-            {t.about.timeline.t4_title}
-          </h4>
-          <p className="text-neutral-300 font-sans text-base md:text-lg leading-relaxed mb-4">
-            {t.about.timeline.t4_desc}
-          </p>
-        </div>
+        <p className="text-neutral-300 text-base md:text-lg font-sans leading-relaxed">
+          {t.about.timeline.t4_desc}
+        </p>
       ),
     },
     {
-      title: '2023-2025',
+      title: t.about.timeline.t5_title,
       content: (
-        <div>
-          <h4 className="text-xl md:text-2xl font-bold text-white mb-2 font-display">
-            {t.about.timeline.t5_title}
-          </h4>
-          <p className="text-neutral-300 font-sans text-base md:text-lg leading-relaxed mb-4">
-            {t.about.timeline.t5_desc}
-          </p>
-        </div>
+        <p className="text-neutral-300 text-base md:text-lg font-sans leading-relaxed">
+          {t.about.timeline.t5_desc}
+        </p>
       ),
     },
     {
-      title: 'Atual',
+      title: t.about.timeline.t6_title,
       content: (
-        <div>
-          <h4 className="text-xl md:text-2xl font-bold text-white mb-2 font-display">
-            {t.about.timeline.t6_title}
-          </h4>
-          <p className="text-neutral-300 font-sans text-base md:text-lg leading-relaxed mb-4">
-            {t.about.timeline.t6_desc}
-          </p>
-        </div>
+        <p className="text-neutral-300 text-base md:text-lg font-sans leading-relaxed">
+          {t.about.timeline.t6_desc}
+        </p>
       ),
     },
   ]
