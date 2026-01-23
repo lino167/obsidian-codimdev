@@ -12,6 +12,7 @@ import Work from './pages/Work'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
 import PageTransition from './components/PageTransition'
+import ScrollToTop from './components/ScrollToTop'
 import { LanguageProvider } from '@/context/LanguageContext'
 
 const queryClient = new QueryClient()
@@ -83,6 +84,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
           <Navbar />
           <AnimatedRoutes />
         </BrowserRouter>
