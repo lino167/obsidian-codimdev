@@ -22,6 +22,11 @@ export function Navbar() {
   const [hoveredPath, setHoveredPath] = useState<string | null>(null)
   const { t } = useLanguage()
 
+  // Hide Navbar on admin pages
+  if (pathname.startsWith('/admin')) {
+    return null
+  }
+
   return (
     <div className="fixed top-10 inset-x-0 max-w-4xl mx-auto z-[100] px-4 pointer-events-none">
       <nav

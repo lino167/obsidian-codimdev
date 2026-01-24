@@ -1,12 +1,7 @@
 import { CardBody, CardContainer, CardItem } from '@/components/ui/3d-card'
 import { Timeline } from '@/components/ui/timeline'
 import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid'
-import {
-  IconBrandHtml5,
-  IconBrain,
-  IconTool,
-  IconCertificate,
-} from '@tabler/icons-react'
+import { Code2, BrainCircuit, PenTool, Wrench } from 'lucide-react'
 import Footer from '@/components/Footer'
 import ceoCodim from '@/assets/ceo-codim.png'
 import { useLanguage } from '@/hooks/use-language'
@@ -65,23 +60,38 @@ export default function About() {
     },
   ]
 
-  const certificates = t.about.certificates.items.map((item, i) => ({
-    ...item,
-    header: (
-      <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-900 to-neutral-800" />
-    ),
-    icon:
-      i === 0 ? (
-        <IconBrandHtml5 className="h-4 w-4 text-neutral-500" />
-      ) : i === 1 ? (
-        <IconBrain className="h-4 w-4 text-neutral-500" />
-      ) : i === 2 ? (
-        <IconCertificate className="h-4 w-4 text-neutral-500" />
-      ) : (
-        <IconTool className="h-4 w-4 text-neutral-500" />
+  const iconMap = {
+    Code2: Code2,
+    BrainCircuit: BrainCircuit,
+    PenTool: PenTool,
+    Wrench: Wrench,
+  }
+
+  const certificates = t.about.certificates.groups.map((group, i) => {
+    // @ts-expect-error - iconMap access is safe
+    const IconComponent = iconMap[group.icon] || Code2
+
+    return {
+      title: group.category,
+      description: (
+        <ul className="list-disc list-inside space-y-1 mt-2">
+          {group.items.map((item, idx) => (
+            <li
+              key={idx}
+              className="text-xs md:text-sm text-neutral-200 font-sans"
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
       ),
-    version: i === 0 ? 'v1.0' : i === 1 ? 'v2.0' : i === 2 ? 'v1.5' : 'v0.9',
-  }))
+      header: (
+        <div className="w-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-900 to-neutral-800" />
+      ),
+      icon: <IconComponent className="h-4 w-4 text-neutral-500" />,
+      id: group.id,
+    }
+  })
 
   return (
     <div className="min-h-screen bg-[#050505] text-white font-sans flex flex-col">
@@ -136,9 +146,9 @@ export default function About() {
         {/* TIMELINE SECTION */}
         <section className="w-full bg-[#050505]">
           <div className="container mx-auto px-4 mb-8">
-             <h2 className="text-3xl md:text-4xl font-bold text-white font-display text-center">
-               {t.about.timeline_title}
-             </h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-display text-center">
+              {t.about.timeline_title}
+            </h2>
           </div>
           <Timeline data={timelineData} />
         </section>
@@ -153,7 +163,7 @@ export default function About() {
               {t.about.certificates.subtitle}
             </p>
           </div>
-          <BentoGrid className="max-w-6xl mx-auto px-4">
+          <BentoGrid className="max-w-6xl mx-auto px-4 md:grid-cols-2">
             {certificates.map((item, i) => (
               <BentoGridItem
                 key={i}
@@ -161,9 +171,7 @@ export default function About() {
                 description={item.description}
                 header={item.header}
                 icon={item.icon}
-                className={i === 3 || i === 6 ? 'md:col-span-2' : ''}
-                status={item.status}
-                version={item.version}
+                // Removed the span logic as we are using a 2-column grid
               />
             ))}
           </BentoGrid>

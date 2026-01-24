@@ -14,6 +14,10 @@ import NotFound from './pages/NotFound'
 import PageTransition from './components/PageTransition'
 import ScrollToTop from './components/ScrollToTop'
 import { LanguageProvider } from '@/context/LanguageContext'
+import AdminLayout from './layouts/AdminLayout'
+import Login from './pages/admin/Login'
+import Dashboard from './pages/admin/Dashboard'
+import ProjectsManager from './pages/admin/ProjectsManager'
 
 const queryClient = new QueryClient()
 
@@ -77,6 +81,26 @@ const AnimatedRoutes = () => {
   )
 }
 
+const AppRoutes = () => {
+  return (
+    <Routes>
+      <Route
+        path="/admin/*"
+        element={
+          <Routes>
+            <Route path="login" element={<Login />} />
+            <Route element={<AdminLayout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="projects" element={<ProjectsManager />} />
+            </Route>
+          </Routes>
+        }
+      />
+      <Route path="*" element={<AnimatedRoutes />} />
+    </Routes>
+  )
+}
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -86,7 +110,7 @@ const App = () => (
         <BrowserRouter>
           <ScrollToTop />
           <Navbar />
-          <AnimatedRoutes />
+          <AppRoutes />
         </BrowserRouter>
       </LanguageProvider>
     </TooltipProvider>

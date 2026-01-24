@@ -103,29 +103,50 @@ export const translations = {
           'KARSTEN S.A.: Mecânico de Produção I (Teares) + Engenharia de Software na CODIM DEV (Freelancer).',
       },
       certificates: {
-        title: 'CERTIFICAÇÕES TÉCNICAS',
-        subtitle: '// BANCO DE DADOS DE CREDENCIAIS VERIFICADAS',
-        items: [
+        title: 'PROTOCOLOS CERTIFICADOS',
+        subtitle: 'Upgrades de sistema e habilitações técnicas.',
+        groups: [
           {
-            title: 'NÚCLEO DE DESENVOLVIMENTO',
-            description: 'HTML5, CSS3 Moderno, JavaScript I, Bootstrap, Sass.',
-            status: 'CONCLUÍDO',
+            id: '01',
+            category: 'CORE DEV STACK',
+            icon: 'Code2',
+            items: [
+              'JavaScript I',
+              'HTML5 & CSS3 Moderno',
+              'Sass & Bootstrap',
+              'React (Em progresso)',
+            ],
           },
           {
-            title: 'INTELIGÊNCIA & LÓGICA',
-            description:
-              'Python I, Dominando ChatGPT, Entendendo as IAs, Planejando Projetos.',
-            status: 'ATIVO',
+            id: '02',
+            category: 'INTELLIGENCE UNIT',
+            icon: 'BrainCircuit',
+            items: [
+              'Python I',
+              'Engenharia de Prompt (ChatGPT)',
+              'Fundamentos de IA',
+              'Automação',
+            ],
           },
           {
-            title: 'ENGENHARIA VISUAL',
-            description: 'Adobe Photoshop, Adobe Illustrator.',
-            status: 'VERIFICADO',
+            id: '03',
+            category: 'VISUAL ENGINEERING',
+            icon: 'PenTool',
+            items: [
+              'Adobe Photoshop (Avançado)',
+              'Adobe Illustrator (Avançado)',
+              'UI/UX Design',
+            ],
           },
           {
-            title: 'BASE INDUSTRIAL',
-            description: 'Técnico em Mecânica Industrial.',
-            status: 'LEGADO',
+            id: '04',
+            category: 'HARDWARE & OPS',
+            icon: 'Wrench',
+            items: [
+              'Técnico em Mecânica Industrial',
+              'Planejamento de Projetos',
+              'Pacote Office',
+            ],
           },
         ],
       },
@@ -352,29 +373,50 @@ export const translations = {
         },
       ],
       certificates: {
-        title: 'TECHNICAL CERTIFICATIONS',
-        subtitle: '// VERIFIED CREDENTIALS DATABASE',
-        items: [
+        title: 'CERTIFIED PROTOCOLS',
+        subtitle: 'System upgrades and technical qualifications.',
+        groups: [
           {
-            title: 'DEVELOPMENT CORE',
-            description: 'HTML5, Modern CSS3, JavaScript I, Bootstrap, Sass.',
-            status: 'COMPLETED',
+            id: '01',
+            category: 'CORE DEV STACK',
+            icon: 'Code2',
+            items: [
+              'JavaScript I',
+              'HTML5 & Modern CSS3',
+              'Sass & Bootstrap',
+              'React (In Progress)',
+            ],
           },
           {
-            title: 'INTELLIGENCE & LOGIC',
-            description:
-              'Python I, Mastering ChatGPT, Understanding AIs, Project Planning.',
-            status: 'ACTIVE',
+            id: '02',
+            category: 'INTELLIGENCE UNIT',
+            icon: 'BrainCircuit',
+            items: [
+              'Python I',
+              'Prompt Engineering (ChatGPT)',
+              'AI Fundamentals',
+              'Automation',
+            ],
           },
           {
-            title: 'VISUAL ENGINEERING',
-            description: 'Adobe Photoshop, Adobe Illustrator.',
-            status: 'VERIFIED',
+            id: '03',
+            category: 'VISUAL ENGINEERING',
+            icon: 'PenTool',
+            items: [
+              'Adobe Photoshop (Advanced)',
+              'Adobe Illustrator (Advanced)',
+              'UI/UX Design',
+            ],
           },
           {
-            title: 'INDUSTRIAL BASE',
-            description: 'Industrial Mechanics Technician.',
-            status: 'LEGACY',
+            id: '04',
+            category: 'HARDWARE & OPS',
+            icon: 'Wrench',
+            items: [
+              'Industrial Mechanics Technician',
+              'Project Planning',
+              'Microsoft Office',
+            ],
           },
         ],
       },
