@@ -1,12 +1,14 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import { StickyScroll } from '@/components/ui/sticky-scroll-reveal'
 import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid'
 import { Button } from '@/components/ui/button'
 import { Link } from 'react-router-dom'
 import Footer from '@/components/Footer'
 import { CornerBrackets, GridLines } from '@/components/ui/hud-elements'
-import { Code, Terminal, Globe, ArrowRight } from 'lucide-react'
+import { Code, Terminal, Globe, ArrowRight, Loader2, Github, ExternalLink } from 'lucide-react'
 import { useLanguage } from '@/hooks/use-language'
+import { supabase } from '@/lib/supabase'
+import type { Project } from '@/types'
 
 const KrafloMockup = () => (
   <div className="h-full w-full bg-neutral-900 border border-neutral-800 rounded-md p-4 flex flex-col font-mono text-[10px] text-green-500/80 overflow-hidden relative">
@@ -89,6 +91,28 @@ const BrandMockup = () => (
 
 export default function Work() {
   const { t } = useLanguage()
+  const [allProjects, setAllProjects] = useState<Project[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetchAllProjects()
+  }, [])
+
+  const fetchAllProjects = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('projects')
+        .select('*')
+        .order('created_at', { ascending: false })
+
+      if (error) throw error
+      setAllProjects(data || [])
+    } catch (error) {
+      console.error('Error fetching projects:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
 
   const content = [
     {
@@ -107,40 +131,6 @@ export default function Work() {
       content: <BrandMockup />,
     },
   ]
-
-  const minorProjects = t.work.minor_projects.items.map((item, i) => ({
-    ...item,
-    header: (
-      <div className="flex w-full h-40 rounded-xl bg-neutral-900 border border-white/5 items-center justify-center relative overflow-hidden group">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-        {i === 0 ? (
-          <Terminal className="h-10 w-10 text-white/20 group-hover:text-[#BA0C10] transition-colors z-10" />
-        ) : i === 1 ? (
-          <>
-            <div className="absolute top-0 right-0 p-2">
-              <div className="w-2 h-2 rounded-full bg-pink-500/20"></div>
-            </div>
-            <Globe className="h-10 w-10 text-white/20 group-hover:text-pink-500 transition-colors z-10" />
-          </>
-        ) : (
-          <>
-            <div className="absolute inset-0 bg-blue-500/5 group-hover:bg-blue-500/10 transition-colors"></div>
-            <div className="text-4xl grayscale group-hover:grayscale-0 transition-all z-10">
-              🤖
-            </div>
-          </>
-        )}
-      </div>
-    ),
-    icon:
-      i === 0 ? (
-        <Code className="h-4 w-4 text-neutral-500" />
-      ) : i === 1 ? (
-        <Globe className="h-4 w-4 text-neutral-500" />
-      ) : (
-        <Terminal className="h-4 w-4 text-neutral-500" />
-      ),
-  }))
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-[#BA0C10]/30 relative overflow-hidden">
@@ -168,30 +158,103 @@ export default function Work() {
         <StickyScroll content={content} />
       </div>
 
-      {/* Minor Projects Grid */}
-      <div className="py-20 px-6 max-w-7xl mx-auto relative z-10">
-        <div className="mb-12 border-l-2 border-[#BA0C10] pl-4">
-          <h2 className="text-2xl font-bold mb-2">
-            {t.work.minor_projects.title}
-          </h2>
-          <p className="text-white/50 font-mono text-sm">
-            {t.work.minor_projects.subtitle}
-          </p>
+      {/* All Projects from Supabase */}
+      {loading ? (
+        <div className="py-20 flex justify-center">
+          <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
         </div>
+      ) : allProjects.length > 0 && (
+        <div className="py-20 px-6 max-w-7xl mx-auto relative z-10">
+          <div className="mb-12 border-l-2 border-[#BA0C10] pl-4">
+            <h2 className="text-2xl font-bold mb-2">
+              PROJETOS CADASTRADOS
+            </h2>
+            <p className="text-white/50 font-mono text-sm">
+              Todos os projetos do portfólio
+            </p>
+          </div>
 
-        <BentoGrid>
-          {minorProjects.map((item, i) => (
-            <BentoGridItem
-              key={i}
-              title={item.title}
-              description={item.description}
-              header={item.header}
-              icon={item.icon}
-              className={i === 3 || i === 6 ? 'md:col-span-2' : ''}
-            />
-          ))}
-        </BentoGrid>
-      </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {allProjects.map((project) => (
+              <div
+                key={project.id}
+                className="bg-neutral-900/50 border border-white/10 hover:border-red-600/30 transition-all duration-300 group overflow-hidden"
+              >
+                {/* Project Image */}
+                <div className="h-48 bg-neutral-800 relative overflow-hidden">
+                  {project.image_url ? (
+                    <img
+                      src={project.image_url}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-white/10">
+                      <Code className="w-16 h-16" />
+                    </div>
+                  )}
+                  {project.featured && (
+                    <div className="absolute top-2 right-2 bg-red-600 text-white text-[10px] font-bold px-2 py-1 font-mono">
+                      DESTAQUE
+                    </div>
+                  )}
+                </div>
+
+                {/* Project Info */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-2 text-white group-hover:text-red-400 transition-colors">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-white/50 text-sm mb-4 line-clamp-2">
+                    {project.description}
+                  </p>
+
+                  {/* Tech Stack */}
+                  {project.tech_stack && project.tech_stack.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tech_stack.map((tech) => (
+                        <span
+                          key={tech}
+                          className="text-xs px-2 py-1 bg-white/5 text-white/70 font-mono border border-white/10"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Links */}
+                  <div className="flex gap-3 border-t border-white/10 pt-4">
+                    {project.repo_url && (
+                      <a
+                        href={project.repo_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-xs text-white/50 hover:text-white transition-colors"
+                      >
+                        <Github className="w-4 h-4" />
+                        Código
+                      </a>
+                    )}
+                    {project.live_url && (
+                      <a
+                        href={project.live_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-xs text-white/50 hover:text-red-400 transition-colors"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        Ver Projeto
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* CTA Final */}
       <div className="py-32 px-6 text-center relative z-10 bg-gradient-to-b from-transparent to-black/80">
