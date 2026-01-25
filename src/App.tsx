@@ -18,6 +18,9 @@ import AdminLayout from './layouts/AdminLayout'
 import Login from './pages/admin/Login'
 import Dashboard from './pages/admin/Dashboard'
 import ProjectsManager from './pages/admin/ProjectsManager'
+import LeadsManager from './pages/admin/LeadsManager'
+import FinanceManager from './pages/admin/FinanceManager'
+import CertificatesManager from './pages/admin/CertificatesManager'
 
 const queryClient = new QueryClient()
 
@@ -92,6 +95,9 @@ const AppRoutes = () => {
             <Route element={<AdminLayout />}>
               <Route index element={<Dashboard />} />
               <Route path="projects" element={<ProjectsManager />} />
+              <Route path="leads" element={<LeadsManager />} />
+              <Route path="finances" element={<FinanceManager />} />
+              <Route path="certificates" element={<CertificatesManager />} />
             </Route>
           </Routes>
         }
