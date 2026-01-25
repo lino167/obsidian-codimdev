@@ -1,133 +1,163 @@
-import { useState, useEffect } from 'react'
-import { Outlet, NavLink, useNavigate } from 'react-router-dom'
-import { supabase } from '@/lib/supabase'
-import {
-  LayoutDashboard,
-  FolderKanban,
-  Users,
-  Wallet,
-  Award,
-  LogOut,
-  Menu,
-  X,
-} from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
+import { useEffect, useState } from 'react';
+import { Outlet, NavLink, useNavigate } from 'react-router-dom';
+import { LayoutDashboard, FolderKanban, Users, DollarSign, LogOut, Shield } from 'lucide-react';
+import { supabase } from '@/lib/supabase';
+import logoHorizontal from '@/assets/logo-horizontal.png';
 
 export default function AdminLayout() {
-  const navigate = useNavigate()
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true)
+  const navigate = useNavigate();
+  const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const checkAuth = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession()
+    checkSession();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       if (!session) {
-        navigate('/admin/login')
+        navigate('/admin/login');
+      } else {
+        setUser(session.user);
       }
+    });
+
+    return () => subscription.unsubscribe();
+  }, [navigate]);
+
+  const checkSession = async () => {
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+
+      if (!session) {
+        navigate('/admin/login');
+      } else {
+        setUser(session.user);
+      }
+    } catch (error) {
+      console.error('Error checking session:', error);
+      navigate('/admin/login');
+    } finally {
+      setLoading(false);
     }
-
-    checkAuth()
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (!session) {
-        navigate('/admin/login')
-      }
-    })
-
-    return () => subscription.unsubscribe()
-  }, [navigate])
+  };
 
   const handleLogout = async () => {
-    await supabase.auth.signOut()
-    navigate('/admin/login')
+    await supabase.auth.signOut();
+    navigate('/admin/login');
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#050505] flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-8 h-8 border-2 border-red-600 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-white/50 font-mono text-sm">AUTHENTICATING...</p>
+        </div>
+      </div>
+    );
   }
 
   const navItems = [
-    { icon: LayoutDashboard, label: 'Dashboard', path: '/admin' },
-    { icon: FolderKanban, label: 'Projetos', path: '/admin/projects' },
-    { icon: Users, label: 'Leads', path: '/admin/leads' },
-    { icon: Wallet, label: 'Financeiro', path: '/admin/finances' },
-    { icon: Award, label: 'Certificados', path: '/admin/certificates' },
-  ]
+    { to: '/admin', label: 'Dashboard', icon: LayoutDashboard },
+    { to: '/admin/projects', label: 'Projetos', icon: FolderKanban },
+    { to: '/admin/leads', label: 'Leads', icon: Users },
+    { to: '/admin/finances', label: 'Financeiro', icon: DollarSign },
+  ];
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100 font-mono flex">
+    <div className="min-h-screen bg-[#050505] flex">
       {/* Sidebar */}
-      <aside
-        className={cn(
-          'fixed inset-y-0 left-0 z-50 w-64 bg-neutral-900/50 border-r border-neutral-800 backdrop-blur-xl transition-transform duration-300 ease-in-out md:relative md:translate-x-0',
-          !isSidebarOpen && '-translate-x-full md:hidden',
-        )}
-      >
-        <div className="p-6 border-b border-neutral-800 flex items-center justify-between">
-          <h1 className="text-xl font-bold text-blue-500 tracking-tighter">
-            CODIM<span className="text-neutral-400">.CMD</span>
-          </h1>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setIsSidebarOpen(false)}
-          >
-            <X className="w-5 h-5" />
-          </Button>
+      <aside className="w-64 bg-black border-r border-white/5 flex flex-col fixed h-screen">
+        {/* Logo */}
+        <div className="p-6 border-b border-white/5">
+          <img
+            src={logoHorizontal}
+            alt="CODIM DEV"
+            className="w-full h-auto"
+          />
+          <div className="text-white/30 font-mono text-xs mt-3 tracking-widest text-center">
+            ADMIN CONSOLE
+          </div>
         </div>
 
-        <nav className="p-4 space-y-2">
+        {/* Navigation */}
+        <nav className="flex-1 p-4 space-y-1">
           {navItems.map((item) => (
             <NavLink
-              key={item.path}
-              to={item.path}
-              end={item.path === '/admin'}
+              key={item.to}
+              to={item.to}
+              end={item.to === '/admin'}
               className={({ isActive }) =>
-                cn(
-                  'flex items-center gap-3 px-4 py-3 rounded-lg transition-colors',
+                `flex items-center gap-3 px-4 py-3 rounded-none font-mono text-sm
+                transition-all duration-200 relative group
+                ${
                   isActive
-                    ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20'
-                    : 'text-neutral-400 hover:bg-neutral-800 hover:text-neutral-200',
-                )
+                    ? 'text-white bg-red-600/10 border-l-2 border-red-600'
+                    : 'text-white/50 hover:text-white hover:bg-white/5'
+                }`
               }
             >
-              <item.icon className="w-5 h-5" />
-              <span>{item.label}</span>
+              {({ isActive }) => (
+                <>
+                  {isActive && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 to-transparent pointer-events-none" />
+                  )}
+
+                  <item.icon className={`w-5 h-5 relative z-10 ${isActive ? 'text-red-600' : ''}`} />
+                  <span className="relative z-10 tracking-wider">{item.label}</span>
+
+                  <div className="absolute right-0 top-0 bottom-0 w-1 bg-red-600
+                                transform scale-y-0 group-hover:scale-y-100
+                                transition-transform duration-200 origin-center" />
+                </>
+              )}
             </NavLink>
           ))}
         </nav>
 
-        <div className="absolute bottom-0 w-full p-4 border-t border-neutral-800">
-          <Button
-            variant="ghost"
-            className="w-full justify-start gap-3 text-red-400 hover:text-red-300 hover:bg-red-900/10"
+        {/* User Info & Logout */}
+        <div className="p-4 border-t border-white/5 space-y-3">
+          {/* User Info */}
+          <div className="flex items-center gap-3 px-4 py-3 bg-white/5 rounded-none">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-600 to-red-800
+                          flex items-center justify-center text-white font-mono text-sm font-bold
+                          border-2 border-red-600/30">
+              {user?.email?.charAt(0).toUpperCase() || 'A'}
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="text-white font-mono text-xs truncate">
+                {user?.email || 'Admin'}
+              </div>
+              <div className="text-white/30 font-mono text-xs flex items-center gap-1">
+                <Shield className="w-3 h-3" />
+                Authenticated
+              </div>
+            </div>
+          </div>
+
+          {/* Logout Button */}
+          <button
             onClick={handleLogout}
+            className="w-full flex items-center gap-3 px-4 py-3
+                     text-red-400 hover:text-red-300 hover:bg-red-600/10
+                     font-mono text-sm transition-all duration-200
+                     border border-red-600/20 hover:border-red-600/40
+                     group"
           >
             <LogOut className="w-5 h-5" />
-            <span>Logout</span>
-          </Button>
+            <span className="tracking-wider">LOGOUT</span>
+            <div className="ml-auto w-1 h-4 bg-red-600 transform scale-x-0
+                          group-hover:scale-x-100 transition-transform duration-200" />
+          </button>
         </div>
+
+        {/* Bottom Accent Line */}
+        <div className="h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent" />
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 min-w-0 overflow-auto">
-        {/* Mobile Header */}
-        <div className="md:hidden p-4 border-b border-neutral-800 flex items-center gap-4">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setIsSidebarOpen(true)}
-          >
-            <Menu className="w-5 h-5" />
-          </Button>
-          <span className="font-bold">Menu</span>
-        </div>
-
-        <div className="p-8">
-          <Outlet />
-        </div>
+      <main className="flex-1 ml-64 min-h-screen bg-[#050505]">
+        <Outlet />
       </main>
     </div>
-  )
+  );
 }
