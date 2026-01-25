@@ -11,6 +11,7 @@ import About from './pages/About'
 import Work from './pages/Work'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
+import TestAuth from './pages/TestAuth'
 import PageTransition from './components/PageTransition'
 import ScrollToTop from './components/ScrollToTop'
 import { LanguageProvider } from '@/context/LanguageContext'
@@ -67,6 +68,14 @@ const AnimatedRoutes = () => {
           element={
             <PageTransition>
               <Contact />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/test-auth"
+          element={
+            <PageTransition>
+              <TestAuth />
             </PageTransition>
           }
         />
