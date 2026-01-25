@@ -331,47 +331,31 @@ export const translations = {
           'From Industrial Mechanic to Software Architect. Uniting factory floor precision with code scalability. Today, I apply this engineering mindset at CODIM DEV. Specialist in creating digital ecosystems that run themselves, using Python for robust logic and Intelligent Automation with n8n and Supabase.',
       },
       timeline_title: 'SYSTEM LOGS: TRAJECTORY',
-      timeline: [
-        {
-          year: '2006',
-          title: 'Initialization (13 Years Old)',
-          subtitle: 'The First Hardware',
-          description:
-            "At 13, I built my first computer. The fascination with binary logic was immediate. The desire to study Computer Science existed, but budget constraints forced a detour. The system entered 'Sleep Mode', but the kernel remained active.",
-        },
-        {
-          year: '2011',
-          title: 'The Industrial Forge',
-          subtitle: 'Manual Override (18 Years Old)',
-          description:
-            'At 18, reality demanded action. I joined the factory floor as a helper. It was the start of a decade-long career in Heavy Industrial Mechanics (Passaúra, Santos CMI). I learned in practice how large systems work under pressure.',
-          tags: ['Factory Floor', 'Resilience'],
-        },
-        {
-          year: '2014-2016',
-          title: 'Precision Protocol',
-          subtitle: 'Turbines & Steelworks',
-          description:
-            'Working on critical gas turbine assembly and steelworks maintenance. Where a millimeter error can cost millions. This experience shaped my professional character: the obsessive search for precision and zero tolerance for failure.',
-          tags: ['Gas Turbines', 'Zero Tolerance'],
-        },
-        {
-          year: '2023',
-          title: 'System Reboot (Transition)',
-          subtitle: 'Return to Code',
-          description:
-            'With stability achieved, I reactivated the original protocol. Heavy investment in Full-Stack training (OneBitCode), Design, and AI. Mechanical logic was finally translated into JavaScript, Python, and Automation.',
-          tags: ['OneBitCode', 'Python', 'Sass'],
-        },
-        {
-          year: 'CURRENT',
-          title: 'Parallel Processing (Current)',
-          subtitle: 'Hybrid Operation (Mechanic + Dev)',
-          description:
-            "Currently operating in 'Dual-Core'. I maintain industrial looms' precision at Karsten during the day and build complex software like CODIM DEV in free cycles. This dual life gives me a unique advantage: I solve real physical world problems using digital solutions.",
-          tags: ['Dual-Core', 'Karsten', 'CODIM DEV'],
-        },
-      ],
+      timeline: {
+        t1_title: 'Initialization (2006)',
+        t1_desc:
+          'First hardware contact at age 13. PC building and the beginning of binary logic fascination.',
+
+        t2_title: 'The Industrial Forge (2014-2016)',
+        t2_desc:
+          'SANTOS CMI: Machine Assembler. Critical work on Gas Turbines alignment within Steelworks.',
+
+        t3_title: 'Textile Operation (2020-2023)',
+        t3_desc:
+          'FIAÇÃO FIO PURO: Industrial Operator. Rigorous quality control and complex textile machinery operation.',
+
+        t4_title: 'Critical Missions (2024)',
+        t4_desc:
+          'ENESA ENGINEERING: Assembly of electrostatic precipitators in Pulp & Paper plant. High-precision work.',
+
+        t5_title: 'System Reboot (2023-2025)',
+        t5_desc:
+          'Technical Certifications: OneBitCode (Full Stack), Adobe (Design), and IBQP (Mechanical Technician).',
+
+        t6_title: 'Parallel Processing (Current)',
+        t6_desc:
+          'KARSTEN S.A.: Production Mechanic I (Looms) + Software Engineering at CODIM DEV (Freelance).',
+      },
       certificates: {
         title: 'CERTIFIED PROTOCOLS',
         subtitle: 'System upgrades and technical qualifications.',
