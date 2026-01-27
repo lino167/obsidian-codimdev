@@ -17,6 +17,7 @@ import ScrollToTop from './components/ScrollToTop'
 import { LanguageProvider } from '@/context/LanguageContext'
 import AdminLayout from './layouts/AdminLayout'
 import Login from './pages/admin/Login'
+import Register from './pages/admin/Register'
 import Dashboard from './pages/admin/Dashboard'
 import ProjectsManager from './pages/admin/ProjectsManager'
 import LeadsManager from './pages/admin/LeadsManager'
@@ -101,6 +102,7 @@ const AppRoutes = () => {
         element={
           <Routes>
             <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
             <Route element={<AdminLayout />}>
               <Route index element={<Dashboard />} />
               <Route path="projects" element={<ProjectsManager />} />
