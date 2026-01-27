@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { format, differenceInDays, isPast, parseISO } from 'date-fns';
+import NewProjectDrawer from '@/components/NewProjectDrawer';
 
 // TypeScript Types
 interface Project {
@@ -52,6 +53,7 @@ export default function ProjectsManager() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
+  const [newProjectDrawerOpen, setNewProjectDrawerOpen] = useState(false);
 
   // Filters
   const [filterTab, setFilterTab] = useState<FilterTab>('all');
@@ -66,6 +68,25 @@ export default function ProjectsManager() {
 
   // Task Management
   const [newTaskText, setNewTaskText] = useState({ todo: '', in_progress: '', done: '' });
+
+  // New Project Form
+  const [newProjectForm, setNewProjectForm] = useState<Partial<Project>>({
+    title: '',
+    slug: '',
+    client_name: '',
+    tech_stack: [],
+    status: 'planning',
+    budget: 0,
+    deadline: '',
+    repo_url: '',
+    live_url: '',
+    is_public: false,
+    is_featured: false,
+    cover_image: '',
+    progress: 0
+  });
+  const [newProjectTag, setNewProjectTag] = useState('');
+  const [uploadingNewCover, setUploadingNewCover] = useState(false);
 
   // Fetch Projects
   useEffect(() => {
@@ -295,6 +316,121 @@ export default function ProjectsManager() {
     return { text: `Due in ${days} days`, color: 'text-white/50', urgent: false };
   }
 
+  // NEW PROJECT HANDLERS
+  // Auto-generate slug from title
+  function generateSlug(title: string) {
+    return title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+  }
+
+  // Update slug when title changes
+  useEffect(() => {
+    if (newProjectForm.title) {
+      setNewProjectForm(prev => ({ ...prev, slug: generateSlug(prev.title || '') }));
+    }
+  }, [newProjectForm.title]);
+
+  // Handle new project cover upload
+  async function handleNewProjectCoverUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    if (!e.target.files?.[0]) return;
+
+    setUploadingNewCover(true);
+    const file = e.target.files[0];
+    const fileExt = file.name.split('.').pop();
+    const fileName = `project-${Date.now()}.${fileExt}`;
+    const filePath = `projects/${fileName}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from('portfolio-assets')
+      .upload(filePath, file);
+
+    if (uploadError) {
+      toast.error('Erro no upload');
+      setUploadingNewCover(false);
+      return;
+    }
+
+    const { data } = supabase.storage.from('portfolio-assets').getPublicUrl(filePath);
+    setNewProjectForm({ ...newProjectForm, cover_image: data.publicUrl });
+    setUploadingNewCover(false);
+    toast.success('Cover uploaded!');
+  }
+
+  // Add tech stack tag to new project
+  function addNewProjectTag() {
+    if (newProjectTag && !newProjectForm.tech_stack?.includes(newProjectTag)) {
+      setNewProjectForm({
+        ...newProjectForm,
+        tech_stack: [...(newProjectForm.tech_stack || []), newProjectTag]
+      });
+      setNewProjectTag('');
+    }
+  }
+
+  function removeNewProjectTag(tag: string) {
+    setNewProjectForm({
+      ...newProjectForm,
+      tech_stack: newProjectForm.tech_stack?.filter(t => t !== tag)
+    });
+  }
+
+  // Create new project
+  async function handleCreateNewProject() {
+    if (!newProjectForm.title) {
+      toast.error('Title is required');
+      return;
+    }
+
+    try {
+      const { error } = await supabase
+        .from('projects')
+        .insert({
+          title: newProjectForm.title,
+          slug: newProjectForm.slug,
+          client_name: newProjectForm.client_name,
+          cover_image: newProjectForm.cover_image,
+          tech_stack: newProjectForm.tech_stack,
+          status: newProjectForm.status,
+          budget: newProjectForm.budget,
+          deadline: newProjectForm.deadline,
+          repo_url: newProjectForm.repo_url,
+          live_url: newProjectForm.live_url,
+          is_public: newProjectForm.is_public,
+          is_featured: newProjectForm.is_featured,
+          progress: newProjectForm.progress || 0
+        });
+
+      if (error) throw error;
+
+      toast.success('Project initialized!');
+      setNewProjectDrawerOpen(false);
+      resetNewProjectForm();
+      fetchProjects();
+    } catch (error: any) {
+      toast.error(error.message || 'Error creating project');
+    }
+  }
+
+  function resetNewProjectForm() {
+    setNewProjectForm({
+      title: '',
+      slug: '',
+      client_name: '',
+      tech_stack: [],
+      status: 'planning',
+      budget: 0,
+      deadline: '',
+      repo_url: '',
+      live_url: '',
+      is_public: false,
+      is_featured: false,
+      cover_image: '',
+      progress: 0
+    });
+  }
+
   // Status pill component
   const StatusPill = ({ status }: { status: string | null }) => {
     const config = {
@@ -335,14 +471,23 @@ export default function ProjectsManager() {
     return (
       <div className="p-8 max-w-[1400px] mx-auto">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold font-mono text-white tracking-wider flex items-center gap-3">
-            <FolderKanban className="w-8 h-8 text-[#00FFFF]" />
-            THE REGISTRY
-          </h1>
-          <p className="text-white/60 font-mono text-sm mt-2 uppercase tracking-wide">
-            Project Command Center // CMS + Manager
-          </p>
+        <div className="mb-8 flex justify-between items-start">
+          <div>
+            <h1 className="text-3xl font-bold font-mono text-white tracking-wider flex items-center gap-3">
+              <FolderKanban className="w-8 h-8 text-[#00FFFF]" />
+              THE REGISTRY
+            </h1>
+            <p className="text-white/60 font-mono text-sm mt-2 uppercase tracking-wide">
+              Project Command Center // CMS + Manager
+            </p>
+          </div>
+          <button
+            onClick={() => setNewProjectDrawerOpen(true)}
+            className="bg-[#BA0C10] hover:bg-[#BA0C10]/80 text-white px-6 py-3 font-mono font-bold text-sm uppercase tracking-wider flex items-center gap-2 transition-colors"
+          >
+            <Plus className="w-5 h-5" />
+            NEW PROJECT
+          </button>
         </div>
 
         {/* Filter Bar */}
@@ -470,6 +615,21 @@ export default function ProjectsManager() {
             })}
           </div>
         )}
+
+        {/* NEW PROJECT DRAWER */}
+        <NewProjectDrawer
+          isOpen={newProjectDrawerOpen}
+          onClose={() => { setNewProjectDrawerOpen(false); resetNewProjectForm(); }}
+          onSubmit={handleCreateNewProject}
+          formData={newProjectForm}
+          setFormData={setNewProjectForm}
+          currentTag={newProjectTag}
+          setCurrentTag={setNewProjectTag}
+          onAddTag={addNewProjectTag}
+          onRemoveTag={removeNewProjectTag}
+          onCoverUpload={handleNewProjectCoverUpload}
+          uploading={uploadingNewCover}
+        />
       </div>
     );
   }
