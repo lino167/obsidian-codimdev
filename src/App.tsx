@@ -23,6 +23,7 @@ import ProjectsManager from './pages/admin/ProjectsManager'
 import LeadsManager from './pages/admin/LeadsManager'
 import FinanceManager from './pages/admin/FinanceManager'
 import CertificatesManager from './pages/admin/CertificatesManager'
+import Settings from './pages/admin/Settings'
 
 const queryClient = new QueryClient()
 
@@ -109,6 +110,7 @@ const AppRoutes = () => {
               <Route path="leads" element={<LeadsManager />} />
               <Route path="finances" element={<FinanceManager />} />
               <Route path="certificates" element={<CertificatesManager />} />
+              <Route path="settings" element={<Settings />} />
             </Route>
           </Routes>
         }
