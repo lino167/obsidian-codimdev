@@ -25,8 +25,16 @@ export interface Lead {
   name: string;
   email: string;
   message: string | null;
-  status: string | null;
   ip_address: string | null;
+
+  // CRM Fields
+  status: 'new' | 'contacted' | 'negotiating' | 'converted' | 'archived';
+  company: string | null;
+  phone: string | null;
+  project_type: 'landing_page' | 'webapp' | 'ecommerce' | 'mobile_app' | 'other' | null;
+  estimated_budget: string | null;
+  admin_notes: string | null;
+  proposal_link: string | null;
 }
 
 export interface Finance {

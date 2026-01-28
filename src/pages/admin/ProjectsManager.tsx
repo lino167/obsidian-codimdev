@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
+import { useLocation } from 'react-router-dom';
 import {
   Search, Filter, FolderKanban, Plus, Eye, Lock, Calendar,
   DollarSign, Edit, Trash2, Save, X, Tag, Github, Globe,
@@ -47,6 +48,8 @@ type FilterTab = 'all' | 'planning' | 'development' | 'live' | 'maintenance' | '
 type DetailTab = 'tasks' | 'case-study';
 
 export default function ProjectsManager() {
+  const location = useLocation();
+
   // State Management
   const [viewMode, setViewMode] = useState<ViewMode>('list');
   const [projects, setProjects] = useState<Project[]>([]);
@@ -92,6 +95,26 @@ export default function ProjectsManager() {
   useEffect(() => {
     fetchProjects();
   }, []);
+
+  // KILLER FEATURE: Handle Lead-to-Project Conversion
+  useEffect(() => {
+    // Check if we're coming from Lead conversion (CommLink)
+    if (location.state?.openWizard && location.state?.prefill) {
+      // Pre-fill the new project form with lead data
+      setNewProjectForm((prev) => ({
+        ...prev,
+        ...location.state.prefill
+      }));
+
+      //Open the drawer automatically
+      setNewProjectDrawerOpen(true);
+
+      // Clear the state to prevent reopening on refresh
+      window.history.replaceState({}, document.title);
+
+      toast.success('Lead data loaded! Complete the project details.');
+    }
+  }, [location]);
 
   // Fetch Tasks when project selected
   useEffect(() => {

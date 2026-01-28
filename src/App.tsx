@@ -20,7 +20,7 @@ import Login from './pages/admin/Login'
 import Register from './pages/admin/Register'
 import Dashboard from './pages/admin/Dashboard'
 import ProjectsManager from './pages/admin/ProjectsManager'
-import LeadsManager from './pages/admin/LeadsManager'
+import CommLink from './pages/admin/CommLink'
 import FinanceManager from './pages/admin/FinanceManager'
 import CertificatesManager from './pages/admin/CertificatesManager'
 import Settings from './pages/admin/Settings'
@@ -107,7 +107,7 @@ const AppRoutes = () => {
             <Route element={<AdminLayout />}>
               <Route index element={<Dashboard />} />
               <Route path="projects" element={<ProjectsManager />} />
-              <Route path="leads" element={<LeadsManager />} />
+              <Route path="leads" element={<CommLink />} />
               <Route path="finances" element={<FinanceManager />} />
               <Route path="certificates" element={<CertificatesManager />} />
               <Route path="settings" element={<Settings />} />
