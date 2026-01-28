@@ -38,7 +38,7 @@ export default function Contact() {
     toast.success('🚀 Abrindo WhatsApp...')
   }
 
-  // Traditional Form Submission - Saves to Supabase
+  // Secure Form Submission - Uses Edge Function for Validation & Sanitization
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
@@ -50,40 +50,41 @@ export default function Contact() {
     setLoading(true)
 
     try {
-      // Capture IP address for rate limiting
-      let ipAddress = null;
-      try {
-        const ipResponse = await fetch('https://api.ipify.org?format=json');
-        const ipData = await ipResponse.json();
-        ipAddress = ipData.ip;
-      } catch (ipError) {
-        console.log('Could not capture IP, proceeding without it:', ipError);
-        // Continue without IP - manual admin entries will still work
-      }
+      // Call Edge Function for secure validation and sanitization
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/validate-lead`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            company: formData.company,
+            message: formData.message,
+            project_type: 'unknown'
+          })
+        }
+      );
 
-      const { error } = await supabase.from('leads').insert({
-        name: formData.name,
-        email: formData.email,
-        company: formData.company,
-        message: formData.message,
-        status: 'new',
-        ip_address: ipAddress
-      })
+      const data = await response.json();
 
-      if (error) {
-        // Check for rate limit error
-        if (error.message?.includes('Rate limit exceeded')) {
+      if (!response.ok) {
+        // Handle rate limiting (429) or validation errors (400)
+        if (response.status === 429) {
           toast.error('⚠️ Muitas tentativas. Por favor, aguarde 1 hora e tente novamente.');
           return;
         }
-        throw error;
+        throw new Error(data.error || 'Erro ao enviar formulário');
       }
 
       toast.success('✅ Mensagem recebida! Entrarei em contato em breve.')
       setFormData({ name: '', email: '', company: '', message: '' })
     } catch (error) {
       console.error('Error submitting lead:', error)
-      toast.error('Erro ao enviar. Tente pelo WhatsApp.')
+      toast.error(error instanceof Error ? error.message : 'Erro ao enviar. Tente pelo WhatsApp.')
     } finally {
       setLoading(false)
     }
