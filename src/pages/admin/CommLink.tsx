@@ -65,7 +65,7 @@ const CommLink = () => {
   }
 
   // Update Lead Field
-  async function updateLeadField(leadId: number, field: string, value: any) {
+  async function updateLeadField(leadId: number, field: string, value: unknown) {
     try {
       const { error } = await supabase
         .from('leads')

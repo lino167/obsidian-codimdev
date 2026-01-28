@@ -259,7 +259,7 @@ const FinanceManager = () => {
 
                   <div className="space-y-2">
                     <Label className="text-xs font-mono text-white/60 uppercase">Status</Label>
-                    <Select value={newTransaction.status} onValueChange={(val: any) => setNewTransaction({ ...newTransaction, status: val })}>
+                    <Select value={newTransaction.status} onValueChange={(val: 'paid' | 'pending' | 'scheduled') => setNewTransaction({ ...newTransaction, status: val })}>
                       <SelectTrigger className="bg-black border-white/20">
                         <SelectValue />
                       </SelectTrigger>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard,
@@ -11,11 +11,29 @@ import {
   User
 } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
+import type { User as SupabaseUser } from '@supabase/supabase-js';
 
 export default function AdminLayout() {
   const navigate = useNavigate();
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<SupabaseUser | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const checkSession = useCallback(async () => {
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+
+      if (!session) {
+        navigate('/admin/login');
+      } else {
+        setUser(session.user);
+      }
+    } catch (error) {
+      console.error('Session check error:', error);
+      navigate('/admin/login');
+    } finally {
+      setLoading(false);
+    }
+  }, [navigate]);
 
   useEffect(() => {
     checkSession();
@@ -29,24 +47,7 @@ export default function AdminLayout() {
     });
 
     return () => subscription.unsubscribe();
-  }, [navigate]);
-
-  const checkSession = async () => {
-    try {
-      const { data: { session } } = await supabase.auth.getSession();
-
-      if (!session) {
-        navigate('/admin/login');
-      } else {
-        setUser(session.user);
-      }
-    } catch (error) {
-      console.error('Error checking session:', error);
-      navigate('/admin/login');
-    } finally {
-      setLoading(false);
-    }
-  };
+  }, [navigate, checkSession]);
 
   const handleLogout = async () => {
     await supabase.auth.signOut();

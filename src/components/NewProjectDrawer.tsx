@@ -1,11 +1,26 @@
 import { X, Plus, Upload, Loader2, Eye, CheckCircle2, Calendar, DollarSign, Tag, Github, Globe } from 'lucide-react';
 
+interface ProjectFormData {
+  title?: string;
+  slug?: string;
+  client_name?: string;
+  cover_image?: string;
+  tech_stack?: string[];
+  status?: string;
+  budget?: number;
+  deadline?: string;
+  repo_url?: string;
+  live_url?: string;
+  is_public?: boolean;
+  is_featured?: boolean;
+}
+
 interface NewProjectDrawerProps {
   isOpen: boolean;
   onClose: () => void;
   onSubmit: () => void;
-  formData: any;
-  setFormData: (data: any) => void;
+  formData: ProjectFormData;
+  setFormData: (data: ProjectFormData) => void;
   currentTag: string;
   setCurrentTag: (tag: string) => void;
   onAddTag: () => void;

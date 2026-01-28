@@ -431,8 +431,9 @@ export default function ProjectsManager() {
       setNewProjectDrawerOpen(false);
       resetNewProjectForm();
       fetchProjects();
-    } catch (error: any) {
-      toast.error(error.message || 'Error creating project');
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : 'Error creating project';
+      toast.error(message);
     }
   }
 
