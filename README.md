@@ -1,107 +1,275 @@
-# CODIM DEV | Engenharia de Software & Sistemas Inteligentes
+# Obsidian Console
 
-![Project Banner](./public/placeholder.svg)
+> Full-stack freelance portfolio & admin panel with tactical dark mode aesthetics and complete project lifecycle management.
 
-> "Projetamos sistemas robustos que resistem ao tempo e à escala. Arquitetura precisa. Código limpo. Resultados sólidos."
-
-Este repositório contém o código-fonte do website oficial da **CODIM DEV**, uma plataforma moderna desenvolvida para apresentar serviços de engenharia de software, portfólio e soluções de alta tecnologia.
-
-## 📸 Screenshots
-
-Para ilustrar a experiência visual do projeto, adicione capturas de tela aqui.
-
-### Home / Hero Section
-
-![Hero Section](./screenshots/hero.png)
-_Visualização inicial com animações e identidade visual._
-
-### Portfólio
-
-![Portfolio](./screenshots/portfolio.png)
-_Seção de projetos e cases de sucesso._
-
-### Contato
-
-![Contact](./screenshots/contact.png)
-_Formulário de contato e informações de localização._
-
-> **Nota:** As imagens acima são placeholders. Por favor, adicione as capturas de tela na pasta `screenshots` (crie-a na raiz se necessário) ou atualize os caminhos.
-
-## 🚀 Tecnologias Utilizadas
-
-O projeto foi construído utilizando um stack moderno e performático:
-
-- **Core:** [React](https://react.dev/) + [Vite](https://vitejs.dev/) + [TypeScript](https://www.typescriptlang.org/)
-- **Estilização:** [Tailwind CSS](https://tailwindcss.com/)
-- **UI Components:** [Shadcn UI](https://ui.shadcn.com/) (baseado em Radix UI)
-- **Animações:** [Framer Motion](https://www.framer.com/motion/)
-- **Ícones:** [Lucide React](https://lucide.dev/)
-- **Roteamento:** [React Router DOM](https://reactrouter.com/)
-- **Gerenciamento de Estado/Data:** [TanStack Query](https://tanstack.com/query/latest)
-- **Validação de Formulários:** [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
-
-## 🛠️ Instalação e Execução
-
-Siga os passos abaixo para rodar o projeto localmente:
-
-### Pré-requisitos
-
-- Node.js (versão 18 ou superior recomendada)
-- npm ou yarn
-
-### Passo a Passo
-
-1. **Clone o repositório:**
-
-   ```bash
-   git clone https://github.com/seu-usuario/obsidian-console.git
-   cd obsidian-console-main
-   ```
-
-2. **Instale as dependências:**
-
-   ```bash
-   npm install
-   # ou
-   yarn
-   ```
-
-3. **Inicie o servidor de desenvolvimento:**
-
-   ```bash
-   npm run dev
-   # ou
-   yarn dev
-   ```
-
-4. **Acesse no navegador:**
-   O projeto estará rodando em `http://localhost:8080` (ou outra porta indicada no terminal).
-
-## 📂 Estrutura do Projeto
-
-```
-src/
-├── assets/          # Imagens, logos e recursos estáticos
-├── components/      # Componentes React reutilizáveis
-│   ├── ui/          # Componentes base (Shadcn UI)
-│   └── ...          # Componentes de seção (Header, Hero, Footer, etc.)
-├── hooks/           # Custom React Hooks
-├── lib/             # Utilitários e configurações (utils.ts)
-├── pages/           # Páginas da aplicação (Index, NotFound)
-└── App.tsx          # Componente raiz e configuração de rotas
-```
-
-## ✨ Funcionalidades Principais
-
-- **Design Responsivo:** Adaptável a todos os tamanhos de tela (Mobile, Tablet, Desktop).
-- **Animações Fluidas:** Uso de Framer Motion para transições suaves e interações ricas.
-- **Tema Dark/Futurista:** Identidade visual inspirada em consoles e sistemas "obsidian".
-- **Performance:** Otimizado com Vite para carregamento rápido.
-
-## 📄 Licença
-
-Este projeto é proprietário e pertence à **CODIM DEV**. Todos os direitos reservados.
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white)](https://supabase.com/)
+[![Tailwind](https://img.shields.io/badge/Tailwind-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
 ---
 
-Desenvolvido com 💻 por **CODIM DEV Team**.
+## 🎯 Overview
+
+**Obsidian Console** is a modern freelance management system combining a stunning public-facing portfolio with a powerful admin panel for end-to-end project lifecycle management.
+
+**Public Side:** Showcase your work with tactical/industrial aesthetics
+**Admin Side:** Manage leads, projects, finances, and certificates in one unified CRM
+
+---
+
+## ✨ Features
+
+### 🌐 Public Portfolio
+- **Landing Page** with animated hero section
+- **Work Gallery** with project filtering and modal details
+- **Skills Showcase** with interactive visualizations
+- **Contact Form** with omnichannel lead capture (WhatsApp + Email)
+- **Certificates Display** with credential verification
+
+### 🔐 Admin Panel
+- **Dashboard** with real-time metrics and KPIs
+- **COMM-LINK CRM** for lead management with conversion tracking
+- **Projects Manager** with full CRUD and status workflows
+- **Resource Monitor** for income/expense tracking and monthly goals
+- **Certificates Manager** with upload and metadata management
+- **Settings** for profile and pricing configuration
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 18+ and npm
+- Supabase account (free tier works)
+- Git
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/lino167/obsidian-codimdev.git
+cd obsidian-codimdev/obsidian-console-main
+
+# Install dependencies
+npm install
+
+# Configure environment variables
+cp .env.example .env
+# Edit .env with your Supabase credentials
+
+# Start development server
+npm run dev
+```
+
+**Access:**
+- Public site: `http://localhost:5173`
+- Admin panel: `http://localhost:5173/admin`
+
+---
+
+## 🗄️ Database Setup
+
+The project uses Supabase for backend. Follow these steps:
+
+1. **Create Supabase Project** at [supabase.com](https://supabase.com)
+2. **Apply Migrations:**
+   ```bash
+   # Install Supabase CLI
+   npm i supabase -g
+
+   # Link project
+   supabase link --project-ref YOUR_PROJECT_ID
+
+   # Apply migrations
+   supabase db push
+   ```
+
+3. **Configure Storage:**
+   - Create `projects` bucket for project images
+   - Create `certificates` bucket for credential files
+   - Set public read policies
+
+See [docs/SUPABASE_SETUP.md](docs/SUPABASE_SETUP.md) for detailed instructions.
+
+---
+
+## 📁 Project Structure
+
+```
+obsidian-console-main/
+├── src/
+│   ├── components/          # Reusable UI components
+│   │   ├── admin/          # Admin-specific components
+│   │   └── ui/             # Base UI library (Shadcn)
+│   ├── pages/              # Route pages
+│   │   ├── admin/          # Admin panel pages
+│   │   └── [public pages]  # Public portfolio pages
+│   ├── hooks/              # Custom React hooks
+│   ├── lib/                # Utilities and configurations
+│   ├── types/              # TypeScript type definitions
+│   └── App.tsx             # Main routing configuration
+├── supabase/
+│   └── migrations/         # Database schema migrations
+├── public/                 # Static assets
+└── docs/                   # Documentation
+```
+
+---
+
+## 🎨 Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| **Frontend** | React + TypeScript + Vite |
+| **Styling** | Tailwind CSS + Shadcn UI |
+| **Backend** | Supabase (PostgreSQL + Auth + Storage) |
+| **Animations** | Framer Motion + Custom CSS |
+| **State** | React Hooks (useState, useEffect) |
+| **Routing** | React Router DOM v6 |
+| **Forms** | React Hook Form + Zod |
+| **Icons** | Lucide React |
+| **Toasts** | Sonner |
+
+---
+
+## 🔧 Configuration
+
+### Environment Variables
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `VITE_SUPABASE_URL` | Your Supabase project URL | ✅ Yes |
+| `VITE_SUPABASE_ANON_KEY` | Public anon key from Supabase | ✅ Yes |
+
+### Admin Authentication
+
+Set up admin user via Supabase Dashboard:
+1. Go to **Authentication** → **Users**
+2. Create new user with your email
+3. Login at `/admin` with credentials
+
+---
+
+## 📚 Documentation
+
+- [**API Reference**](docs/API.md) - Component props and database schema
+- [**Architecture**](docs/ARCHITECTURE.md) - System design and data flows
+- [**COMM-LINK Guide**](docs/COMMLINK_GUIDE.md) - CRM module walkthrough
+- [**Changelog**](CHANGELOG.md) - Version history
+
+---
+
+## 🎭 Design Philosophy
+
+**Theme:** Tactical/Industrial Dark Mode
+- Color Palette: `#050505` (background), `#BA0C10` (crimson accent), cyan/green for status
+- Typography: Monospace for data, Display for headers
+- Visual Language: Terminal aesthetics, scanlines, grid overlays
+- Interaction: Smooth micro-animations, hover effects
+
+**User Experience:**
+- **Scannable:** Clear hierarchy with visual indicators
+- **Responsive:** Mobile-first design
+- **Fast:** Optimistic UI updates, minimal loading states
+- **Accessible:** Semantic HTML, keyboard navigation
+
+---
+
+## 🛠️ Development
+
+### Available Scripts
+
+```bash
+npm run dev          # Start dev server (Vite)
+npm run build        # Production build
+npm run preview      # Preview production build
+npm run lint         # ESLint check
+```
+
+### Key Workflows
+
+1. **Add New Feature:**
+   - Create component in `src/components/`
+   - Add types to `src/types/index.ts`
+   - Update routing in `App.tsx` if needed
+   - Test in dev mode
+
+2. **Database Changes:**
+   - Create migration in `supabase/migrations/`
+   - Apply with `supabase db push`
+   - Update TypeScript types
+
+3. **Deploy:**
+   - Build: `npm run build`
+   - Upload `dist/` to hosting (Vercel, Netlify, etc.)
+   - Configure environment variables in hosting platform
+
+---
+
+## 🐛 Troubleshooting
+
+**Issue:** "Cannot connect to Supabase"
+- ✅ Check `.env` file has correct `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`
+- ✅ Restart dev server after changing `.env`
+
+**Issue:** "No data showing in admin"
+- ✅ Verify Row Level Security (RLS) policies are set correctly
+- ✅ Check if you're logged in with authenticated user
+
+**Issue:** "Images not uploading"
+- ✅ Verify storage buckets exist (`projects`, `certificates`)
+- ✅ Check bucket policies allow public read and authenticated write
+
+---
+
+## 🤝 Contributing
+
+This is a personal portfolio project, but feedback is welcome!
+
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'feat: add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open Pull Request
+
+### Commit Convention
+
+Follow [Conventional Commits](https://www.conventionalcommits.org/):
+- `feat:` New feature
+- `fix:` Bug fix
+- `docs:` Documentation
+- `style:` Formatting
+- `refactor:` Code restructure
+- `test:` Tests
+- `chore:` Maintenance
+
+---
+
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- [Shadcn UI](https://ui.shadcn.com/) for component library
+- [Supabase](https://supabase.com/) for backend infrastructure
+- [Lucide Icons](https://lucide.dev/) for iconography
+- [Aceternity UI](https://ui.aceternity.com/) for animated components
+
+---
+
+## 📧 Contact
+
+**Zacarias Lino**
+Email: zaca793@gmail.com
+LinkedIn: [/in/zacariaslino](https://linkedin.com/in/zacariaslino)
+GitHub: [@codim-dev](https://github.com/codim-dev)
+
+---
+
+<div align="center">
+  <strong>Built with ⚡ by a tactical freelance developer</strong>
+</div>
