@@ -28,3 +28,6 @@ dist-ssr
 # Environment variables
 .env
 .env.production
+
+# Agent configuration (local only)
+.agent/
