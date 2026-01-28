@@ -40,9 +40,11 @@ export interface Lead {
 export interface Finance {
   id: number;
   created_at: string;
-  title: string | null;
+  title: string;
   amount: number;
   type: 'income' | 'expense';
   category: string | null;
-  status: string | null;
+  status: 'paid' | 'pending' | 'scheduled';
+  due_date: string | null;
+  project_id: number | null;
 }
