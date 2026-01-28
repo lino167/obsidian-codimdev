@@ -9,6 +9,7 @@ import {
 import { toast } from 'sonner';
 import { formatDistanceToNow } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { ManualLeadDialog } from '@/components/admin/ManualLeadDialog';
 
 interface Lead {
   id: number;
@@ -178,6 +179,9 @@ const CommLink = () => {
 
           {/* Search & Filter */}
           <div className="p-4 border-b border-white/10 space-y-3">
+            {/* Manual Lead Button */}
+            <ManualLeadDialog onLeadAdded={fetchLeads} />
+
             {/* Search */}
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40" />

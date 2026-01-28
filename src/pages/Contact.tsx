@@ -1,15 +1,75 @@
-import React from 'react'
+import { useState } from 'react'
 import { BackgroundBeamsWithCollision } from '@/components/ui/background-beams-with-collision'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
-import { Mail, Linkedin, Github, Smartphone } from 'lucide-react'
+import { Mail, Linkedin, Github, Smartphone, Send, MessageCircle, Loader2 } from 'lucide-react'
 import Footer from '@/components/Footer'
 import { useLanguage } from '@/hooks/use-language'
+import { supabase } from '@/lib/supabase'
+import { toast } from 'sonner'
 
 export default function Contact() {
   const { t } = useLanguage()
+  const [loading, setLoading] = useState(false)
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: ''
+  })
+
+  // WhatsApp Integration - Opens chat with pre-formatted message
+  const handleWhatsApp = () => {
+    if (!formData.name) {
+      toast.error('Por favor, digite seu nome primeiro.')
+      return
+    }
+
+    const myNumber = '5547996496281' // Your WhatsApp number
+
+    const text = `Olá Zacarias! Meu nome é *${formData.name}*` +
+                 (formData.company ? ` da empresa *${formData.company}*` : '') +
+                 `.\n\nGostaria de falar sobre um projeto:\n"${formData.message || 'Tenho uma ideia de sistema...'}"`;
+
+    const url = `https://wa.me/${myNumber}?text=${encodeURIComponent(text)}`
+    window.open(url, '_blank')
+    toast.success('🚀 Abrindo WhatsApp...')
+  }
+
+  // Traditional Form Submission - Saves to Supabase
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+
+    if (!formData.name || !formData.email) {
+      toast.error('Preencha nome e email')
+      return
+    }
+
+    setLoading(true)
+
+    try {
+      const { error } = await supabase.from('leads').insert({
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        message: formData.message,
+        status: 'new',
+        ip_address: null // Could be captured via API
+      })
+
+      if (error) throw error
+
+      toast.success('✅ Mensagem recebida! Entrarei em contato em breve.')
+      setFormData({ name: '', email: '', company: '', message: '' })
+    } catch (error) {
+      console.error('Error submitting lead:', error)
+      toast.error('Erro ao enviar. Tente pelo WhatsApp.')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <div className="min-h-screen bg-black relative font-mono">
@@ -86,35 +146,56 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* RIGHT COLUMN: TERMINAL INPUT */}
+            {/* RIGHT COLUMN: OMNICHANNEL FORM */}
             <div
               className="rounded-xl border border-neutral-800 bg-neutral-950/80 backdrop-blur-md p-6 md:p-8 shadow-2xl animate-slide-in-left"
               style={{ animationDelay: '0.2s' }}
             >
               <div className="mb-8 flex items-center justify-between border-b border-neutral-800 pb-4">
                 <span className="text-xs text-crimson font-bold tracking-widest">
-                  {t.contact.form.header_badge}
+                  INICIAR PROTOCOLO / OMNICHANNEL
                 </span>
                 <div className="flex gap-2">
-                  <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                   <div className="w-2 h-2 rounded-full bg-neutral-800" />
                   <div className="w-2 h-2 rounded-full bg-neutral-800" />
                 </div>
               </div>
 
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-                <div className="space-y-2">
-                  <Label
-                    htmlFor="name"
-                    className="text-xs uppercase tracking-widest text-neutral-400"
-                  >
-                    {t.contact.form.label_name}
-                  </Label>
-                  <Input
-                    id="name"
-                    placeholder={t.contact.form.placeholder_name}
-                    className="bg-neutral-950 border-neutral-800 focus:border-crimson text-white placeholder:text-neutral-700 h-12 font-mono rounded-none border-b-2 focus:ring-0"
-                  />
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="name"
+                      className="text-xs uppercase tracking-widest text-neutral-400"
+                    >
+                      OPERADOR (NOME) *
+                    </Label>
+                    <Input
+                      id="name"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      placeholder="Seu nome"
+                      className="bg-neutral-950 border-neutral-800 focus:border-crimson text-white placeholder:text-neutral-700 h-12 font-mono rounded-none border-b-2 focus:ring-0"
+                      required
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="company"
+                      className="text-xs uppercase tracking-widest text-neutral-400"
+                    >
+                      ORGANIZAÇÃO
+                    </Label>
+                    <Input
+                      id="company"
+                      value={formData.company}
+                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                      placeholder="Nome da empresa"
+                      className="bg-neutral-950 border-neutral-800 focus:border-crimson text-white placeholder:text-neutral-700 h-12 font-mono rounded-none border-b-2 focus:ring-0"
+                    />
+                  </div>
                 </div>
 
                 <div className="space-y-2">
@@ -122,13 +203,16 @@ export default function Contact() {
                     htmlFor="email"
                     className="text-xs uppercase tracking-widest text-neutral-400"
                   >
-                    {t.contact.form.label_email}
+                    CANAL DE RETORNO (EMAIL) *
                   </Label>
                   <Input
                     id="email"
                     type="email"
-                    placeholder={t.contact.form.placeholder_email}
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    placeholder="seu@email.com"
                     className="bg-neutral-950 border-neutral-800 focus:border-crimson text-white placeholder:text-neutral-700 h-12 font-mono rounded-none border-b-2 focus:ring-0"
+                    required
                   />
                 </div>
 
@@ -137,21 +221,47 @@ export default function Contact() {
                     htmlFor="message"
                     className="text-xs uppercase tracking-widest text-neutral-400"
                   >
-                    {t.contact.form.label_message}
+                    DADOS DA MISSÃO
                   </Label>
                   <Textarea
                     id="message"
-                    placeholder={t.contact.form.placeholder_message}
-                    className="bg-neutral-950 border-neutral-800 focus:border-crimson text-white placeholder:text-neutral-700 min-h-[150px] font-mono rounded-none border-b-2 focus:ring-0 resize-none"
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    placeholder="Descreva seu projeto ou ideia..."
+                    className="bg-neutral-950 border-neutral-800 focus:border-crimson text-white placeholder:text-neutral-700 min-h-[120px] font-mono rounded-none border-b-2 focus:ring-0 resize-none"
                   />
                 </div>
 
-                <Button
-                  type="submit"
-                  className="w-full h-14 bg-gradient-to-r from-red-900 to-crimson hover:from-crimson hover:to-red-600 text-white font-bold tracking-widest border border-crimson/50 uppercase transition-all duration-300 hover:shadow-[0_0_20px_rgba(186,12,16,0.5)] rounded-sm"
-                >
-                  {t.contact.form.button}
-                </Button>
+                {/* OMNICHANNEL BUTTONS */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+                  <Button
+                    type="button"
+                    onClick={handleWhatsApp}
+                    className="w-full h-14 bg-[#25D366] hover:bg-[#128C7E] text-black font-bold tracking-widest border border-[#25D366]/50 uppercase transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,211,102,0.5)] rounded-sm"
+                  >
+                    <MessageCircle className="w-5 h-5 mr-2" />
+                    WHATSAPP
+                  </Button>
+
+                  <Button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full h-14 bg-gradient-to-r from-red-900 to-crimson hover:from-crimson hover:to-red-600 text-white font-bold tracking-widest border border-crimson/50 uppercase transition-all duration-300 hover:shadow-[0_0_20px_rgba(186,12,16,0.5)] rounded-sm"
+                  >
+                    {loading ? (
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5 mr-2" />
+                        ENVIAR DADOS
+                      </>
+                    )}
+                  </Button>
+                </div>
+
+                <p className="text-xs text-center text-neutral-500 font-mono">
+                  Escolha o canal de comunicação mais seguro para sua missão
+                </p>
               </form>
             </div>
           </div>
