@@ -50,16 +50,34 @@ export default function Contact() {
     setLoading(true)
 
     try {
+      // Capture IP address for rate limiting
+      let ipAddress = null;
+      try {
+        const ipResponse = await fetch('https://api.ipify.org?format=json');
+        const ipData = await ipResponse.json();
+        ipAddress = ipData.ip;
+      } catch (ipError) {
+        console.log('Could not capture IP, proceeding without it:', ipError);
+        // Continue without IP - manual admin entries will still work
+      }
+
       const { error } = await supabase.from('leads').insert({
         name: formData.name,
         email: formData.email,
         company: formData.company,
         message: formData.message,
         status: 'new',
-        ip_address: null // Could be captured via API
+        ip_address: ipAddress
       })
 
-      if (error) throw error
+      if (error) {
+        // Check for rate limit error
+        if (error.message?.includes('Rate limit exceeded')) {
+          toast.error('⚠️ Muitas tentativas. Por favor, aguarde 1 hora e tente novamente.');
+          return;
+        }
+        throw error;
+      }
 
       toast.success('✅ Mensagem recebida! Entrarei em contato em breve.')
       setFormData({ name: '', email: '', company: '', message: '' })
