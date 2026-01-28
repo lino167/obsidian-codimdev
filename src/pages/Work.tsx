@@ -103,6 +103,7 @@ export default function Work() {
       const { data, error } = await supabase
         .from('projects')
         .select('*')
+        .eq('is_public', true)
         .order('created_at', { ascending: false })
 
       if (error) throw error
@@ -182,9 +183,9 @@ export default function Work() {
               >
                 {/* Project Image */}
                 <div className="h-48 bg-neutral-800 relative overflow-hidden">
-                  {project.image_url ? (
+                  {project.cover_image ? (
                     <img
-                      src={project.image_url}
+                      src={project.cover_image}
                       alt={project.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
@@ -193,7 +194,7 @@ export default function Work() {
                       <Code className="w-16 h-16" />
                     </div>
                   )}
-                  {project.featured && (
+                  {project.is_featured && (
                     <div className="absolute top-2 right-2 bg-red-600 text-white text-[10px] font-bold px-2 py-1 font-mono">
                       DESTAQUE
                     </div>
@@ -207,7 +208,7 @@ export default function Work() {
                   </h3>
 
                   <p className="text-white/50 text-sm mb-4 line-clamp-2">
-                    {project.description}
+                    {project.short_description || "Detalhes confidenciais."}
                   </p>
 
                   {/* Tech Stack */}
