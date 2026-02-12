@@ -21,6 +21,7 @@
 ## ✨ Features
 
 ### 🌐 Public Portfolio
+
 - **Landing Page** with animated hero section
 - **Work Gallery** with project filtering and modal details
 - **Skills Showcase** with interactive visualizations
@@ -28,6 +29,7 @@
 - **Certificates Display** with credential verification
 
 ### 🔐 Admin Panel
+
 - **Dashboard** with real-time metrics and KPIs
 - **COMM-LINK CRM** for lead management with conversion tracking
 - **Projects Manager** with full CRUD and status workflows
@@ -40,6 +42,7 @@
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Node.js 18+ and npm
 - Supabase account (free tier works)
 - Git
@@ -63,8 +66,9 @@ npm run dev
 ```
 
 **Access:**
-- Public site: `http://localhost:5173`
-- Admin panel: `http://localhost:5173/admin`
+
+- Public site: `http://localhost:8080`
+- Admin panel: `http://localhost:8080/admin`
 
 ---
 
@@ -74,6 +78,7 @@ The project uses Supabase for backend. Follow these steps:
 
 1. **Create Supabase Project** at [supabase.com](https://supabase.com)
 2. **Apply Migrations:**
+
    ```bash
    # Install Supabase CLI
    npm i supabase -g
@@ -89,6 +94,14 @@ The project uses Supabase for backend. Follow these steps:
    - Create `projects` bucket for project images
    - Create `certificates` bucket for credential files
    - Set public read policies
+
+### Local Certificates (optional)
+
+If you prefer serving some certificate files statically during development or without storage setup:
+
+- Place files under `public/certificates/`
+- Reference them with URLs like: `/certificates/your-file.pdf`
+- In the Certificates Manager, set the “File URL” field to that path
 
 See [docs/SUPABASE_SETUP.md](docs/SUPABASE_SETUP.md) for detailed instructions.
 
@@ -119,17 +132,17 @@ obsidian-console-main/
 
 ## 🎨 Tech Stack
 
-| Layer | Technology |
-|-------|-----------|
-| **Frontend** | React + TypeScript + Vite |
-| **Styling** | Tailwind CSS + Shadcn UI |
-| **Backend** | Supabase (PostgreSQL + Auth + Storage) |
-| **Animations** | Framer Motion + Custom CSS |
-| **State** | React Hooks (useState, useEffect) |
-| **Routing** | React Router DOM v6 |
-| **Forms** | React Hook Form + Zod |
-| **Icons** | Lucide React |
-| **Toasts** | Sonner |
+| Layer          | Technology                             |
+| -------------- | -------------------------------------- |
+| **Frontend**   | React + TypeScript + Vite              |
+| **Styling**    | Tailwind CSS + Shadcn UI               |
+| **Backend**    | Supabase (PostgreSQL + Auth + Storage) |
+| **Animations** | Framer Motion + Custom CSS             |
+| **State**      | React Hooks (useState, useEffect)      |
+| **Routing**    | React Router DOM v6                    |
+| **Forms**      | React Hook Form + Zod                  |
+| **Icons**      | Lucide React                           |
+| **Toasts**     | Sonner                                 |
 
 ---
 
@@ -137,14 +150,15 @@ obsidian-console-main/
 
 ### Environment Variables
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `VITE_SUPABASE_URL` | Your Supabase project URL | ✅ Yes |
-| `VITE_SUPABASE_ANON_KEY` | Public anon key from Supabase | ✅ Yes |
+| Variable                 | Description                   | Required |
+| ------------------------ | ----------------------------- | -------- |
+| `VITE_SUPABASE_URL`      | Your Supabase project URL     | ✅ Yes   |
+| `VITE_SUPABASE_ANON_KEY` | Public anon key from Supabase | ✅ Yes   |
 
 ### Admin Authentication
 
 Set up admin user via Supabase Dashboard:
+
 1. Go to **Authentication** → **Users**
 2. Create new user with your email
 3. Login at `/admin` with credentials
@@ -163,12 +177,14 @@ Set up admin user via Supabase Dashboard:
 ## 🎭 Design Philosophy
 
 **Theme:** Tactical/Industrial Dark Mode
+
 - Color Palette: `#050505` (background), `#BA0C10` (crimson accent), cyan/green for status
 - Typography: Monospace for data, Display for headers
 - Visual Language: Terminal aesthetics, scanlines, grid overlays
 - Interaction: Smooth micro-animations, hover effects
 
 **User Experience:**
+
 - **Scannable:** Clear hierarchy with visual indicators
 - **Responsive:** Mobile-first design
 - **Fast:** Optimistic UI updates, minimal loading states
@@ -210,14 +226,17 @@ npm run lint         # ESLint check
 ## 🐛 Troubleshooting
 
 **Issue:** "Cannot connect to Supabase"
+
 - ✅ Check `.env` file has correct `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`
 - ✅ Restart dev server after changing `.env`
 
 **Issue:** "No data showing in admin"
+
 - ✅ Verify Row Level Security (RLS) policies are set correctly
 - ✅ Check if you're logged in with authenticated user
 
 **Issue:** "Images not uploading"
+
 - ✅ Verify storage buckets exist (`projects`, `certificates`)
 - ✅ Check bucket policies allow public read and authenticated write
 
@@ -236,6 +255,7 @@ This is a personal portfolio project, but feedback is welcome!
 ### Commit Convention
 
 Follow [Conventional Commits](https://www.conventionalcommits.org/):
+
 - `feat:` New feature
 - `fix:` Bug fix
 - `docs:` Documentation

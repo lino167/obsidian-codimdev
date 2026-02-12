@@ -48,3 +48,16 @@ export interface Finance {
   due_date: string | null;
   project_id: number | null;
 }
+
+export interface Certificate {
+  id: number;
+  created_at: string;
+  title: string;
+  issuer: string;
+  issue_date: string | null;
+  credential_url: string | null;
+  image_url: string | null;
+  skills: string[] | null;
+  is_featured: boolean;
+  description: string | null;
+}

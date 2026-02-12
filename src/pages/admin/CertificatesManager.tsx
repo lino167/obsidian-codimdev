@@ -1,439 +1,427 @@
-import { useState, useEffect } from 'react'
-import { supabase } from '@/lib/supabase'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
+import { useState, useEffect } from 'react';
+import { supabase } from '@/lib/supabase';
+import { Certificate } from '@/types';
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog'
-import {
-  Plus,
-  Award,
-  Calendar,
-  ExternalLink,
-  Trash2,
-  Edit,
-  Eye,
-  Upload,
-  Download,
-} from 'lucide-react'
-import { toast } from 'sonner'
-
-interface Certificate {
-  id: number
-  title: string
-  issuer: string
-  date_issued: string | null
-  file_url: string | null
-}
+  Award, Plus, Search, ExternalLink, Calendar,
+  Trash2, Edit2, Loader2, Upload, X
+} from 'lucide-react';
+import { toast } from 'sonner';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { format } from 'date-fns';
 
 export default function CertificatesManager() {
-  const [certificates, setCertificates] = useState<Certificate[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [isOpen, setIsOpen] = useState(false)
-  const [isEditOpen, setIsEditOpen] = useState(false)
-  const [selectedCertificate, setSelectedCertificate] =
-    useState<Certificate | null>(null)
-  const [uploading, setUploading] = useState(false)
-  const [formData, setFormData] = useState({
+  const [certificates, setCertificates] = useState<Certificate[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [saving, setSaving] = useState(false);
+
+  // Form State
+  const initialFormState = {
     title: '',
     issuer: '',
-    date_issued: '',
-    file_url: '',
-  })
-
-  const fetchCertificates = async () => {
-    setIsLoading(true)
-    const { data, error } = await supabase
-      .from('certificates')
-      .select('*')
-      .order('date_issued', { ascending: false })
-
-    if (error) {
-      toast.error('Failed to fetch certificates')
-    } else {
-      setCertificates(data || [])
-    }
-    setIsLoading(false)
-  }
+    issue_date: '',
+    credential_url: '',
+    image_url: '',
+    description: '',
+    skills: '', // Comma separated string for input
+    is_featured: true
+  };
+  const [formData, setFormData] = useState(initialFormState);
+  const [editingId, setEditingId] = useState<number | null>(null);
 
   useEffect(() => {
-    fetchCertificates()
-  }, [])
+    fetchCertificates();
+  }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+  async function fetchCertificates() {
+    try {
+      const { data, error } = await supabase
+        .from('certificates')
+        .select('*')
+        .order('issue_date', { ascending: false });
 
-    const { error } = await supabase.from('certificates').insert({
-      title: formData.title,
-      issuer: formData.issuer,
-      date_issued: formData.date_issued || null,
-      file_url: formData.file_url || null,
-    })
-
-    if (error) {
-      toast.error(error.message)
-    } else {
-      toast.success('Certificate created successfully')
-      setIsOpen(false)
-      setFormData({
-        title: '',
-        issuer: '',
-        date_issued: '',
-        file_url: '',
-      })
-      fetchCertificates()
+      if (error) throw error;
+      setCertificates(data || []);
+    } catch (error) {
+      console.error('Error fetching certificates:', error);
+      toast.error('Erro ao carregar certificados');
+    } finally {
+      setLoading(false);
     }
   }
 
-  const handleEdit = (certificate: Certificate) => {
-    setSelectedCertificate(certificate)
-    setFormData({
-      title: certificate.title,
-      issuer: certificate.issuer,
-      date_issued: certificate.date_issued || '',
-      file_url: certificate.file_url || '',
-    })
-    setIsEditOpen(true)
+  async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    if (!e.target.files || e.target.files.length === 0) return;
+
+    const file = e.target.files[0];
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${Math.random()}.${fileExt}`;
+    const filePath = `certificates/${fileName}`;
+
+    setUploading(true);
+
+    try {
+      const { error: uploadError } = await supabase.storage
+        .from('images') // Using existing bucket
+        .upload(filePath, file);
+
+      if (uploadError) throw uploadError;
+
+      const { data: { publicUrl } } = supabase.storage
+        .from('images')
+        .getPublicUrl(filePath);
+
+      setFormData({ ...formData, image_url: publicUrl });
+      toast.success('Imagem enviada com sucesso!');
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      toast.error('Erro ao enviar imagem');
+    } finally {
+      setUploading(false);
+    }
   }
 
-  const handleUpdate = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!selectedCertificate) return
+  async function handleSubmit() {
+    if (!formData.title || !formData.issuer) {
+      toast.error('Preencha título e emissor');
+      return;
+    }
 
-    const { error } = await supabase
-      .from('certificates')
-      .update({
+    setSaving(true);
+
+    try {
+      const skillsArray = formData.skills.split(',').map(s => s.trim()).filter(Boolean);
+
+      const payload = {
         title: formData.title,
         issuer: formData.issuer,
-        date_issued: formData.date_issued || null,
-        file_url: formData.file_url || null,
-      })
-      .eq('id', selectedCertificate.id)
+        issue_date: formData.issue_date || null,
+        credential_url: formData.credential_url || null,
+        image_url: formData.image_url || null,
+        description: formData.description || null,
+        skills: skillsArray,
+        is_featured: formData.is_featured
+      };
 
-    if (error) {
-      toast.error('Failed to update certificate')
-    } else {
-      toast.success('Certificate updated successfully')
-      setIsEditOpen(false)
-      setSelectedCertificate(null)
-      fetchCertificates()
-    }
-  }
+      let error;
 
-  const handleDelete = async (id: number) => {
-    if (!confirm('Are you sure you want to delete this certificate?')) return
-
-    const { error } = await supabase.from('certificates').delete().eq('id', id)
-
-    if (error) {
-      toast.error('Failed to delete certificate')
-    } else {
-      toast.success('Certificate deleted successfully')
-      fetchCertificates()
-    }
-  }
-
-  const handleFileUpload = async (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    const file = event.target.files?.[0]
-    if (!file) return
-
-    setUploading(true)
-    try {
-      const fileExt = file.name.split('.').pop()
-      const fileName = `${Math.random()}.${fileExt}`
-      const filePath = `certificates/${fileName}`
-
-      const { error: uploadError } = await supabase.storage
-        .from('certificates')
-        .upload(filePath, file)
-
-      if (uploadError) {
-        toast.error('Failed to upload file')
-        return
+      if (editingId) {
+        const { error: updateError } = await supabase
+          .from('certificates')
+          .update(payload)
+          .eq('id', editingId);
+        error = updateError;
+      } else {
+        const { error: insertError } = await supabase
+          .from('certificates')
+          .insert(payload);
+        error = insertError;
       }
 
-      const {
-        data: { publicUrl },
-      } = supabase.storage.from('certificates').getPublicUrl(filePath)
+      if (error) throw error;
 
-      setFormData({ ...formData, file_url: publicUrl })
-      toast.success('File uploaded successfully')
+      toast.success(editingId ? 'Certificado atualizado!' : 'Certificado criado!');
+      setDialogOpen(false);
+      resetForm();
+      fetchCertificates();
     } catch (error) {
-      toast.error('Error uploading file')
+      console.error('Error saving certificate:', error);
+      toast.error('Erro ao salvar certificado');
     } finally {
-      setUploading(false)
+      setSaving(false);
     }
   }
 
-  const formatDate = (dateString: string | null) => {
-    if (!dateString) return 'No date'
-    return new Date(dateString).toLocaleDateString()
+  async function handleDelete(id: number) {
+    if (!confirm('Tem certeza que deseja excluir este certificado?')) return;
+
+    try {
+      const { error } = await supabase
+        .from('certificates')
+        .delete()
+        .eq('id', id);
+
+      if (error) throw error;
+
+      toast.success('Certificado excluído');
+      fetchCertificates();
+    } catch (error) {
+      console.error('Error deleting certificate:', error);
+      toast.error('Erro ao excluir');
+    }
+  }
+
+  function handleEdit(cert: Certificate) {
+    setEditingId(cert.id);
+    setFormData({
+      title: cert.title,
+      issuer: cert.issuer,
+      issue_date: cert.issue_date || '',
+      credential_url: cert.credential_url || '',
+      image_url: cert.image_url || '',
+      description: cert.description || '',
+      skills: cert.skills ? cert.skills.join(', ') : '',
+      is_featured: cert.is_featured
+    });
+    setDialogOpen(true);
+  }
+
+  function resetForm() {
+    setFormData(initialFormState);
+    setEditingId(null);
+  }
+
+  const filteredCertificates = certificates.filter(cert =>
+    cert.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    cert.issuer.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  if (loading) {
+    return (
+      <div className="h-screen flex items-center justify-center bg-[#050505]">
+        <Loader2 className="w-8 h-8 animate-spin text-[#BA0C10]" />
+      </div>
+    );
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold tracking-tight">Certificates</h2>
-        <Dialog open={isOpen} onOpenChange={setIsOpen}>
+    <div className="min-h-screen bg-[#050505] text-white p-8 space-y-8">
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <h1 className="text-3xl font-mono font-bold tracking-tight text-white flex items-center gap-3">
+            <Award className="w-8 h-8 text-[#BA0C10]" />
+            ACADEMY / CERTIFICATES
+          </h1>
+          <p className="text-white/50 font-mono text-sm mt-1">
+            Manage credentials, courses and validations
+          </p>
+        </div>
+
+        <Dialog open={dialogOpen} onOpenChange={(open) => {
+          if (!open) resetForm();
+          setDialogOpen(open);
+        }}>
           <DialogTrigger asChild>
-            <Button className="bg-blue-600 hover:bg-blue-700">
-              <Plus className="w-4 h-4 mr-2" />
-              New Certificate
+            <Button className="bg-[#BA0C10] hover:bg-[#a60b0e] text-white font-mono gap-2">
+              <Plus className="w-4 h-4" /> NEW CREDENTIAL
             </Button>
           </DialogTrigger>
-          <DialogContent className="bg-neutral-900 border-neutral-800 text-neutral-100 sm:max-w-[500px]">
+          <DialogContent className="bg-[#0A0A0A] border-white/10 text-white max-w-2xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
-              <DialogTitle>Add New Certificate</DialogTitle>
+              <DialogTitle className="font-mono text-[#BA0C10] uppercase tracking-wider text-xl">
+                {editingId ? 'Edit Credential' : 'New Credential'}
+              </DialogTitle>
             </DialogHeader>
-            <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+
+            <div className="space-y-6 py-4">
+              {/* Image Upload */}
               <div className="space-y-2">
-                <label className="text-sm font-medium">Title</label>
-                <Input
-                  required
-                  value={formData.title}
-                  onChange={(e) =>
-                    setFormData({ ...formData, title: e.target.value })
-                  }
-                  className="bg-neutral-950 border-neutral-800"
-                />
+                <Label className="text-white/70 font-mono text-xs uppercase">Certificate Image / Badge</Label>
+                {formData.image_url ? (
+                  <div className="relative group w-full h-48 bg-black/50 border border-white/10 rounded-lg overflow-hidden flex items-center justify-center">
+                    <img src={formData.image_url} alt="Preview" className="h-full object-contain" />
+                    <button
+                      onClick={() => setFormData({ ...formData, image_url: '' })}
+                      className="absolute top-2 right-2 p-2 bg-black/80 text-white hover:text-red-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
+                ) : (
+                  <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-white/20 rounded-lg hover:border-[#BA0C10]/50 hover:bg-white/5 cursor-pointer transition-all">
+                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                      {uploading ? (
+                        <Loader2 className="w-8 h-8 text-[#BA0C10] animate-spin mb-2" />
+                      ) : (
+                        <Upload className="w-8 h-8 text-white/30 mb-2" />
+                      )}
+                      <p className="text-xs text-white/50 font-mono uppercase">Click to upload image</p>
+                    </div>
+                    <input type="file" className="hidden" accept="image/*" onChange={handleImageUpload} disabled={uploading} />
+                  </label>
+                )}
               </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Issuer</label>
-                <Input
-                  required
-                  value={formData.issuer}
-                  onChange={(e) =>
-                    setFormData({ ...formData, issuer: e.target.value })
-                  }
-                  className="bg-neutral-950 border-neutral-800"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Date Issued</label>
-                <Input
-                  type="date"
-                  value={formData.date_issued}
-                  onChange={(e) =>
-                    setFormData({ ...formData, date_issued: e.target.value })
-                  }
-                  className="bg-neutral-950 border-neutral-800"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium">File URL</label>
-                <div className="flex gap-2">
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label className="text-white/70 font-mono text-xs uppercase">Title *</Label>
                   <Input
-                    value={formData.file_url}
-                    onChange={(e) =>
-                      setFormData({ ...formData, file_url: e.target.value })
-                    }
-                    className="bg-neutral-950 border-neutral-800"
-                    placeholder="https://... or upload a file"
+                    value={formData.title}
+                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                    placeholder="e.g. Fullstack React Master"
+                    className="bg-black border-white/20 font-mono"
                   />
+                </div>
+                <div className="space-y-2">
+                  <Label className="text-white/70 font-mono text-xs uppercase">Issuer *</Label>
                   <Input
-                    type="file"
-                    onChange={handleFileUpload}
-                    className="hidden"
-                    id="file-upload"
-                    accept=".pdf,.jpg,.jpeg,.png,.gif"
+                    value={formData.issuer}
+                    onChange={(e) => setFormData({ ...formData, issuer: e.target.value })}
+                    placeholder="e.g. Udemy, Coursera"
+                    className="bg-black border-white/20 font-mono"
                   />
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={() =>
-                      document.getElementById('file-upload')?.click()
-                    }
-                    disabled={uploading}
-                    className="border-neutral-800"
-                  >
-                    {uploading ? (
-                      'Uploading...'
-                    ) : (
-                      <Upload className="w-4 h-4" />
-                    )}
-                  </Button>
                 </div>
               </div>
-              <div className="flex justify-end pt-4">
-                <Button type="submit" className="bg-blue-600 hover:bg-blue-700">
-                  Create Certificate
-                </Button>
+
+              <div className="space-y-2">
+                <Label className="text-white/70 font-mono text-xs uppercase">Description</Label>
+                <Textarea
+                  value={formData.description}
+                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                  placeholder="Details about the certification..."
+                  className="bg-black border-white/20 font-mono h-24 resize-none"
+                />
               </div>
-            </form>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label className="text-white/70 font-mono text-xs uppercase">Issue Date</Label>
+                  <Input
+                    type="date"
+                    value={formData.issue_date}
+                    onChange={(e) => setFormData({ ...formData, issue_date: e.target.value })}
+                    className="bg-black border-white/20 font-mono"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label className="text-white/70 font-mono text-xs uppercase">Validation URL</Label>
+                  <Input
+                    type="url"
+                    value={formData.credential_url}
+                    onChange={(e) => setFormData({ ...formData, credential_url: e.target.value })}
+                    placeholder="https://..."
+                    className="bg-black border-white/20 font-mono"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label className="text-white/70 font-mono text-xs uppercase">Skills (Comma separated)</Label>
+                <Input
+                  value={formData.skills}
+                  onChange={(e) => setFormData({ ...formData, skills: e.target.value })}
+                  placeholder="React, TypeScript, Node.js"
+                  className="bg-black border-white/20 font-mono"
+                />
+              </div>
+
+              <div className="flex items-center space-x-2 bg-white/5 p-4 rounded border border-white/10">
+                <input
+                  type="checkbox"
+                  id="featured"
+                  checked={formData.is_featured}
+                  onChange={(e) => setFormData({ ...formData, is_featured: e.target.checked })}
+                  className="w-4 h-4 accent-[#BA0C10] cursor-pointer"
+                />
+                <Label htmlFor="featured" className="text-white font-mono cursor-pointer">Featured (Show on homepage/portfolio)</Label>
+              </div>
+
+              <Button onClick={handleSubmit} disabled={saving} className="w-full bg-[#BA0C10] hover:bg-[#a60b0e] font-mono font-bold">
+                {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : (editingId ? 'UPDATE CERTIFICATE' : 'CREATE CERTIFICATE')}
+              </Button>
+            </div>
           </DialogContent>
         </Dialog>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {certificates.map((certificate) => (
-          <div
-            key={certificate.id}
-            className="group relative rounded-xl border border-neutral-800 bg-neutral-900/50 p-6 transition-all hover:bg-neutral-900/80"
-          >
-            <div className="flex items-start justify-between mb-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-blue-500/10 rounded-lg border border-blue-500/20">
-                  <Award className="w-6 h-6 text-blue-500" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-neutral-100">
-                    {certificate.title}
-                  </h3>
-                  <p className="text-sm text-neutral-400">
-                    {certificate.issuer}
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="text-amber-400 hover:text-amber-300 hover:bg-amber-900/10"
-                  onClick={() => handleEdit(certificate)}
-                >
-                  <Edit className="w-4 h-4" />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="text-red-400 hover:text-red-300 hover:bg-red-900/10"
-                  onClick={() => handleDelete(certificate.id)}
-                >
-                  <Trash2 className="w-4 h-4" />
-                </Button>
-              </div>
-            </div>
+      {/* Filters */}
+      <div className="flex items-center gap-4 bg-white/5 p-4 border border-white/10 rounded-sm">
+        <Search className="w-4 h-4 text-white/50" />
+        <input
+          type="text"
+          placeholder="Search certificates..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="bg-transparent border-none focus:outline-none text-white font-mono text-sm w-full"
+        />
+      </div>
 
-            <div className="space-y-2">
-              <div className="flex items-center gap-2 text-sm text-neutral-400">
-                <Calendar className="w-4 h-4" />
-                <span>{formatDate(certificate.date_issued)}</span>
-              </div>
-
-              {certificate.file_url && (
-                <div className="pt-2">
-                  <a
-                    href={certificate.file_url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    View Certificate
-                  </a>
+      {/* Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredCertificates.map((cert) => (
+          <div key={cert.id} className="group bg-black/40 border border-white/10 hover:border-[#BA0C10]/50 rounded-sm overflow-hidden transition-all duration-300">
+            {/* Card Header / Image */}
+            <div className="h-40 bg-black/60 relative overflow-hidden flex items-center justify-center p-4">
+              {cert.image_url ? (
+                <img src={cert.image_url} alt={cert.title} className="max-h-full max-w-full object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
+              ) : (
+                <Award className="w-16 h-16 text-white/10" />
+              )}
+              {cert.is_featured && (
+                <div className="absolute top-2 right-2 bg-[#BA0C10] text-white text-[10px] font-mono font-bold px-2 py-0.5 rounded-sm">
+                  FEATURED
                 </div>
               )}
             </div>
-          </div>
-        ))}
-      </div>
 
-      {certificates.length === 0 && !isLoading && (
-        <div className="text-center py-12">
-          <Award className="w-12 h-12 text-neutral-600 mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-neutral-400 mb-2">
-            No certificates found
-          </h3>
-          <p className="text-neutral-500">
-            Add your first certificate to get started
-          </p>
-        </div>
-      )}
+            {/* Content */}
+            <div className="p-4 space-y-3">
+              <div>
+                <h3 className="text-lg font-bold text-white leading-tight group-hover:text-[#BA0C10] transition-colors">
+                  {cert.title}
+                </h3>
+                <p className="text-[#BA0C10] font-mono text-xs mt-1">{cert.issuer}</p>
+              </div>
 
-      {/* Edit Modal */}
-      <Dialog open={isEditOpen} onOpenChange={setIsEditOpen}>
-        <DialogContent className="bg-neutral-900 border-neutral-800 text-neutral-100 sm:max-w-[500px]">
-          <DialogHeader>
-            <DialogTitle>Edit Certificate</DialogTitle>
-          </DialogHeader>
-          <form onSubmit={handleUpdate} className="space-y-4 mt-4">
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Title</label>
-              <Input
-                required
-                value={formData.title}
-                onChange={(e) =>
-                  setFormData({ ...formData, title: e.target.value })
-                }
-                className="bg-neutral-950 border-neutral-800"
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Issuer</label>
-              <Input
-                required
-                value={formData.issuer}
-                onChange={(e) =>
-                  setFormData({ ...formData, issuer: e.target.value })
-                }
-                className="bg-neutral-950 border-neutral-800"
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Date Issued</label>
-              <Input
-                type="date"
-                value={formData.date_issued}
-                onChange={(e) =>
-                  setFormData({ ...formData, date_issued: e.target.value })
-                }
-                className="bg-neutral-950 border-neutral-800"
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium">File URL</label>
-              <div className="flex gap-2">
-                <Input
-                  value={formData.file_url}
-                  onChange={(e) =>
-                    setFormData({ ...formData, file_url: e.target.value })
-                  }
-                  className="bg-neutral-950 border-neutral-800"
-                  placeholder="https://... or upload a file"
-                />
-                <Input
-                  type="file"
-                  onChange={handleFileUpload}
-                  className="hidden"
-                  id="edit-file-upload"
-                  accept=".pdf,.jpg,.jpeg,.png,.gif"
-                />
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() =>
-                    document.getElementById('edit-file-upload')?.click()
-                  }
-                  disabled={uploading}
-                  className="border-neutral-800"
-                >
-                  {uploading ? 'Uploading...' : <Upload className="w-4 h-4" />}
-                </Button>
+              {cert.issue_date && (
+                <div className="flex items-center gap-2 text-white/40 text-xs font-mono">
+                  <Calendar className="w-3 h-3" />
+                  {format(new Date(cert.issue_date), 'MMMM yyyy')}
+                </div>
+              )}
+
+              {cert.description && (
+                <p className="text-white/60 text-sm line-clamp-2 min-h-[40px]">
+                  {cert.description}
+                </p>
+              )}
+
+              {cert.skills && cert.skills.length > 0 && (
+                <div className="flex flex-wrap gap-1">
+                  {cert.skills.slice(0, 3).map(skill => (
+                    <span key={skill} className="text-[10px] font-mono bg-white/5 border border-white/10 px-2 py-0.5 text-white/70">
+                      {skill}
+                    </span>
+                  ))}
+                  {cert.skills.length > 3 && (
+                    <span className="text-[10px] font-mono text-white/40 px-1">+{cert.skills.length - 3}</span>
+                  )}
+                </div>
+              )}
+
+              <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                <div className="flex gap-2">
+                  <button onClick={() => handleEdit(cert)} className="p-2 hover:bg-white/10 rounded-sm text-white/70 hover:text-white transition-colors">
+                    <Edit2 className="w-4 h-4" />
+                  </button>
+                  <button onClick={() => handleDelete(cert.id)} className="p-2 hover:bg-white/10 rounded-sm text-white/70 hover:text-red-500 transition-colors">
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                </div>
+                {cert.credential_url && (
+                  <a href={cert.credential_url} target="_blank" rel="noopener noreferrer" className="text-xs font-mono text-[#BA0C10] hover:text-white flex items-center gap-1 transition-colors">
+                    VERIFY <ExternalLink className="w-3 h-3" />
+                  </a>
+                )}
               </div>
             </div>
-            <div className="flex justify-end gap-3 pt-4">
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => setIsEditOpen(false)}
-                className="border-neutral-800"
-              >
-                Cancel
-              </Button>
-              <Button type="submit" className="bg-blue-600 hover:bg-blue-700">
-                Update Certificate
-              </Button>
-            </div>
-          </form>
-        </DialogContent>
-      </Dialog>
+          </div>
+        ))}
+
+        {filteredCertificates.length === 0 && (
+          <div className="col-span-full py-12 text-center border border-dashed border-white/10 rounded-sm">
+            <Award className="w-12 h-12 text-white/10 mx-auto mb-3" />
+            <p className="text-white/50 font-mono">No certificates found</p>
+          </div>
+        )}
+      </div>
     </div>
-  )
+  );
 }
