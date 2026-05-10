@@ -17,30 +17,30 @@ export const translations = {
             className: 'text-neutral-400 font-mono text-sm md:text-xl',
           },
           {
-            text: 'de',
+            text: 'Digital',
             className: 'text-neutral-400 font-mono text-sm md:text-xl',
           },
           {
-            text: 'Software',
+            text: 'Aplicada',
             className: 'text-neutral-400 font-mono text-sm md:text-xl',
           },
         ],
         [
           { text: '&', className: 'text-crimson font-mono text-sm md:text-xl' },
           {
-            text: 'Automação',
+            text: 'Sistemas',
             className: 'text-neutral-400 font-mono text-sm md:text-xl',
           },
           {
-            text: 'Industrial.',
+            text: 'Enxutos.',
             className: 'text-crimson font-mono text-sm md:text-xl',
           },
         ],
       ],
       description:
-        'Transformo complexidade em sistemas autônomos. Da identidade visual ao banco de dados, construo infraestruturas digitais que unem a lógica da engenharia com a estética do design industrial.',
-      cta_primary: 'ACESSAR MÓDULOS',
-      cta_secondary: 'VER STACK TÉCNICA',
+        'Especialista em resolver gargalos operacionais específicos através de automação, sistemas enxutos e engenharia digital aplicada.',
+      cta_primary: 'AGENDAR DIAGNÓSTICO',
+      cta_secondary: 'VER METODOLOGIA',
     },
     system_status: {
       online: 'SISTEMA: ONLINE',
@@ -157,7 +157,7 @@ export const translations = {
         title: 'CAPACIDADES',
         title_highlight: 'OPERACIONAIS',
         description:
-          'Arquitetura detalhada dos módulos de serviço. Da concepção visual à automação backend.',
+          'Arquitetura focada na eliminação de gargalos reais e eficiência operacional pura.',
       },
       blocks: {
         fullstack: {
@@ -166,16 +166,16 @@ export const translations = {
           p1: 'Minha abordagem ao desenvolvimento é herdada do chão de fábrica: sistemas não podem falhar. Utilizo Next.js para interfaces de alta performance e Supabase para gestão de dados em tempo real.',
           p2: 'O foco não é apenas "entregar um site", mas construir uma arquitetura escalável que suporte o crescimento do seu negócio.',
           list: [
-            'Painéis Administrativos (Dashboards)',
-            'SaaS (Software as a Service)',
-            'Integração de APIs Rest/GraphQL',
+            'Dashboards Operacionais & Painéis Administrativos',
+            'Controles de Produção Enxutos',
+            'Integração de Dados em Tempo Real (Supabase)',
           ],
         },
         automation: {
           badge: '[FLUXO: AUTOMATIZADO]',
           title: 'Orquestração de Processos com IA',
-          p1: 'Elimino o trabalho manual conectando sistemas isolados. Utilizo n8n e scripts Python para criar fluxos autônomos que integram CRM, WhatsApp e Bancos de Dados.',
-          p2: 'Imagine um "funcionário digital" que trabalha 24/7 sem erros, classificando leads, enviando propostas e atualizando planilhas.',
+          p1: 'Elimino gargalos operacionais conectando sistemas isolados. Utilizo n8n e scripts Python para criar fluxos autônomos que integram CRM, WhatsApp e Bancos de Dados.',
+          p2: 'O resultado é um ecossistema enxuto que trabalha 24/7 sem erros, garantindo velocidade e economia de recursos para a equipe.',
         },
         design: {
           badge: '[UI: PRECISÃO]',
@@ -218,16 +218,16 @@ export const translations = {
         subtitle: '// PROTÓTIPOS_E_SCRIPTS',
         items: [
           {
-            title: 'Script de Web Scraping',
-            description: 'Automação de extração de dados com Python.',
+            title: 'Bot Operacional (Telegram/WhatsApp)',
+            description: 'Centralização de despacho e alertas em tempo real.',
           },
           {
-            title: 'Landing Page Salão de Beleza',
-            description: 'Página de alta conversão para negócios locais.',
+            title: 'Workflow de Integração Supabase',
+            description: 'Automação e processamento de rotinas de banco de dados.',
           },
           {
-            title: 'Bot de Telegram',
-            description: 'Bot para automação de atendimento e notificações.',
+            title: 'Relatórios & Dashboards Dinâmicos',
+            description: 'Visualização gerencial com 100% de precisão.',
           },
         ],
       },
@@ -271,7 +271,11 @@ export const translations = {
       typewriter: [
         [
           {
-            text: 'Software',
+            text: 'Applied',
+            className: 'text-neutral-400 font-mono text-sm md:text-xl',
+          },
+          {
+            text: 'Digital',
             className: 'text-neutral-400 font-mono text-sm md:text-xl',
           },
           {
@@ -282,19 +286,19 @@ export const translations = {
         [
           { text: '&', className: 'text-crimson font-mono text-sm md:text-xl' },
           {
-            text: 'Industrial',
+            text: 'Lean',
             className: 'text-neutral-400 font-mono text-sm md:text-xl',
           },
           {
-            text: 'Automation.',
+            text: 'Systems.',
             className: 'text-crimson font-mono text-sm md:text-xl',
           },
         ],
       ],
       description:
-        'Transforming complexity into autonomous systems. From visual identity to databases, I build digital infrastructures that unite engineering logic with industrial design aesthetics.',
-      cta_primary: 'ACCESS MODULES',
-      cta_secondary: 'VIEW TECH STACK',
+        'Specialist in resolving specific operational bottlenecks through automation, lean systems, and applied digital engineering.',
+      cta_primary: 'SCHEDULE DIAGNOSIS',
+      cta_secondary: 'VIEW METHODOLOGY',
     },
     system_status: {
       online: 'SYSTEM: ONLINE',
@@ -420,9 +424,9 @@ export const translations = {
           p1: 'My approach to development is inherited from the factory floor: systems cannot fail. I use Next.js for high-performance interfaces and Supabase for real-time data management.',
           p2: 'The focus is not just "delivering a site", but building a scalable architecture that supports your business growth.',
           list: [
-            'Administrative Dashboards',
-            'SaaS (Software as a Service)',
-            'Rest/GraphQL API Integration',
+            'Operational Dashboards & Admin Panels',
+            'Lean Production Control Systems',
+            'Real-Time Data Integration (Supabase)',
           ],
         },
         automation: {
@@ -473,16 +477,16 @@ export const translations = {
         subtitle: '// PROTOTYPES_AND_SCRIPTS',
         items: [
           {
-            title: 'Web Scraping Script',
-            description: 'Data extraction automation with Python.',
+            title: 'Operational Bot (Telegram/WhatsApp)',
+            description: 'Real-time dispatch and alert centralization.',
           },
           {
-            title: 'Beauty Salon Landing Page',
-            description: 'High-conversion page for local businesses.',
+            title: 'Supabase Integration Workflow',
+            description: 'Database automated processing routines.',
           },
           {
-            title: 'Telegram Bot',
-            description: 'Bot for service automation and notifications.',
+            title: 'Dynamic Dashboards & Reports',
+            description: 'Management visualization with 100% accuracy.',
           },
         ],
       },
