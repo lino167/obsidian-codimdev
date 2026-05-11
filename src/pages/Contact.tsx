@@ -29,9 +29,9 @@ export default function Contact() {
 
     const myNumber = '5547996496281' // Your WhatsApp number
 
-    const text = `Olá Zacarias! Meu nome é *${formData.name}*` +
-                 (formData.company ? ` da empresa *${formData.company}*` : '') +
-                 `.\n\nGostaria de falar sobre um projeto:\n"${formData.message || 'Tenho uma ideia de sistema...'}"`;
+    const text = `Olá Lino! Meu nome é *${formData.name}*` +
+      (formData.company ? ` da empresa *${formData.company}*` : '') +
+      `.\n\nGostaria de falar sobre um projeto:\n"${formData.message || 'Tenho uma ideia de sistema...'}"`;
 
     const url = `https://wa.me/${myNumber}?text=${encodeURIComponent(text)}`
     window.open(url, '_blank')
@@ -116,7 +116,7 @@ export default function Contact() {
                     <Mail className="w-6 h-6 text-white" />
                   </div>
                   <span className="text-neutral-300 group-hover:text-white transition-colors">
-                    zaca793@gmail.com
+                    contato@codimdev.com.br
                   </span>
                 </div>
 
@@ -130,7 +130,7 @@ export default function Contact() {
                 </div>
 
                 <a
-                  href="https://linkedin.com/in/zacariaslino"
+                  href="https://www.linkedin.com/public-profile/settings/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_contact_info%3BMx3Sd%2BnkSZ2AC1SHIHA%2FAA%3D%3D"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-4 group"

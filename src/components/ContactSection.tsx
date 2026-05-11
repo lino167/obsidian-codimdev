@@ -30,18 +30,18 @@ const ContactSection = () => {
           >
             <div className="inline-flex items-center gap-2 mb-6">
               <span className="h-px w-8 bg-primary" />
-              <span className="font-mono text-xs text-primary uppercase tracking-wider">Contato</span>
+              <span className="font-mono text-xs text-primary uppercase tracking-wider">Diagnóstico</span>
             </div>
-            
+
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-              Vamos construir
+              Qual gargalo
               <br />
-              <span className="text-muted-foreground">algo sólido juntos.</span>
+              <span className="text-muted-foreground">trava sua operação?</span>
             </h2>
-            
+
             <p className="text-muted-foreground text-lg leading-relaxed mb-10">
-              Pronto para transformar sua ideia em um sistema robusto? 
-              Entre em contato para discutirmos seu projeto.
+              Descreva o problema operacional que você enfrenta.
+              Vou analisar e propor uma solução enxuta sob medida.
             </p>
 
             {/* Contact Info */}
@@ -52,8 +52,8 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <span className="font-mono text-xs text-muted-foreground block mb-1">EMAIL</span>
-                  <a href="mailto:contato@codim.dev" className="text-foreground hover:text-primary transition-colors">
-                    contato@codim.dev
+                  <a href="mailto:contato@codimdev.com.br" className="text-foreground hover:text-primary transition-colors">
+                    contato@codimdev.com.br
                   </a>
                 </div>
               </div>
@@ -73,20 +73,20 @@ const ContactSection = () => {
             <div className="mt-10 pt-10 border-t border-border">
               <span className="font-mono text-xs text-muted-foreground block mb-4">LINKS RÁPIDOS</span>
               <div className="flex flex-wrap gap-4">
-                <a 
-                  href="#" 
+                <a
+                  href="#"
                   className="inline-flex items-center gap-2 font-mono text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   LinkedIn <ArrowUpRight size={14} />
                 </a>
-                <a 
-                  href="#" 
+                <a
+                  href="#"
                   className="inline-flex items-center gap-2 font-mono text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   GitHub <ArrowUpRight size={14} />
                 </a>
-                <a 
-                  href="#" 
+                <a
+                  href="#"
                   className="inline-flex items-center gap-2 font-mono text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   Instagram <ArrowUpRight size={14} />
@@ -113,7 +113,7 @@ const ContactSection = () => {
                     id="name"
                     required
                     value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full px-4 py-3 bg-background border border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors"
                     placeholder="Seu nome"
                   />
@@ -129,7 +129,7 @@ const ContactSection = () => {
                     id="email"
                     required
                     value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full px-4 py-3 bg-background border border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors"
                     placeholder="seu@email.com"
                   />
@@ -138,19 +138,21 @@ const ContactSection = () => {
                 {/* Project Type Field */}
                 <div>
                   <label htmlFor="project" className="font-mono text-xs text-muted-foreground block mb-2">
-                    TIPO DE PROJETO
+                    TIPO DE GARGALO
                   </label>
                   <select
                     id="project"
                     value={formData.project}
-                    onChange={(e) => setFormData({...formData, project: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, project: e.target.value })}
                     className="w-full px-4 py-3 bg-background border border-border text-foreground focus:border-primary focus:outline-none transition-colors appearance-none cursor-pointer"
                   >
-                    <option value="">Selecione uma opção</option>
-                    <option value="web">Desenvolvimento Web / SaaS</option>
-                    <option value="erp">Sistema de Gestão (ERP/CRM)</option>
-                    <option value="design">Design de Identidade Visual</option>
-                    <option value="other">Outro</option>
+                    <option value="">Qual é o gargalo?</option>
+                    <option value="automation">Processos Manuais / Retrabalho</option>
+                    <option value="dashboard">Falta de Visibilidade / Dashboard</option>
+                    <option value="bot">Atendimento / Bot Operacional</option>
+                    <option value="integration">Sistemas Desconectados / Integração</option>
+                    <option value="internal">Sistema Interno Sob Medida</option>
+                    <option value="other">Outro Problema Operacional</option>
                   </select>
                 </div>
 
@@ -164,9 +166,9 @@ const ContactSection = () => {
                     required
                     rows={5}
                     value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full px-4 py-3 bg-background border border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors resize-none"
-                    placeholder="Conte sobre seu projeto..."
+                    placeholder="Descreva o gargalo: o que acontece, o que deveria acontecer, e quanto tempo/dinheiro isso custa..."
                   />
                 </div>
 
@@ -175,7 +177,7 @@ const ContactSection = () => {
                   type="submit"
                   className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-display font-semibold text-base hover:bg-crimson-glow transition-all duration-300 crimson-glow"
                 >
-                  Enviar Mensagem
+                  Solicitar Diagnóstico
                   <Send size={18} />
                 </button>
               </div>

@@ -2,10 +2,10 @@ export const translations = {
   pt: {
     navbar: {
       home: 'INÍCIO',
-      services: 'CAPACIDADES',
-      work: 'PROJETOS',
+      services: 'MÓDULOS',
+      work: 'IMPLANTAÇÕES',
       about: 'OPERADOR',
-      contact: 'CONTATO',
+      contact: 'DIAGNÓSTICO',
     },
     hero: {
       badge: 'SISTEMA ONLINE // V2.0',
@@ -17,7 +17,7 @@ export const translations = {
             className: 'text-neutral-400 font-mono text-sm md:text-xl',
           },
           {
-            text: 'Digital',
+            text: 'Operacional',
             className: 'text-neutral-400 font-mono text-sm md:text-xl',
           },
           {
@@ -28,17 +28,17 @@ export const translations = {
         [
           { text: '&', className: 'text-crimson font-mono text-sm md:text-xl' },
           {
-            text: 'Sistemas',
+            text: 'Automação',
             className: 'text-neutral-400 font-mono text-sm md:text-xl',
           },
           {
-            text: 'Enxutos.',
+            text: 'Enxuta.',
             className: 'text-crimson font-mono text-sm md:text-xl',
           },
         ],
       ],
       description:
-        'Especialista em resolver gargalos operacionais específicos através de automação, sistemas enxutos e engenharia digital aplicada.',
+        'Sistemas enxutos, automações e ferramentas operacionais para empresas que precisam de mais controle, velocidade e menos retrabalho.',
       cta_primary: 'AGENDAR DIAGNÓSTICO',
       cta_secondary: 'VER METODOLOGIA',
     },
@@ -49,7 +49,7 @@ export const translations = {
     },
     featured_work: {
       title: 'IMPLANTAÇÕES RECENTES',
-      subtitle: 'Sistemas em operação e arquiteturas entregues.',
+      subtitle: 'Sistemas em operação e gargalos resolvidos.',
       projects: {
         kraflo: {
           title: 'SaaS de Manutenção Industrial',
@@ -62,19 +62,19 @@ export const translations = {
             'Fluxos de n8n para automação de vendas e atendimento via WhatsApp.',
         },
         codim: {
-          title: 'Identidade Visual High-End',
-          description: 'Design System completo e Brand Book para tecnologia.',
+          title: 'Dashboard Operacional',
+          description: 'Painel de controle interno com dados em tempo real.',
         },
       },
-      view_all: 'ACESSAR ARQUIVO COMPLETO DE PROJETOS',
+      view_all: 'ACESSAR ARQUIVO COMPLETO DE IMPLANTAÇÕES',
     },
     about: {
       hero: {
         access_file: '// ACESSANDO ARQUIVO DE PESSOAL: 001',
         title: 'O OPERADOR',
-        subtitle: 'ZACARIAS LINO // ENG. DE SOFTWARE FULL-STACK',
+        subtitle: 'ZACARIAS LINO // ENG. OPERACIONAL & AUTOMAÇÃO',
         description:
-          'De Mecânico Industrial a Arquiteto de Software. Unindo a precisão do chão de fábrica com a escalabilidade do código. Hoje, aplico essa mentalidade de engenharia na CODIM DEV. Especialista em criar ecossistemas digitais que funcionam sozinhos, utilizando Python para lógica robusta e Automação Inteligente com n8n e Supabase.',
+          'De Mecânico Industrial a Engenheiro de Automação. Unindo a precisão do chão de fábrica com a velocidade do código. Hoje, na CODIM DEV, resolvo gargalos operacionais específicos com automação enxuta, dashboards sob medida e bots que trabalham 24/7, usando Python, n8n e Supabase.',
       },
       timeline_title: 'LOGS DO SISTEMA: TRAJETÓRIA',
       timeline: {
@@ -100,7 +100,7 @@ export const translations = {
 
         t6_title: 'Processamento Paralelo (Atual)',
         t6_desc:
-          'KARSTEN S.A.: Mecânico de Produção I (Teares) + Engenharia de Software na CODIM DEV (Freelancer).',
+          'KARSTEN S.A.: Mecânico de Produção I (Teares) + Engenharia Operacional na CODIM DEV (Freelancer).',
       },
       certificates: {
         title: 'PROTOCOLOS CERTIFICADOS',
@@ -108,34 +108,34 @@ export const translations = {
         groups: [
           {
             id: '01',
+            category: 'AUTOMAÇÃO & FLUXOS',
+            icon: 'BrainCircuit',
+            items: [
+              'Python I',
+              'Engenharia de Prompt (ChatGPT)',
+              'n8n & Automação de Processos',
+              'Fundamentos de IA',
+            ],
+          },
+          {
+            id: '02',
             category: 'CORE DEV STACK',
             icon: 'Code2',
             items: [
               'JavaScript I',
               'HTML5 & CSS3 Moderno',
-              'Sass & Bootstrap',
               'React (Em progresso)',
-            ],
-          },
-          {
-            id: '02',
-            category: 'INTELLIGENCE UNIT',
-            icon: 'BrainCircuit',
-            items: [
-              'Python I',
-              'Engenharia de Prompt (ChatGPT)',
-              'Fundamentos de IA',
-              'Automação',
+              'Supabase & PostgreSQL',
             ],
           },
           {
             id: '03',
-            category: 'VISUAL ENGINEERING',
+            category: 'DASHBOARDS & UI',
             icon: 'PenTool',
             items: [
               'Adobe Photoshop (Avançado)',
               'Adobe Illustrator (Avançado)',
-              'UI/UX Design',
+              'UI/UX para Painéis Operacionais',
             ],
           },
           {
@@ -145,7 +145,7 @@ export const translations = {
             items: [
               'Técnico em Mecânica Industrial',
               'Planejamento de Projetos',
-              'Pacote Office',
+              'Controle de Processos',
             ],
           },
         ],
@@ -154,63 +154,63 @@ export const translations = {
     services: {
       header: {
         badge: '// Documentação Técnica',
-        title: 'CAPACIDADES',
+        title: 'MÓDULOS',
         title_highlight: 'OPERACIONAIS',
         description:
-          'Arquitetura focada na eliminação de gargalos reais e eficiência operacional pura.',
+          'Soluções enxutas para eliminar gargalos reais. Sem complexidade desnecessária.',
       },
       blocks: {
+        automation: {
+          badge: '[FLUXO: AUTOMATIZADO]',
+          title: 'Automação de Processos & Fluxos',
+          p1: 'Elimino gargalos operacionais conectando sistemas isolados. Utilizo n8n e scripts Python para criar fluxos autônomos que integram CRM, WhatsApp e Bancos de Dados.',
+          p2: 'O resultado é um ecossistema enxuto que trabalha 24/7 sem erros, eliminando retrabalho e devolvendo tempo para a equipe focar no que importa.',
+        },
         fullstack: {
-          badge: '[ARQ: ROBUSTA]',
-          title: 'Desenvolvimento de Aplicações Críticas',
-          p1: 'Minha abordagem ao desenvolvimento é herdada do chão de fábrica: sistemas não podem falhar. Utilizo Next.js para interfaces de alta performance e Supabase para gestão de dados em tempo real.',
-          p2: 'O foco não é apenas "entregar um site", mas construir uma arquitetura escalável que suporte o crescimento do seu negócio.',
+          badge: '[SIS: INTERNO]',
+          title: 'Sistemas Internos & Dashboards',
+          p1: 'Construo ferramentas internas sob medida: dashboards operacionais, painéis administrativos e controles de produção. Utilizo Supabase para dados em tempo real e React para interfaces responsivas.',
+          p2: 'O foco não é "entregar um site", mas dar visibilidade e controle real sobre a operação do negócio.',
           list: [
-            'Dashboards Operacionais & Painéis Administrativos',
+            'Dashboards Operacionais & Painéis de Controle',
             'Controles de Produção Enxutos',
             'Integração de Dados em Tempo Real (Supabase)',
           ],
         },
-        automation: {
-          badge: '[FLUXO: AUTOMATIZADO]',
-          title: 'Orquestração de Processos com IA',
-          p1: 'Elimino gargalos operacionais conectando sistemas isolados. Utilizo n8n e scripts Python para criar fluxos autônomos que integram CRM, WhatsApp e Bancos de Dados.',
-          p2: 'O resultado é um ecossistema enxuto que trabalha 24/7 sem erros, garantindo velocidade e economia de recursos para a equipe.',
-        },
         design: {
-          badge: '[UI: PRECISÃO]',
-          title: 'Identidade Visual Industrial',
-          p1: 'Design que transmite autoridade técnica. Criação de Brand Books e Interfaces (UI/UX) que unem a estética industrial com a usabilidade digital.',
-          p2: 'Não faço apenas "bonito". Faço interfaces funcionais, com hierarquia de informação clara inspirada em painéis de controle e documentação técnica.',
+          badge: '[BOT: ATIVO]',
+          title: 'Bots & Agentes Operacionais',
+          p1: 'Bots para Telegram, WhatsApp e sistemas internos. Centralização de despacho, alertas em tempo real e atendimento automatizado.',
+          p2: 'Não é chatbot genérico. É um agente operacional que recebe dados, processa e executa ações concretas na sua operação.',
         },
       },
       cta: {
-        title: 'Seu sistema precisa de um upgrade?',
-        subtitle: 'Vamos discutir a arquitetura do seu próximo projeto.',
-        button: 'INICIAR DIAGNÓSTICO',
+        title: 'Tem um gargalo operacional para resolver?',
+        subtitle: 'Vamos diagnosticar e projetar a solução enxuta certa.',
+        button: 'AGENDAR DIAGNÓSTICO',
       },
     },
     work: {
       header: {
         badge: '// NÍVEL DE ACESSO: PÚBLICO',
         title: 'SISTEMAS IMPLANTADOS',
-        description: 'Estudos de caso de arquitetura, automação e design.',
+        description: 'Gargalos resolvidos. Operações otimizadas.',
       },
       projects: {
         kraflo: {
-          title: 'KRAFLO // CMS de Manutenção',
+          title: 'KRAFLO // CMMS Industrial',
           description:
-            'Desenvolvimento de um SaaS completo para gestão de manutenção industrial. O desafio era digitalizar o cálculo de torque e as ordens de serviço de uma planta fabril.',
+            'Desenvolvimento de um SaaS completo para gestão de manutenção industrial. Digitalização do cálculo de torque e ordens de serviço de planta fabril.',
         },
         agents: {
           title: 'Agentes de CRM Autônomos',
           description:
-            'Orquestração de vendas via n8n e OpenAI. O sistema recebe leads, qualifica via IA e agenda reuniões automaticamente, eliminando 90% do trabalho manual da equipe comercial.',
+            'Orquestração de vendas via n8n e OpenAI. O sistema recebe leads, qualifica via IA e agenda reuniões automaticamente, eliminando 90% do trabalho manual.',
         },
         identity: {
-          title: 'Sistema de Identidade Industrial',
+          title: 'Dashboard Operacional Interno',
           description:
-            'Criação de uma linguagem visual proprietária para empresa de tecnologia. Desenvolvimento de Brand Book, UI Kit e Assets 3D que unem a estética cyberpunk com a engenharia civil.',
+            'Painel de controle em tempo real com métricas operacionais, alertas e gestão de fluxos automatizados para equipe de operações.',
         },
       },
       minor_projects: {
@@ -227,43 +227,44 @@ export const translations = {
           },
           {
             title: 'Relatórios & Dashboards Dinâmicos',
-            description: 'Visualização gerencial com 100% de precisão.',
+            description: 'Visualização gerencial com dados em tempo real.',
           },
         ],
       },
       cta: {
-        title: 'Tem um problema complexo para resolver?',
-        button: 'INICIAR ANÁLISE DE PROJETO',
+        title: 'Tem um gargalo operacional para resolver?',
+        subtitle: 'Vamos diagnosticar e projetar a solução enxuta certa.',
+        button: 'AGENDAR DIAGNÓSTICO',
       },
     },
     contact: {
       title: 'CANAIS DE',
-      title_highlight: 'COMUNICAÇÃO',
-      location: 'Blumenau, SC // Hub Tecnológico Industrial',
+      title_highlight: 'DIAGNÓSTICO',
+      location: 'Blumenau, SC // Hub de Engenharia Operacional',
       availability:
-        'Disponível para projetos Freelancer e Consultoria Industrial.',
+        'Disponível para projetos de automação, sistemas internos e engenharia operacional.',
       form: {
-        header_badge: 'PROTOCOLO_TRANSMISSÃO_SEGURO',
+        header_badge: 'PROTOCOLO_DIAGNÓSTICO_OPERACIONAL',
         label_name: 'IDENTIFICAÇÃO (NOME)',
         placeholder_name: 'IDENTIFIQUE-SE',
         label_email: 'ENDEREÇO DE RETORNO (EMAIL)',
         placeholder_email: 'INSIRA_FREQUÊNCIA (EMAIL)',
-        label_message: 'CARGA DE DADOS (MENSAGEM)',
-        placeholder_message: 'INICIAR TRANSFERÊNCIA DE DADOS...',
-        button: 'TRANSMITIR DADOS >',
+        label_message: 'DESCRIÇÃO DO GARGALO',
+        placeholder_message: 'DESCREVA O PROBLEMA OPERACIONAL...',
+        button: 'SOLICITAR DIAGNÓSTICO >',
       },
     },
     cta_global: {
-      button: 'INICIAR PROTOCOLO',
+      button: 'AGENDAR DIAGNÓSTICO',
     },
   },
   en: {
     navbar: {
       home: 'HOME',
       services: 'MODULES',
-      work: 'PROJECTS',
+      work: 'DEPLOYMENTS',
       about: 'OPERATOR',
-      contact: 'CONTACT',
+      contact: 'DIAGNOSIS',
     },
     hero: {
       badge: 'SYSTEM ONLINE // V2.0',
@@ -275,7 +276,7 @@ export const translations = {
             className: 'text-neutral-400 font-mono text-sm md:text-xl',
           },
           {
-            text: 'Digital',
+            text: 'Operational',
             className: 'text-neutral-400 font-mono text-sm md:text-xl',
           },
           {
@@ -290,13 +291,13 @@ export const translations = {
             className: 'text-neutral-400 font-mono text-sm md:text-xl',
           },
           {
-            text: 'Systems.',
+            text: 'Automation.',
             className: 'text-crimson font-mono text-sm md:text-xl',
           },
         ],
       ],
       description:
-        'Specialist in resolving specific operational bottlenecks through automation, lean systems, and applied digital engineering.',
+        'Lean systems, automation, and operational tools for companies that need more control, speed, and less rework.',
       cta_primary: 'SCHEDULE DIAGNOSIS',
       cta_secondary: 'VIEW METHODOLOGY',
     },
@@ -307,7 +308,7 @@ export const translations = {
     },
     featured_work: {
       title: 'RECENT DEPLOYMENTS',
-      subtitle: 'Deployed systems and architecture.',
+      subtitle: 'Deployed systems and bottlenecks resolved.',
       projects: {
         kraflo: {
           title: 'Industrial Maintenance SaaS',
@@ -320,19 +321,19 @@ export const translations = {
             'n8n flows for sales automation and WhatsApp customer service.',
         },
         codim: {
-          title: 'High-End Visual Identity',
-          description: 'Complete Design System and Brand Book for technology.',
+          title: 'Operational Dashboard',
+          description: 'Internal control panel with real-time data.',
         },
       },
-      view_all: 'ACCESS COMPLETE PROJECT ARCHIVE',
+      view_all: 'ACCESS COMPLETE DEPLOYMENT ARCHIVE',
     },
     about: {
       hero: {
         access_file: '// ACCESSING PERSONNEL FILE: 001',
         title: 'THE OPERATOR',
-        subtitle: 'ZACARIAS LINO // FULL-STACK ENGINEER',
+        subtitle: 'ZACARIAS LINO // OPERATIONAL ENGINEER & AUTOMATION',
         description:
-          'From Industrial Mechanic to Software Architect. Uniting factory floor precision with code scalability. Today, I apply this engineering mindset at CODIM DEV. Specialist in creating digital ecosystems that run themselves, using Python for robust logic and Intelligent Automation with n8n and Supabase.',
+          'From Industrial Mechanic to Automation Engineer. Uniting factory floor precision with code speed. Today, at CODIM DEV, I solve specific operational bottlenecks with lean automation, custom dashboards, and 24/7 bots, using Python, n8n, and Supabase.',
       },
       timeline_title: 'SYSTEM LOGS: TRAJECTORY',
       timeline: {
@@ -358,7 +359,7 @@ export const translations = {
 
         t6_title: 'Parallel Processing (Current)',
         t6_desc:
-          'KARSTEN S.A.: Production Mechanic I (Looms) + Software Engineering at CODIM DEV (Freelance).',
+          'KARSTEN S.A.: Production Mechanic I (Looms) + Operational Engineering at CODIM DEV (Freelance).',
       },
       certificates: {
         title: 'CERTIFIED PROTOCOLS',
@@ -366,34 +367,34 @@ export const translations = {
         groups: [
           {
             id: '01',
+            category: 'AUTOMATION & FLOWS',
+            icon: 'BrainCircuit',
+            items: [
+              'Python I',
+              'Prompt Engineering (ChatGPT)',
+              'n8n & Process Automation',
+              'AI Fundamentals',
+            ],
+          },
+          {
+            id: '02',
             category: 'CORE DEV STACK',
             icon: 'Code2',
             items: [
               'JavaScript I',
               'HTML5 & Modern CSS3',
-              'Sass & Bootstrap',
               'React (In Progress)',
-            ],
-          },
-          {
-            id: '02',
-            category: 'INTELLIGENCE UNIT',
-            icon: 'BrainCircuit',
-            items: [
-              'Python I',
-              'Prompt Engineering (ChatGPT)',
-              'AI Fundamentals',
-              'Automation',
+              'Supabase & PostgreSQL',
             ],
           },
           {
             id: '03',
-            category: 'VISUAL ENGINEERING',
+            category: 'DASHBOARDS & UI',
             icon: 'PenTool',
             items: [
               'Adobe Photoshop (Advanced)',
               'Adobe Illustrator (Advanced)',
-              'UI/UX Design',
+              'UI/UX for Operational Panels',
             ],
           },
           {
@@ -403,7 +404,7 @@ export const translations = {
             items: [
               'Industrial Mechanics Technician',
               'Project Planning',
-              'Microsoft Office',
+              'Process Control',
             ],
           },
         ],
@@ -413,39 +414,39 @@ export const translations = {
       header: {
         badge: '// Technical Documentation',
         title: 'OPERATIONAL',
-        title_highlight: 'CAPABILITIES',
+        title_highlight: 'MODULES',
         description:
-          'Detailed service architecture. From visual conception to backend automation.',
+          'Lean solutions to eliminate real bottlenecks. No unnecessary complexity.',
       },
       blocks: {
+        automation: {
+          badge: '[FLOW: AUTOMATED]',
+          title: 'Process Automation & Workflows',
+          p1: 'I eliminate operational bottlenecks by connecting isolated systems. I use n8n and Python scripts to create autonomous flows that integrate CRM, WhatsApp, and Databases.',
+          p2: 'The result is a lean ecosystem working 24/7 without errors, eliminating rework and giving the team time to focus on what matters.',
+        },
         fullstack: {
-          badge: '[ARCH: ROBUST]',
-          title: 'Critical Application Development',
-          p1: 'My approach to development is inherited from the factory floor: systems cannot fail. I use Next.js for high-performance interfaces and Supabase for real-time data management.',
-          p2: 'The focus is not just "delivering a site", but building a scalable architecture that supports your business growth.',
+          badge: '[SYS: INTERNAL]',
+          title: 'Internal Systems & Dashboards',
+          p1: 'I build custom internal tools: operational dashboards, admin panels, and production controls. I use Supabase for real-time data and React for responsive interfaces.',
+          p2: 'The focus is not "delivering a site", but giving real visibility and control over business operations.',
           list: [
-            'Operational Dashboards & Admin Panels',
+            'Operational Dashboards & Control Panels',
             'Lean Production Control Systems',
             'Real-Time Data Integration (Supabase)',
           ],
         },
-        automation: {
-          badge: '[FLOW: AUTOMATED]',
-          title: 'Process Orchestration with AI',
-          p1: 'I eliminate manual work by connecting isolated systems. I use n8n and Python scripts to create autonomous flows that integrate CRM, WhatsApp, and Databases.',
-          p2: 'Imagine a "digital employee" working 24/7 without errors, classifying leads, sending proposals, and updating spreadsheets.',
-        },
         design: {
-          badge: '[UI: PRECISION]',
-          title: 'Industrial Visual Identity',
-          p1: 'Design that conveys technical authority. Creation of Brand Books and Interfaces (UI/UX) that unite industrial aesthetics with digital usability.',
-          p2: 'I don\'t just do "pretty". I make functional interfaces, with clear information hierarchy inspired by control panels and technical documentation.',
+          badge: '[BOT: ACTIVE]',
+          title: 'Bots & Operational Agents',
+          p1: 'Bots for Telegram, WhatsApp, and internal systems. Dispatch centralization, real-time alerts, and automated service.',
+          p2: "Not a generic chatbot. It's an operational agent that receives data, processes it, and executes concrete actions in your operation.",
         },
       },
       cta: {
-        title: 'Does your system need an upgrade?',
-        subtitle: "Let's discuss the architecture of your next project.",
-        button: 'INITIATE DIAGNOSIS',
+        title: 'Have an operational bottleneck to solve?',
+        subtitle: "Let's diagnose and design the right lean solution.",
+        button: 'SCHEDULE DIAGNOSIS',
       },
     },
     work: {
@@ -453,23 +454,23 @@ export const translations = {
         badge: '// ACCESS LEVEL: PUBLIC',
         title: 'DEPLOYED SYSTEMS',
         description:
-          'Case studies of software architecture, automation, and industrial design.',
+          'Bottlenecks resolved. Operations optimized.',
       },
       projects: {
         kraflo: {
-          title: 'KRAFLO // Maintenance CMS',
+          title: 'KRAFLO // Industrial CMMS',
           description:
-            'Development of a complete SaaS for industrial maintenance management. The challenge was to digitize torque calculation and service orders for a factory plant.',
+            'Development of a complete SaaS for industrial maintenance management. Digitization of torque calculation and service orders for a factory plant.',
         },
         agents: {
           title: 'Autonomous CRM Agents',
           description:
-            'Sales orchestration via n8n and OpenAI. The system receives leads, qualifies via AI, and schedules meetings automatically, eliminating 90% of manual work for the sales team.',
+            'Sales orchestration via n8n and OpenAI. The system receives leads, qualifies via AI, and schedules meetings automatically, eliminating 90% of manual work.',
         },
         identity: {
-          title: 'Industrial Identity System',
+          title: 'Internal Operational Dashboard',
           description:
-            'Creation of a proprietary visual language for a technology company. Development of Brand Book, UI Kit, and 3D Assets that unite cyberpunk aesthetics with civil engineering.',
+            'Real-time control panel with operational metrics, alerts, and automated workflow management for the operations team.',
         },
       },
       minor_projects: {
@@ -486,35 +487,35 @@ export const translations = {
           },
           {
             title: 'Dynamic Dashboards & Reports',
-            description: 'Management visualization with 100% accuracy.',
+            description: 'Management visualization with real-time data.',
           },
         ],
       },
       cta: {
-        title: 'Have a complex problem to solve?',
-        subtitle: "Let's discuss the architecture of your next project.",
-        button: 'INITIATE PROJECT ANALYSIS',
+        title: 'Have an operational bottleneck to solve?',
+        subtitle: "Let's diagnose and design the right lean solution.",
+        button: 'SCHEDULE DIAGNOSIS',
       },
     },
     contact: {
-      title: 'COMMUNICATION',
+      title: 'DIAGNOSIS',
       title_highlight: 'CHANNELS',
-      location: 'Blumenau, SC // Industrial Tech Hub',
+      location: 'Blumenau, SC // Operational Engineering Hub',
       availability:
-        'Available for Freelance projects and Industrial Consulting.',
+        'Available for automation, internal systems, and operational engineering projects.',
       form: {
-        header_badge: 'SECURE_TRANSMISSION_PROTOCOL',
+        header_badge: 'OPERATIONAL_DIAGNOSIS_PROTOCOL',
         label_name: 'IDENTIFICATION (NAME)',
         placeholder_name: 'IDENTIFY YOURSELF',
         label_email: 'RETURN ADDRESS (EMAIL)',
         placeholder_email: 'ENTER_FREQUENCY (EMAIL)',
-        label_message: 'DATA PAYLOAD (MESSAGE)',
-        placeholder_message: 'INITIATE DATA TRANSFER...',
-        button: 'TRANSMIT DATA >',
+        label_message: 'BOTTLENECK DESCRIPTION',
+        placeholder_message: 'DESCRIBE THE OPERATIONAL PROBLEM...',
+        button: 'REQUEST DIAGNOSIS >',
       },
     },
     cta_global: {
-      button: 'START PROTOCOL',
+      button: 'SCHEDULE DIAGNOSIS',
     },
   },
 }

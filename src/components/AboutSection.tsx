@@ -6,24 +6,24 @@ import ceoImg from '../assets/ceo-codim.png'
 
 const features = [
   {
-    icon: GraduationCap,
-    title: 'Acadêmico',
-    description: 'Engenharia de Software (Em curso)',
+    icon: Cog,
+    title: 'Background',
+    description: 'Mecânica Industrial & Chão de Fábrica',
   },
   {
     icon: Code,
     title: 'Especialidade',
-    description: 'Automação & Full-Stack',
+    description: 'Automação & Engenharia Operacional',
+  },
+  {
+    icon: GraduationCap,
+    title: 'Formação',
+    description: 'Engenharia de Software (Em curso)',
   },
   {
     icon: Palette,
-    title: 'Design',
-    description: 'UX/UI & Branding',
-  },
-  {
-    icon: Cog,
-    title: 'Background',
-    description: 'Mecânica Industrial',
+    title: 'Interface',
+    description: 'Dashboards & Painéis Operacionais',
   },
 ]
 
@@ -67,26 +67,26 @@ const AboutSection = () => {
             <div className="inline-flex items-center gap-2 mb-4">
               <span className="h-px w-8 bg-primary" />
               <span className="font-mono text-xs text-primary uppercase tracking-wider">
-                Sobre Mim
+                O Operador
               </span>
             </div>
 
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-6 leading-tight">
-              A Lógica Industrial no Código
+              Engenharia de Chão de Fábrica no Digital
             </h2>
 
             <div className="text-muted-foreground text-base md:text-lg leading-relaxed mb-8 space-y-4">
               <p>
-                Minha abordagem ao desenvolvimento de software é herdada do chão
-                de fábrica. Como ex-Mecânico Industrial, aprendi que sistemas
-                não podem falhar e que a precisão é inegociável.
+                Minha abordagem é herdada do chão de fábrica: sistemas não podem
+                falhar, gargalos precisam ser eliminados e a precisão é
+                inegociável. Como ex-Mecânico Industrial, carreguei essa
+                mentalidade para o digital.
               </p>
               <p>
-                Hoje, aplico essa mentalidade de engenharia na CODIM DEV. Sou um
-                desenvolvedor Full-Stack e Designer focado em criar ecossistemas
-                completos. Utilizo Javascript e Python para lógica robusta, n8n
-                para orquestrar automações inteligentes e Supabase para dados
-                escaláveis.
+                Hoje, na CODIM DEV, resolvo problemas operacionais específicos
+                com automação enxuta, dashboards sob medida e bots que trabalham
+                24/7. Utilizo n8n, Python e Supabase para criar sistemas
+                internos que dão controle real e eliminam retrabalho.
               </p>
             </div>
 

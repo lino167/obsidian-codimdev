@@ -60,12 +60,12 @@ export const FeaturedWork = () => {
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
           <div>
             <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
-              PROJETOS EM DESTAQUE
+              IMPLANTAÇÕES RECENTES
             </h2>
             <div className="h-1 w-20 bg-crimson"></div>
           </div>
           <Link to="/work" className="hidden md:flex items-center text-crimson hover:text-white transition-colors gap-2 font-mono text-sm group">
-            VER ARQUIVO COMPLETO <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            VER TODAS AS IMPLANTAÇÕES <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
@@ -132,7 +132,7 @@ export const FeaturedWork = () => {
         <div className="mt-12 md:hidden text-center">
           <Link to="/work">
             <Button variant="outline" className="w-full border-crimson text-crimson hover:bg-crimson hover:text-white">
-              VER TODOS OS PROJETOS
+              VER TODAS AS IMPLANTAÇÕES
             </Button>
           </Link>
         </div>

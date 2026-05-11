@@ -5,10 +5,10 @@ import logoHorizontal from '@/assets/logo-horizontal.png'
 
 const navItems = [
   { label: 'Home', href: '/' },
-  { label: 'Sobre', href: '/about' },
-  { label: 'Serviços', href: '/services' },
-  { label: 'Portfólio', href: '/#portfolio' },
-  { label: 'Contato', href: '/#contato' },
+  { label: 'Operador', href: '/about' },
+  { label: 'Módulos', href: '/services' },
+  { label: 'Implantações', href: '/work' },
+  { label: 'Contato', href: '/contact' },
 ]
 
 const Header = () => {
@@ -45,7 +45,7 @@ const Header = () => {
             href="#contato"
             className="hidden md:inline-flex items-center justify-center px-5 py-2.5 bg-primary text-primary-foreground font-display font-medium text-sm hover:bg-crimson-glow transition-colors duration-300 crimson-glow-hover"
           >
-            Iniciar Projeto
+            Agendar Diagnóstico
           </a>
 
           {/* Mobile Menu Button */}
@@ -86,7 +86,7 @@ const Header = () => {
                     onClick={() => setIsMenuOpen(false)}
                     className="inline-flex items-center justify-center w-full px-5 py-2.5 bg-primary text-primary-foreground font-display font-medium text-sm"
                   >
-                    Iniciar Projeto
+                    Agendar Diagnóstico
                   </a>
                 </li>
               </ul>

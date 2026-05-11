@@ -42,22 +42,21 @@ const Index = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-crimson opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-crimson"></span>
               </span>
-              READY FOR DEPLOYMENT
+              DIAGNÓSTICO DISPONÍVEL
             </div>
 
             <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-6 tracking-tight">
-              {t.work.cta.title || 'Precisa de uma solução robusta?'}
+              {t.work.cta.title || 'Tem um gargalo operacional para resolver?'}
             </h2>
 
             <p className="text-white/60 text-lg mb-10 font-light max-w-2xl mx-auto leading-relaxed">
-              {/* @ts-expect-error: subtitle property exists but typescript is not picking it up yet */}
-              {t.work.cta.subtitle || 'Vamos discutir a arquitetura do seu próximo sistema industrial ou digital.'}
+              {t.work.cta.subtitle || 'Vamos diagnosticar e projetar a solução enxuta certa.'}
             </p>
 
             <Link to="/contact">
               <Button className="h-14 px-8 bg-crimson hover:bg-red-700 text-white font-mono tracking-wider text-base rounded-sm group">
                 <Terminal className="mr-2 w-5 h-5 group-hover:text-black transition-colors" />
-                {t.cta_global?.button || 'INICIAR PROTOCOLO DE CONTATO'}
+                {t.cta_global?.button || 'AGENDAR DIAGNÓSTICO'}
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
