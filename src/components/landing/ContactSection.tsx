@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { MessageSquareCode, Mail, Phone, MapPin, Github, Linkedin, Send, Loader2, CheckCircle2 } from 'lucide-react'
 import { toast } from 'sonner'
+import { Icon4D } from '@/components/ui/Icon4D'
 
 export const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -67,9 +68,18 @@ export const ContactSection = () => {
               </div>
 
               <div className="relative z-10 space-y-5">
-                <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 font-mono text-xs font-semibold uppercase tracking-wider inline-block">
-                  CANAL MAIS RÁPIDO
-                </span>
+                <div className="flex items-center justify-between">
+                  <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 font-mono text-xs font-semibold uppercase tracking-wider inline-block">
+                    CANAL MAIS RÁPIDO
+                  </span>
+                  <Icon4D
+                    icon={MessageSquareCode}
+                    color="text-emerald-400"
+                    glowColor="rgba(16, 185, 129, 0.55)"
+                    size="md"
+                    floating={true}
+                  />
+                </div>
 
                 <div>
                   <h3 className="text-2xl font-bold text-white font-display">

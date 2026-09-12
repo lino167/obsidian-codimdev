@@ -81,26 +81,30 @@ const HeroSection = () => {
             className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full max-w-md sm:max-w-none"
           >
             {/* Primary: Ver Projetos */}
-            <Link
-              to="/work"
-              className="w-full sm:w-auto group relative px-8 py-3.5 bg-transparent overflow-hidden rounded-md transition-all inline-flex items-center justify-center"
+            <a
+              href="#projetos"
+              onClick={(e) => {
+                e.preventDefault()
+                const el = document.getElementById('projetos')
+                if (el) el.scrollIntoView({ behavior: 'smooth' })
+              }}
+              className="w-full sm:w-auto group relative px-8 py-3.5 bg-transparent overflow-hidden rounded-xl transition-all inline-flex items-center justify-center border border-[#BA0C10]/60 hover:border-[#BA0C10] shadow-[0_0_25px_-10px_rgba(186,12,16,0.4)]"
             >
-              <div className="absolute inset-0 border border-[#BA0C10]/60 rounded-md group-hover:border-[#BA0C10] transition-colors duration-300" />
-              <div className="absolute inset-0 bg-[#BA0C10] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+              <div className="absolute inset-0 bg-gradient-to-r from-crimson to-red-700 opacity-90 group-hover:opacity-100 transition-opacity" />
               <div className="relative flex items-center justify-center gap-2 text-white font-mono tracking-wider uppercase text-xs sm:text-sm z-10 font-semibold">
                 <span>{t.hero.cta_primary}</span>
-                <ArrowRight className="w-4 h-4 text-[#BA0C10] group-hover:text-white group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
               </div>
-            </Link>
+            </a>
 
             {/* Secondary: Iniciar um Projeto / Falar no WhatsApp */}
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-md border border-white/10 hover:border-emerald-500/50 bg-neutral-900/60 hover:bg-emerald-500/10 text-neutral-200 hover:text-emerald-400 transition-all font-mono text-xs sm:text-sm tracking-wider uppercase backdrop-blur-sm"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl border border-white/10 hover:border-emerald-500/50 bg-neutral-900/60 hover:bg-emerald-500/10 text-neutral-200 hover:text-emerald-400 transition-all font-mono text-xs sm:text-sm tracking-wider uppercase backdrop-blur-sm shadow-[0_0_20px_-10px_rgba(16,185,129,0.2)]"
             >
-              <MessageSquareCode className="w-4 h-4 text-emerald-400" />
+              <MessageSquareCode className="w-4 h-4 text-emerald-400 animate-pulse" />
               <span>{t.hero.cta_secondary}</span>
             </a>
           </motion.div>

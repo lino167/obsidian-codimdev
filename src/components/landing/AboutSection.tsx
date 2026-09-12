@@ -1,7 +1,8 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import ceoCodim from '@/assets/ceo-codim.png'
-import { Wrench, Code2, GraduationCap, MapPin, CheckCircle, ArrowRight, MessageSquareCode } from 'lucide-react'
+import { Wrench, Code2, GraduationCap, MapPin, CheckCircle, ArrowRight, MessageSquareCode, Cog, Cpu } from 'lucide-react'
+import { Icon4D } from '@/components/ui/Icon4D'
 
 export const AboutSection = () => {
   return (
@@ -33,15 +34,34 @@ export const AboutSection = () => {
               </div>
             </div>
 
-            {/* Quick credibility pills below image */}
+            {/* Quick credibility pills below image with 4D Icons */}
             <div className="grid grid-cols-2 gap-3 w-full max-w-sm mt-4">
-              <div className="p-3 rounded-xl bg-neutral-950 border border-white/5 text-center">
-                <div className="text-lg font-bold text-white font-mono">10+ Anos</div>
-                <div className="text-[10px] text-neutral-400 font-mono">Vivência Industrial</div>
+              <div className="p-3.5 rounded-xl bg-neutral-950 border border-white/10 flex items-center gap-3">
+                <Icon4D
+                  icon={Cog}
+                  color="text-crimson"
+                  glowColor="rgba(186, 12, 16, 0.5)"
+                  size="sm"
+                  floating={true}
+                />
+                <div>
+                  <div className="text-base font-bold text-white font-mono">10+ Anos</div>
+                  <div className="text-[10px] text-neutral-400 font-mono">Vivência Industrial</div>
+                </div>
               </div>
-              <div className="p-3 rounded-xl bg-neutral-950 border border-white/5 text-center">
-                <div className="text-lg font-bold text-emerald-400 font-mono">UniCesumar</div>
-                <div className="text-[10px] text-neutral-400 font-mono">Eng. de Software</div>
+
+              <div className="p-3.5 rounded-xl bg-neutral-950 border border-white/10 flex items-center gap-3">
+                <Icon4D
+                  icon={GraduationCap}
+                  color="text-emerald-400"
+                  glowColor="rgba(16, 185, 129, 0.5)"
+                  size="sm"
+                  floating={true}
+                />
+                <div>
+                  <div className="text-base font-bold text-emerald-400 font-mono">UniCesumar</div>
+                  <div className="text-[10px] text-neutral-400 font-mono">Eng. Software</div>
+                </div>
               </div>
             </div>
           </motion.div>

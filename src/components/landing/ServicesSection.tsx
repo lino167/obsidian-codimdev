@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Code2, Workflow, BrainCircuit, Database, CheckCircle2, ArrowRight } from 'lucide-react'
+import { Icon4D } from '@/components/ui/Icon4D'
 
 const services = [
   {
@@ -8,6 +9,7 @@ const services = [
     icon: Code2,
     badge: 'APLICAÇÕES & DASHBOARDS',
     color: 'text-cyan-400',
+    glowColor: 'rgba(34, 211, 238, 0.5)',
     borderColor: 'border-cyan-500/20 hover:border-cyan-500/50',
     badgeBg: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/30',
     title: 'Desenvolvimento Web Full-Stack',
@@ -26,6 +28,7 @@ const services = [
     icon: Workflow,
     badge: 'RPA & OPS-TECH',
     color: 'text-crimson',
+    glowColor: 'rgba(186, 12, 16, 0.55)',
     borderColor: 'border-crimson/20 hover:border-crimson/50',
     badgeBg: 'bg-crimson/10 text-crimson border-crimson/30',
     title: 'Automações de Processos & Bots',
@@ -44,6 +47,7 @@ const services = [
     icon: BrainCircuit,
     badge: 'INTELIGÊNCIA ARTIFICIAL',
     color: 'text-purple-400',
+    glowColor: 'rgba(192, 132, 252, 0.5)',
     borderColor: 'border-purple-500/20 hover:border-purple-500/50',
     badgeBg: 'bg-purple-500/10 text-purple-400 border-purple-500/30',
     title: 'Integração de IA & Busca Semântica (RAG)',
@@ -62,6 +66,7 @@ const services = [
     icon: Database,
     badge: 'BANCO DE DADOS & SEGURANÇA',
     color: 'text-emerald-400',
+    glowColor: 'rgba(52, 211, 153, 0.5)',
     borderColor: 'border-emerald-500/20 hover:border-emerald-500/50',
     badgeBg: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30',
     title: 'Modelagem & Otimização de Banco de Dados',
@@ -116,9 +121,13 @@ export const ServicesSection = () => {
                     <span className={`px-3 py-1 rounded-full border text-[11px] font-mono tracking-wider font-semibold ${svc.badgeBg}`}>
                       {svc.badge}
                     </span>
-                    <div className={`p-3 rounded-xl bg-black/60 border border-white/10 ${svc.color} group-hover:scale-110 transition-transform`}>
-                      <Icon className="w-6 h-6" />
-                    </div>
+                    <Icon4D
+                      icon={Icon}
+                      color={svc.color}
+                      glowColor={svc.glowColor}
+                      size="md"
+                      floating={true}
+                    />
                   </div>
 
                   {/* Title */}

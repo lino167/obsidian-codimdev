@@ -1,10 +1,14 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { CheckCircle2, MessageSquareCode, Github, ExternalLink, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react'
+import { CheckCircle2, MessageSquareCode, Github, ExternalLink, ArrowRight, ShieldCheck, Sparkles, Factory, Bot, LineChart } from 'lucide-react'
+import { Icon4D } from '@/components/ui/Icon4D'
 
 const cases = [
   {
     id: 'kraflo',
+    icon: Factory,
+    color: 'text-crimson',
+    glowColor: 'rgba(186, 12, 16, 0.55)',
     tag: 'CASE 01 // INDÚSTRIA PESADA',
     title: 'Kraflo-CMMS — Sistema de Gestão de Manutenção Industrial',
     subtitle: 'Digitalização completa de ordens de serviço, cálculo de torque e preventivas fabris.',
@@ -34,6 +38,9 @@ const cases = [
   },
   {
     id: 'automation',
+    icon: Bot,
+    color: 'text-cyan-400',
+    glowColor: 'rgba(34, 211, 238, 0.55)',
     tag: 'CASE 02 // RPA & EXTRAÇÃO CONTÍNUA',
     title: 'Automações de Workflows & Bots de Extração de Dados',
     subtitle: 'Raspagem contínua, monitoramento 24/7 e alertas em tempo real.',
@@ -62,6 +69,9 @@ const cases = [
   },
   {
     id: 'hackathon',
+    icon: LineChart,
+    color: 'text-purple-400',
+    glowColor: 'rgba(192, 132, 252, 0.55)',
     tag: 'CASE 03 // HACKATHON & ANALYTICS',
     title: 'Iniciativas Codim Studio & Hackathons (Team Lumen devs)',
     subtitle: 'Dashboards analíticos e modelagem para resolução de problemas operacionais.',
@@ -125,14 +135,25 @@ export const ProjectsSection = () => {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
                 {/* Info (8 cols) */}
                 <div className="lg:col-span-8 space-y-6">
-                  {/* Tag */}
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="px-3 py-1 rounded bg-crimson/10 border border-crimson/30 text-crimson font-mono text-xs font-semibold">
-                      {project.tag}
-                    </span>
-                    <span className="text-emerald-400 font-mono text-xs flex items-center gap-1.5">
-                      <ShieldCheck className="w-4 h-4" /> Caso Real Testado
-                    </span>
+                  {/* Tag and 4D Icon */}
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <span className="px-3 py-1 rounded bg-crimson/10 border border-crimson/30 text-crimson font-mono text-xs font-semibold">
+                        {project.tag}
+                      </span>
+                      <span className="text-emerald-400 font-mono text-xs flex items-center gap-1.5">
+                        <ShieldCheck className="w-4 h-4" /> Caso Real Testado
+                      </span>
+                    </div>
+                    {project.icon && (
+                      <Icon4D
+                        icon={project.icon}
+                        color={project.color}
+                        glowColor={project.glowColor}
+                        size="md"
+                        floating={true}
+                      />
+                    )}
                   </div>
 
                   {/* Title & Subtitle */}

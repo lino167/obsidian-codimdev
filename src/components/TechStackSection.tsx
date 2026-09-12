@@ -2,12 +2,14 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { InfiniteMovingCards } from '@/components/ui/infinite-moving-cards'
 import { Cpu, Layout, Database, Bot, Wrench } from 'lucide-react'
+import { Icon4D } from '@/components/ui/Icon4D'
 
 const stackCategories = [
   {
     title: 'Front-end',
     icon: Layout,
     color: 'text-cyan-400',
+    glowColor: 'rgba(34, 211, 238, 0.55)',
     borderColor: 'border-cyan-500/20',
     bgColor: 'bg-cyan-500/5',
     items: [
@@ -24,6 +26,7 @@ const stackCategories = [
     title: 'Back-end & Banco de Dados',
     icon: Database,
     color: 'text-emerald-400',
+    glowColor: 'rgba(52, 211, 153, 0.55)',
     borderColor: 'border-emerald-500/20',
     bgColor: 'bg-emerald-500/5',
     items: [
@@ -39,6 +42,7 @@ const stackCategories = [
     title: 'Automação & Integrações',
     icon: Bot,
     color: 'text-purple-400',
+    glowColor: 'rgba(192, 132, 252, 0.55)',
     borderColor: 'border-purple-500/20',
     bgColor: 'bg-purple-500/5',
     items: [
@@ -54,6 +58,7 @@ const stackCategories = [
     title: 'Design & Ferramentas',
     icon: Wrench,
     color: 'text-amber-400',
+    glowColor: 'rgba(251, 191, 36, 0.55)',
     borderColor: 'border-amber-500/20',
     bgColor: 'bg-amber-500/5',
     items: [
@@ -127,13 +132,17 @@ const TechStackSection = () => {
                 className={`p-6 rounded-xl border ${cat.borderColor} ${cat.bgColor} backdrop-blur-sm relative group hover:border-white/20 transition-all duration-300 flex flex-col justify-between`}
               >
                 <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className={`p-2 rounded-md bg-black/60 border border-white/10 ${cat.color}`}>
-                      <Icon className="w-5 h-5" />
-                    </div>
+                  <div className="flex items-center justify-between mb-4">
                     <h3 className="font-mono font-semibold text-sm text-white tracking-wide">
                       {cat.title}
                     </h3>
+                    <Icon4D
+                      icon={Icon}
+                      color={cat.color}
+                      glowColor={cat.glowColor}
+                      size="sm"
+                      floating={true}
+                    />
                   </div>
 
                   <div className="flex flex-wrap gap-2 mt-4">
