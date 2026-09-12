@@ -1,69 +1,45 @@
 import SystemStatus from '@/components/SystemStatus'
 import HeroSection from '@/components/HeroSection'
-import FeaturedWork from '@/components/FeaturedWork'
+import ServicesSection from '@/components/landing/ServicesSection'
+import ProjectsSection from '@/components/landing/ProjectsSection'
+import AboutSection from '@/components/landing/AboutSection'
 import TechStackSection from '@/components/TechStackSection'
+import ContactSection from '@/components/landing/ContactSection'
 import Footer from '@/components/Footer'
 import { CornerBrackets, GridLines } from '@/components/ui/hud-elements'
-import { Button } from '@/components/ui/button'
-import { ArrowRight, Terminal } from 'lucide-react'
-import { Link } from 'react-router-dom'
-import { useLanguage } from '@/hooks/use-language'
 
 const Index = () => {
-  const { t } = useLanguage()
-
   return (
-    <div className="min-h-screen bg-black overflow-x-hidden selection:bg-crimson/30 selection:text-crimson-foreground relative">
-      {/* HUD Elements */}
+    <div className="min-h-screen bg-black overflow-x-hidden selection:bg-crimson/30 selection:text-crimson-foreground relative font-sans">
+      {/* HUD Decorative Elements */}
       <CornerBrackets />
       <GridLines />
 
-      {/* Main Content */}
+      {/* Status Bar */}
       <SystemStatus />
+
+      {/* Main Single Page Content */}
       <main>
+        {/* 1. Hero Section: Apresentação Principal */}
         <HeroSection />
+
+        {/* 2. Serviços Oferecidos: O que eu faço & Problemas que resolvo */}
+        <ServicesSection />
+
+        {/* 3. Projetos de Destaque: Cases Reais (Kraflo, Bots, Hackathons) */}
+        <ProjectsSection />
+
+        {/* 4. Sobre Mim: Bio Profissional, Foto & Vivência Industrial */}
+        <AboutSection />
+
+        {/* 5. Stack Técnica & Competências */}
         <TechStackSection />
 
-        <div id="services-preview">
-          {/* Mantenha o conteúdo existente do BentoGrid/Services aqui se houver */}
-        </div>
-
-        <FeaturedWork />
-
-        {/* --- NOVO CTA TÁTICO (Call to Action Final) --- */}
-        <section className="py-32 px-6 relative overflow-hidden border-t border-white/5">
-          {/* Background Grid Sutil */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0),rgba(186,12,16,0.05))] pointer-events-none" />
-
-          <div className="max-w-4xl mx-auto text-center relative z-10">
-            {/* Badge Pulsante */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-crimson/30 bg-crimson/5 text-crimson text-xs font-mono mb-8">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-crimson opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-crimson"></span>
-              </span>
-              DIAGNÓSTICO DISPONÍVEL
-            </div>
-
-            <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-6 tracking-tight">
-              {t.work.cta.title || 'Tem um gargalo operacional para resolver?'}
-            </h2>
-
-            <p className="text-white/60 text-lg mb-10 font-light max-w-2xl mx-auto leading-relaxed">
-              {t.work.cta.subtitle || 'Vamos diagnosticar e projetar a solução enxuta certa.'}
-            </p>
-
-            <Link to="/contact">
-              <Button className="h-14 px-8 bg-crimson hover:bg-red-700 text-white font-mono tracking-wider text-base rounded-sm group">
-                <Terminal className="mr-2 w-5 h-5 group-hover:text-black transition-colors" />
-                {t.cta_global?.button || 'AGENDAR DIAGNÓSTICO'}
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
-          </div>
-        </section>
-        {/* ------------------------------------------------------- */}
+        {/* 6. Contato & Diagnóstico Operacional (WhatsApp em destaque) */}
+        <ContactSection />
       </main>
+
+      {/* Rodapé Completo */}
       <Footer />
     </div>
   )
