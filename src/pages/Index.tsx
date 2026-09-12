@@ -1,4 +1,3 @@
-import SystemStatus from '@/components/SystemStatus'
 import HeroSection from '@/components/HeroSection'
 import ServicesSection from '@/components/landing/ServicesSection'
 import ProjectsSection from '@/components/landing/ProjectsSection'
@@ -14,9 +13,6 @@ const Index = () => {
       {/* HUD Decorative Elements */}
       <CornerBrackets />
       <GridLines />
-
-      {/* Status Bar */}
-      <SystemStatus />
 
       {/* Main Single Page Content */}
       <main>
