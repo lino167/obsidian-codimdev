@@ -15,8 +15,41 @@ interface Project {
   live_url?: string;
 }
 
+const defaultCases: Project[] = [
+  {
+    id: 1,
+    title: 'Kraflo-CMMS — Manutenção Industrial',
+    short_description:
+      'Plataforma completa para ordens de serviço, cálculo de torque e rotinas de manutenção preditiva e corretiva em planta fabril.',
+    cover_image: '',
+    tech_stack: ['React', 'TypeScript', 'Supabase', 'Telegram API', 'IA RAG'],
+    slug: 'kraflo-cmms',
+    repo_url: 'https://github.com/lino167',
+  },
+  {
+    id: 2,
+    title: 'Automações de Workflows & Bots de Extração',
+    short_description:
+      'Soluções de monitoramento, raspagem contínua (BeautifulSoup) e alertas em tempo real via Telegram para tomada de decisão.',
+    cover_image: '',
+    tech_stack: ['Python', 'BeautifulSoup', 'Telegram Bot', 'APIs REST'],
+    slug: 'automacoes-bots',
+    repo_url: 'https://github.com/lino167',
+  },
+  {
+    id: 3,
+    title: 'Iniciativas Codim Studio & Hackathons',
+    short_description:
+      'Desenvolvimento de ferramentas sob medida e dashboards operacionais no Hackathon UniCesumar + Qlik (Team Lumen devs).',
+    cover_image: '',
+    tech_stack: ['React', 'TypeScript', 'Python', 'Qlik Sense'],
+    slug: 'codim-hackathons',
+    repo_url: 'https://github.com/lino167',
+  },
+];
+
 export const FeaturedWork = () => {
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [projects, setProjects] = useState<Project[]>(defaultCases);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -32,12 +65,15 @@ export const FeaturedWork = () => {
           .limit(3);
 
         if (error) {
-          console.error("Erro Supabase:", error);
+          console.warn("Usando cases padrão locais:", error.message);
+          setProjects(defaultCases);
+        } else if (data && data.length > 0) {
+          setProjects(data);
         } else {
-          setProjects(data || []);
+          setProjects(defaultCases);
         }
-      } catch (err) {
-        console.error("Erro geral:", err);
+      } catch {
+        setProjects(defaultCases);
       } finally {
         setLoading(false);
       }
@@ -50,9 +86,6 @@ export const FeaturedWork = () => {
       <Loader2 className="animate-spin text-crimson w-8 h-8" />
     </div>
   );
-
-  // Se não tiver projetos destaque, esconde a seção para não ficar feio
-  if (projects.length === 0) return null;
 
   return (
     <section className="py-24 px-6 bg-neutral-950">

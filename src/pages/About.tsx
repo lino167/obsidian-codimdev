@@ -350,10 +350,18 @@ export default function About() {
                 </h2>
               </div>
 
-              <div className="prose prose-invert max-w-none">
-                <p className="text-[#E5E5E5] text-lg leading-relaxed">
-                  {t.about.hero.description}
-                </p>
+              <div className="prose prose-invert max-w-none space-y-4">
+                {t.about.hero.bio_paragraphs ? (
+                  t.about.hero.bio_paragraphs.map((para: string, idx: number) => (
+                    <p key={idx} className="text-[#E5E5E5] text-lg leading-relaxed">
+                      {para}
+                    </p>
+                  ))
+                ) : (
+                  <p className="text-[#E5E5E5] text-lg leading-relaxed whitespace-pre-line">
+                    {t.about.hero.description}
+                  </p>
+                )}
               </div>
             </div>
           </div>

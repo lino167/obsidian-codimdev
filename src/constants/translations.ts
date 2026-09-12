@@ -1,46 +1,39 @@
-export const translations = {
+﻿export const translations = {
   pt: {
     navbar: {
       home: 'INÍCIO',
-      services: 'MÓDULOS',
-      work: 'IMPLANTAÇÕES',
-      about: 'OPERADOR',
-      contact: 'DIAGNÓSTICO',
+      services: 'SERVIÇOS',
+      work: 'PROJETOS',
+      about: 'SOBRE MIM',
+      contact: 'CONTATO',
     },
     hero: {
-      badge: 'SISTEMA ONLINE // V2.0',
-      title: 'CODIM DEV',
+      badge: 'Full-Stack React & TypeScript • Python & Automações • Supabase & PostgreSQL • Ops-Tech',
+      title: 'Engenharia de Software & Soluções Operacionais de Precisão.',
       typewriter: [
         [
-          {
-            text: 'Engenharia',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
-          {
-            text: 'Operacional',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
-          {
-            text: 'Aplicada',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
+          { text: 'Engenharia', className: 'text-neutral-400 font-mono text-sm md:text-xl' },
+          { text: 'de', className: 'text-neutral-400 font-mono text-sm md:text-xl' },
+          { text: 'Software', className: 'text-white font-mono text-sm md:text-xl font-semibold' },
         ],
         [
+          { text: 'Soluções', className: 'text-neutral-400 font-mono text-sm md:text-xl' },
+          { text: 'Operacionais', className: 'text-crimson font-mono text-sm md:text-xl font-semibold' },
+          { text: 'de', className: 'text-neutral-400 font-mono text-sm md:text-xl' },
+          { text: 'Precisão.', className: 'text-crimson font-mono text-sm md:text-xl font-semibold' },
+        ],
+        [
+          { text: 'Aplicações', className: 'text-neutral-400 font-mono text-sm md:text-xl' },
+          { text: 'Web', className: 'text-white font-mono text-sm md:text-xl font-semibold' },
+          { text: 'Modernas', className: 'text-neutral-400 font-mono text-sm md:text-xl' },
           { text: '&', className: 'text-crimson font-mono text-sm md:text-xl' },
-          {
-            text: 'Automação',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
-          {
-            text: 'Enxuta.',
-            className: 'text-crimson font-mono text-sm md:text-xl',
-          },
+          { text: 'Automação.', className: 'text-crimson font-mono text-sm md:text-xl font-semibold' },
         ],
       ],
       description:
-        'Sistemas enxutos, automações e ferramentas operacionais para empresas que precisam de mais controle, velocidade e menos retrabalho.',
-      cta_primary: 'AGENDAR DIAGNÓSTICO',
-      cta_secondary: 'VER METODOLOGIA',
+        'Desenvolvo aplicações web modernas, automações sob medida e integrações com inteligência artificial para otimizar fluxos de trabalho e transformar processos operacionais.',
+      cta_primary: 'VER PROJETOS',
+      cta_secondary: 'INICIAR UM PROJETO / FALAR NO WHATSAPP',
     },
     system_status: {
       online: 'SISTEMA: ONLINE',
@@ -48,104 +41,107 @@ export const translations = {
       build: 'BUILD ESTÁVEL',
     },
     featured_work: {
-      title: 'IMPLANTAÇÕES RECENTES',
-      subtitle: 'Sistemas em operação e gargalos resolvidos.',
+      title: 'CASES DE DESTAQUE',
+      subtitle: 'Sistemas em operação e processos operacionais otimizados.',
       projects: {
         kraflo: {
-          title: 'SaaS de Manutenção Industrial',
+          title: 'Kraflo-CMMS — Gestão de Manutenção Industrial',
           description:
-            'Sistema de gestão de torque e preventivas para indústrias pesadas.',
+            'Plataforma completa para ordens de serviço, preventivas e cálculo de torque em ambiente fabril.',
         },
         neural: {
-          title: 'Agentes de CRM Autônomos',
+          title: 'Automações de Workflows & Bots de Extração',
           description:
-            'Fluxos de n8n para automação de vendas e atendimento via WhatsApp.',
+            'Monitoramento, web scraping e alertas automáticos via Telegram para decisão em tempo real.',
         },
         codim: {
-          title: 'Dashboard Operacional',
-          description: 'Painel de controle interno com dados em tempo real.',
+          title: 'Codim Studio & Hackathons',
+          description:
+            'Desenvolvimento de dashboards analíticos e ferramentas sob medida para resolução de gargalos operacionais.',
         },
       },
-      view_all: 'ACESSAR ARQUIVO COMPLETO DE IMPLANTAÇÕES',
+      view_all: 'VER TODOS OS PROJETOS',
     },
     about: {
       hero: {
-        access_file: '// ACESSANDO ARQUIVO DE PESSOAL: 001',
-        title: 'O OPERADOR',
-        subtitle: 'ZACARIAS LINO // ENG. OPERACIONAL & AUTOMAÇÃO',
+        access_file: '// PERFIL PROFISSIONAL // ARQUIVO 001',
+        title: 'ZACARIAS LINO',
+        subtitle: 'ENGENHEIRO DE SOFTWARE // SOLUÇÕES OPERACIONAIS & AUTOMAÇÃO',
         description:
-          'De Mecânico Industrial a Engenheiro de Automação. Unindo a precisão do chão de fábrica com a velocidade do código. Hoje, na CODIM DEV, resolvo gargalos operacionais específicos com automação enxuta, dashboards sob medida e bots que trabalham 24/7, usando Python, n8n e Supabase.',
+          'Engenheiro de Software em formação (UniCesumar) com mais de 10 anos de vivência no setor industrial e manutenção mecânica. Essa trajetória traz um diferencial claro para o desenvolvimento de software: foco absoluto em confiabilidade, arquitetura limpa e resolução de problemas reais de alta complexidade. Em vez de criar apenas interfaces visuais, construo ferramentas que resolvem gargalos de produção, reduzem retrabalho manual e geram retorno tangível para a operação. Atualmente atuo no desenvolvimento de sistemas web completos, bots de automação (Telegram/RPA) e pipelines de dados com integração a modelos de IA.',
+        bio_paragraphs: [
+          'Engenheiro de Software em formação (UniCesumar) com mais de 10 anos de vivência no setor industrial e manutenção mecânica.',
+          'Essa trajetória traz um diferencial claro para o desenvolvimento de software: foco absoluto em confiabilidade, arquitetura limpa e resolução de problemas reais de alta complexidade. Em vez de criar apenas interfaces visuais, construo ferramentas que resolvem gargalos de produção, reduzem retrabalho manual e geram retorno tangível para a operação.',
+          'Atualmente atuo no desenvolvimento de sistemas web completos, bots de automação (Telegram/RPA) e pipelines de dados com integração a modelos de IA.',
+        ],
       },
-      timeline_title: 'LOGS DO SISTEMA: TRAJETÓRIA',
+      timeline_title: 'TRAJETÓRIA & FORMAÇÃO',
       timeline: {
         t1_title: 'Inicialização (2006)',
         t1_desc:
-          'Primeiro contato com hardware aos 13 anos. Montagem de computadores e o início do fascínio pela lógica binária.',
-
+          'Primeiro contato com computação e hardware aos 13 anos. Início do fascínio pela lógica binária e resolução de problemas.',
         t2_title: 'A Forja Industrial (2014-2016)',
         t2_desc:
-          'SANTOS CMI: Montador de Máquinas. Atuação crítica na montagem e alinhamento de Turbinas a Gás em Siderúrgica.',
-
+          'SANTOS CMI: Montador de Máquinas. Montagem e alinhamento de precisão em Turbinas a Gás e equipamentos de grande porte em Siderúrgica.',
         t3_title: 'Operação Polivalente (2020-2023)',
         t3_desc:
-          'FIAÇÃO FIO PURO: Operador Industrial. Controle de qualidade rigoroso e operação de maquinário têxtil complexo.',
-
-        t4_title: 'Missões Críticas (2024)',
+          'FIAÇÃO FIO PURO: Operador Industrial. Controle rigoroso de processos e manutenção de maquinário têxtil complexo.',
+        t4_title: 'Engenharia de Campo (2024)',
         t4_desc:
-          'ENESA ENGENHARIA: Montagem de precipitadores eletrostáticos em planta de Papel e Celulose. Trabalho de alta precisão.',
-
-        t5_title: 'Reboot do Sistema (2023-2025)',
+          'ENESA ENGENHARIA: Montagem de precipitadores eletrostáticos em planta de Papel e Celulose. Foco extremo em tolerâncias e confiabilidade.',
+        t5_title: 'Formação & Certificações (2023-2026)',
         t5_desc:
-          'Certificações Técnicas: OneBitCode (Full Stack), Adobe (Design) e IBQP (Técnico Mecânica).',
-
-        t6_title: 'Processamento Paralelo (Atual)',
+          'Engenharia de Software (UniCesumar), Formação Full Stack OneBitCode, Técnico em Mecânica Industrial (IBQP) e Design Adobe.',
+        t6_title: 'Atuação Atual',
         t6_desc:
-          'KARSTEN S.A.: Mecânico de Produção I (Teares) + Engenharia Operacional na CODIM DEV (Freelancer).',
+          'Mecânico de Produção I (Teares) na KARSTEN S.A. e Engenheiro de Software / Automações na CODIM DEV.',
       },
       certificates: {
-        title: 'PROTOCOLOS CERTIFICADOS',
-        subtitle: 'Upgrades de sistema e habilitações técnicas.',
+        title: 'COMPETÊNCIAS & HABILITAÇÕES TÉCNICAS',
+        subtitle: 'Domínio prático comprovado e certificações contínuas.',
         groups: [
           {
             id: '01',
-            category: 'AUTOMAÇÃO & FLUXOS',
-            icon: 'BrainCircuit',
+            category: 'FRONT-END',
+            icon: 'Code2',
             items: [
-              'Python I',
-              'Engenharia de Prompt (ChatGPT)',
-              'n8n & Automação de Processos',
-              'Fundamentos de IA',
+              'React & Next.js',
+              'TypeScript & JavaScript (ES6+)',
+              'Tailwind CSS & Shadcn UI',
+              'Framer Motion & HTML5/CSS3',
             ],
           },
           {
             id: '02',
-            category: 'CORE DEV STACK',
-            icon: 'Code2',
+            category: 'BACK-END & BANCO DE DADOS',
+            icon: 'Database',
             items: [
-              'JavaScript I',
-              'HTML5 & CSS3 Moderno',
-              'React (Em progresso)',
               'Supabase & PostgreSQL',
+              'Edge Functions & RPCs',
+              'Python & Node.js',
+              'APIs REST & Webhooks',
             ],
           },
           {
             id: '03',
-            category: 'DASHBOARDS & UI',
-            icon: 'PenTool',
+            category: 'AUTOMAÇÃO & INTEGRAÇÕES',
+            icon: 'BrainCircuit',
             items: [
-              'Adobe Photoshop (Avançado)',
-              'Adobe Illustrator (Avançado)',
-              'UI/UX para Painéis Operacionais',
+              'Telegram Bot API & RPA',
+              'Web Scraping (BeautifulSoup/Python)',
+              'Modelos de IA & RAG / Embeddings',
+              'Integração de Sistemas Legados',
             ],
           },
           {
             id: '04',
-            category: 'HARDWARE & OPS',
-            icon: 'Wrench',
+            category: 'DESIGN & FERRAMENTAS',
+            icon: 'PenTool',
             items: [
-              'Técnico em Mecânica Industrial',
-              'Planejamento de Projetos',
-              'Controle de Processos',
+              'Git & GitHub',
+              'VS Code & DevTools',
+              'Figma',
+              'Adobe Photoshop & Illustrator',
             ],
           },
         ],
@@ -153,153 +149,203 @@ export const translations = {
     },
     services: {
       header: {
-        badge: '// Documentação Técnica',
-        title: 'MÓDULOS',
+        badge: '// SERVIÇOS & ESPECIALIDADES',
+        title: 'SOLUÇÕES',
         title_highlight: 'OPERACIONAIS',
         description:
-          'Soluções enxutas para eliminar gargalos reais. Sem complexidade desnecessária.',
+          'Desenvolvimento sob medida para eliminar gargalos, automatizar fluxos e escalar operações com confiabilidade.',
       },
       blocks: {
-        automation: {
-          badge: '[FLUXO: AUTOMATIZADO]',
-          title: 'Automação de Processos & Fluxos',
-          p1: 'Elimino gargalos operacionais conectando sistemas isolados. Utilizo n8n e scripts Python para criar fluxos autônomos que integram CRM, WhatsApp e Bancos de Dados.',
-          p2: 'O resultado é um ecossistema enxuto que trabalha 24/7 sem erros, eliminando retrabalho e devolvendo tempo para a equipe focar no que importa.',
-        },
         fullstack: {
-          badge: '[SIS: INTERNO]',
-          title: 'Sistemas Internos & Dashboards',
-          p1: 'Construo ferramentas internas sob medida: dashboards operacionais, painéis administrativos e controles de produção. Utilizo Supabase para dados em tempo real e React para interfaces responsivas.',
-          p2: 'O foco não é "entregar um site", mas dar visibilidade e controle real sobre a operação do negócio.',
+          badge: '[WEB: FULL-STACK]',
+          title: 'Desenvolvimento Web Full-Stack',
+          p1: 'Criação de painéis administrativos, dashboards e aplicações web responsivas e seguras utilizando React, TypeScript, Tailwind CSS e Supabase (PostgreSQL).',
+          p2: 'Sistemas projetados com arquitetura modular, tipagem estrita com TypeScript, autenticação robusta e foco na produtividade da equipe.',
           list: [
-            'Dashboards Operacionais & Painéis de Controle',
-            'Controles de Produção Enxutos',
-            'Integração de Dados em Tempo Real (Supabase)',
+            'Painéis Administrativos & Dashboards Interativos',
+            'Aplicações Web Responsivas em React & TypeScript',
+            'Autenticação e Permissões Granulares (RLS)',
+            'Integração em Tempo Real com Supabase & PostgreSQL',
           ],
         },
-        design: {
-          badge: '[BOT: ATIVO]',
-          title: 'Bots & Agentes Operacionais',
-          p1: 'Bots para Telegram, WhatsApp e sistemas internos. Centralização de despacho, alertas em tempo real e atendimento automatizado.',
-          p2: 'Não é chatbot genérico. É um agente operacional que recebe dados, processa e executa ações concretas na sua operação.',
+        automation: {
+          badge: '[OPS-TECH: AUTOMAÇÕES & BOTS]',
+          title: 'Automações de Processos & Bots (RPA / Ops-Tech)',
+          p1: 'Desenvolvimento de robôs em Python (Telegram Bots, web scraping, alertas automáticos e webhooks) para eliminar rotinas manuais e integrar sistemas legados a canais modernos.',
+          p2: 'Elimine erros manuais e acelere respostas operacionais com automações confiáveis que executam 24/7 sem interrupções.',
+          list: [
+            'Robôs Operacionais em Python & Telegram Bot API',
+            'Web Scraping & Coleta Contínua de Dados',
+            'Webhooks e Gatilhos em Tempo Real',
+            'Eliminação de Retrabalho e Tarefas Repetitivas',
+          ],
+        },
+        ai: {
+          badge: '[IA: ASSISTENTES & BUSCA SEMÂNTICA]',
+          title: 'Integração de Inteligência Artificial & APIs',
+          p1: 'Implementação de assistentes inteligentes com busca semântica em documentos (RAG), consulta a manuais operacionais e integração com Edge Functions e APIs REST.',
+          p2: 'Permita que sua equipe consulte dados técnicos e procedimentos operacionais em linguagem natural com máxima assertividade.',
+          list: [
+            'Busca Semântica em Documentos e PDFs (RAG)',
+            'Consulta Rápida a Manuais Operacionais',
+            'Integração de Modelos de Linguagem (OpenAI / Claude / Gemini)',
+            'APIs REST e Edge Functions Otimizadas',
+          ],
+        },
+        database: {
+          badge: '[DADOS: MODELAGEM & SEGURANÇA]',
+          title: 'Otimização e Modelagem de Banco de Dados',
+          p1: 'Estruturação de bancos relacionais com PostgreSQL/Supabase, políticas granulares de segurança (Row Level Security - RLS) e funções RPC de alto desempenho.',
+          p2: 'Garantia de integridade relacional, segurança por usuário e consultas de alto rendimento para suportar a escala do negócio.',
+          list: [
+            'Modelagem Relacional em PostgreSQL & Supabase',
+            'Segurança por Nível de Linha (RLS - Row Level Security)',
+            'Funções RPC & Stored Procedures de Alta Performance',
+            'Otimização de Índices e Queries Complexas',
+          ],
         },
       },
       cta: {
         title: 'Tem um gargalo operacional para resolver?',
-        subtitle: 'Vamos diagnosticar e projetar a solução enxuta certa.',
-        button: 'AGENDAR DIAGNÓSTICO',
+        subtitle: 'Vamos diagnosticar seu fluxo e construir a ferramenta exata que sua empresa precisa.',
+        button: 'FALAR NO WHATSAPP',
       },
     },
     work: {
       header: {
-        badge: '// NÍVEL DE ACESSO: PÚBLICO',
-        title: 'SISTEMAS IMPLANTADOS',
-        description: 'Gargalos resolvidos. Operações otimizadas.',
+        badge: '// PORTFOLIO CASES // NÍVEL: PÚBLICO',
+        title: 'PROJETOS DE DESTAQUE',
+        description: 'Engenharia de software aplicada a problemas operacionais reais.',
       },
       projects: {
         kraflo: {
-          title: 'KRAFLO // CMMS Industrial',
+          title: 'Kraflo-CMMS — Sistema de Gestão de Manutenção Industrial',
           description:
-            'Desenvolvimento de um SaaS completo para gestão de manutenção industrial. Digitalização do cálculo de torque e ordens de serviço de planta fabril.',
+            'Plataforma completa para gerenciamento e acompanhamento de ordens de serviço (OS) e rotinas de manutenção preditiva e corretiva em ambiente industrial.',
+          context:
+            'Plataforma completa para gerenciamento e acompanhamento de ordens de serviço (OS) e rotinas de manutenção preditiva e corretiva em ambiente industrial.',
+          stack: 'React, TypeScript, Tailwind CSS, Supabase (PostgreSQL / Edge Functions), Telegram Bot API, IA Generativa.',
+          highlights: [
+            'Dashboard operacional interativo com controle granular de acessos (RLS).',
+            'Webhook integrado ao Telegram para abertura, acompanhamento e envio de relatórios e fotos em campo diretamente pelo celular.',
+            'Assistente de IA integrado com busca semântica em manuais técnicos em PDF para suporte imediato aos operadores.',
+          ],
         },
         agents: {
-          title: 'Agentes de CRM Autônomos',
+          title: 'Automações de Workflows & Bots de Extração de Dados',
           description:
-            'Orquestração de vendas via n8n e OpenAI. O sistema recebe leads, qualifica via IA e agenda reuniões automaticamente, eliminando 90% do trabalho manual.',
+            'Soluções de monitoramento e raspagem contínua de informações operacionais e rotinas administrativas.',
+          context:
+            'Soluções de monitoramento e raspagem contínua de informações operacionais e rotinas administrativas.',
+          stack: 'Python, BeautifulSoup, APIs REST, Telegram Bot API.',
+          highlights: [
+            'Extração confiável de dados e monitoramento contínuo.',
+            'Alertas instantâneos de status de serviços e rotinas administrativas.',
+            'Integração direta com mensageria para tomada de decisão em tempo real.',
+          ],
         },
         identity: {
-          title: 'Dashboard Operacional Interno',
+          title: 'Iniciativas Codim Studio & Hackathons',
           description:
-            'Painel de controle em tempo real com métricas operacionais, alertas e gestão de fluxos automatizados para equipe de operações.',
+            'Desenvolvimento de ferramentas sob medida e participação no Hackathon UniCesumar + Qlik (Team Lumen devs), com foco em análise de dados e dashboards para resolução de problemas operacionais.',
+          context:
+            'Desenvolvimento de ferramentas sob medida e participação no Hackathon UniCesumar + Qlik (Team Lumen devs).',
+          stack: 'React, TypeScript, Python, Dashboards, Qlik Sense, APIs REST.',
+          highlights: [
+            'Análise de dados e criação de dashboards analíticos voltados a operações reais.',
+            'Participação no Hackathon UniCesumar + Qlik com o time Lumen devs.',
+            'Arquitetura escalável para visualização gerencial e tomada de decisão ágil.',
+          ],
         },
       },
       minor_projects: {
-        title: 'MÓDULOS EXPERIMENTAIS',
-        subtitle: '// PROTÓTIPOS_E_SCRIPTS',
+        title: 'MÓDULOS & SOLUÇÕES DE SUPORTE',
+        subtitle: '// ENGENHARIA_SOB_MEDIDA',
         items: [
           {
-            title: 'Bot Operacional (Telegram/WhatsApp)',
-            description: 'Centralização de despacho e alertas em tempo real.',
+            title: 'Bots Operacionais (Telegram/WhatsApp)',
+            description: 'Notificações, abertura de chamados e alertas automatizados.',
           },
           {
-            title: 'Workflow de Integração Supabase',
-            description: 'Automação e processamento de rotinas de banco de dados.',
+            title: 'Pipelines de Dados & Web Scraping',
+            description: 'Scripts Python para raspagem, tratamento e carga contínua.',
           },
           {
-            title: 'Relatórios & Dashboards Dinâmicos',
-            description: 'Visualização gerencial com dados em tempo real.',
+            title: 'Dashboards Analíticos em Tempo Real',
+            description: 'Controle de KPIs com PostgreSQL e interfaces React modernas.',
           },
         ],
       },
       cta: {
         title: 'Tem um gargalo operacional para resolver?',
         subtitle: 'Vamos diagnosticar e projetar a solução enxuta certa.',
-        button: 'AGENDAR DIAGNÓSTICO',
+        button: 'INICIAR UM PROJETO',
       },
     },
     contact: {
-      title: 'CANAIS DE',
-      title_highlight: 'DIAGNÓSTICO',
-      location: 'Blumenau, SC // Hub de Engenharia Operacional',
+      title: 'VAMOS CONVERSAR SOBRE',
+      title_highlight: 'SEU PROJETO',
+      location: 'Blumenau, SC – Brasil (Atendimento remoto para todo o país)',
       availability:
-        'Disponível para projetos de automação, sistemas internos e engenharia operacional.',
+        'Disponível para desenvolvimento web full-stack, automações de processos, bots e integrações com IA.',
       form: {
-        header_badge: 'PROTOCOLO_DIAGNÓSTICO_OPERACIONAL',
-        label_name: 'IDENTIFICAÇÃO (NOME)',
-        placeholder_name: 'IDENTIFIQUE-SE',
-        label_email: 'ENDEREÇO DE RETORNO (EMAIL)',
-        placeholder_email: 'INSIRA_FREQUÊNCIA (EMAIL)',
-        label_message: 'DESCRIÇÃO DO GARGALO',
-        placeholder_message: 'DESCREVA O PROBLEMA OPERACIONAL...',
-        button: 'SOLICITAR DIAGNÓSTICO >',
+        header_badge: 'SOLICITAÇÃO_DE_PROJETO',
+        label_name: 'NOME COMPLETO',
+        placeholder_name: 'SEU NOME',
+        label_email: 'E-MAIL DE CONTATO',
+        placeholder_email: 'SEU-EMAIL@EMPRESA.COM',
+        label_message: 'DESCREVA SEU PROJETO OU GARGALO',
+        placeholder_message: 'Conte sobre sua necessidade, sistema desejado ou processo a automatizar...',
+        button: 'ENVIAR MENSAGEM >',
+      },
+      details: {
+        location: 'Blumenau, SC – Brasil (Atendimento remoto para todo o país)',
+        email: 'zaca793@gmail.com',
+        phone: '(47) 9 9649-6281',
+        github: 'https://github.com/lino167',
+        github_display: 'github.com/lino167',
+        linkedin: 'https://linkedin.com/in/zacariaslino',
+        linkedin_display: 'linkedin.com/in/zacariaslino',
+        whatsapp_url: 'https://wa.me/5547996496281?text=Ol%C3%A1%20Lino%2C%20gostaria%20de%20conversar%20sobre%20um%20projeto',
       },
     },
     cta_global: {
-      button: 'AGENDAR DIAGNÓSTICO',
+      button: 'FALAR NO WHATSAPP',
     },
   },
   en: {
     navbar: {
       home: 'HOME',
-      services: 'MODULES',
-      work: 'DEPLOYMENTS',
-      about: 'OPERATOR',
-      contact: 'DIAGNOSIS',
+      services: 'SERVICES',
+      work: 'PROJECTS',
+      about: 'ABOUT ME',
+      contact: 'CONTACT',
     },
     hero: {
-      badge: 'SYSTEM ONLINE // V2.0',
-      title: 'CODIM DEV',
+      badge: 'Full-Stack React & TypeScript • Python & Automations • Supabase & PostgreSQL • Ops-Tech',
+      title: 'Software Engineering & Precision Operational Solutions.',
       typewriter: [
         [
-          {
-            text: 'Applied',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
-          {
-            text: 'Operational',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
-          {
-            text: 'Engineering',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
+          { text: 'Software', className: 'text-neutral-400 font-mono text-sm md:text-xl' },
+          { text: 'Engineering', className: 'text-white font-mono text-sm md:text-xl font-semibold' },
         ],
         [
+          { text: 'Precision', className: 'text-neutral-400 font-mono text-sm md:text-xl' },
+          { text: 'Operational', className: 'text-crimson font-mono text-sm md:text-xl font-semibold' },
+          { text: 'Solutions.', className: 'text-crimson font-mono text-sm md:text-xl font-semibold' },
+        ],
+        [
+          { text: 'Modern', className: 'text-neutral-400 font-mono text-sm md:text-xl' },
+          { text: 'Web', className: 'text-white font-mono text-sm md:text-xl font-semibold' },
+          { text: 'Apps', className: 'text-neutral-400 font-mono text-sm md:text-xl' },
           { text: '&', className: 'text-crimson font-mono text-sm md:text-xl' },
-          {
-            text: 'Lean',
-            className: 'text-neutral-400 font-mono text-sm md:text-xl',
-          },
-          {
-            text: 'Automation.',
-            className: 'text-crimson font-mono text-sm md:text-xl',
-          },
+          { text: 'AI.', className: 'text-crimson font-mono text-sm md:text-xl font-semibold' },
         ],
       ],
       description:
-        'Lean systems, automation, and operational tools for companies that need more control, speed, and less rework.',
-      cta_primary: 'SCHEDULE DIAGNOSIS',
-      cta_secondary: 'VIEW METHODOLOGY',
+        'I build modern web applications, custom automations, and AI integrations to streamline workflows and transform operational processes.',
+      cta_primary: 'VIEW PROJECTS',
+      cta_secondary: 'START A PROJECT / CHAT ON WHATSAPP',
     },
     system_status: {
       online: 'SYSTEM: ONLINE',
@@ -307,104 +353,107 @@ export const translations = {
       build: 'BUILD STABLE',
     },
     featured_work: {
-      title: 'RECENT DEPLOYMENTS',
-      subtitle: 'Deployed systems and bottlenecks resolved.',
+      title: 'FEATURED CASES',
+      subtitle: 'Operational systems deployed and bottlenecks resolved.',
       projects: {
         kraflo: {
-          title: 'Industrial Maintenance SaaS',
+          title: 'Kraflo-CMMS — Industrial Maintenance Management',
           description:
-            'Torque management and preventive maintenance system for heavy industries.',
+            'End-to-end platform for work orders, preventative routines, and torque calculations in factory plants.',
         },
         neural: {
-          title: 'Autonomous CRM Agents',
+          title: 'Workflow Automations & Data Scraping Bots',
           description:
-            'n8n flows for sales automation and WhatsApp customer service.',
+            'Monitoring, web scraping, and automated Telegram alerts for real-time decision-making.',
         },
         codim: {
-          title: 'Operational Dashboard',
-          description: 'Internal control panel with real-time data.',
+          title: 'Codim Studio & Hackathons',
+          description:
+            'Custom analytical dashboards and solutions built for operational problem-solving.',
         },
       },
-      view_all: 'ACCESS COMPLETE DEPLOYMENT ARCHIVE',
+      view_all: 'VIEW ALL PROJECTS',
     },
     about: {
       hero: {
-        access_file: '// ACCESSING PERSONNEL FILE: 001',
-        title: 'THE OPERATOR',
-        subtitle: 'ZACARIAS LINO // OPERATIONAL ENGINEER & AUTOMATION',
+        access_file: '// PROFESSIONAL PROFILE // FILE 001',
+        title: 'ZACARIAS LINO',
+        subtitle: 'SOFTWARE ENGINEER // OPERATIONAL SOLUTIONS & AUTOMATION',
         description:
-          'From Industrial Mechanic to Automation Engineer. Uniting factory floor precision with code speed. Today, at CODIM DEV, I solve specific operational bottlenecks with lean automation, custom dashboards, and 24/7 bots, using Python, n8n, and Supabase.',
+          'Software Engineer in training (UniCesumar) with over 10 years of background in the industrial sector and mechanical maintenance. This path brings a clear competitive edge to software development: absolute focus on reliability, clean architecture, and resolving complex, real-world problems. Rather than just making visual interfaces, I engineer tools that remove production bottlenecks, reduce manual rework, and deliver tangible operational ROI. Currently building full-stack web applications, automation bots (Telegram/RPA), and data pipelines integrated with AI models.',
+        bio_paragraphs: [
+          'Software Engineer in training (UniCesumar) with over 10 years of background in the industrial sector and mechanical maintenance.',
+          'This path brings a clear competitive edge to software development: absolute focus on reliability, clean architecture, and resolving complex, real-world problems. Rather than just making visual interfaces, I engineer tools that remove production bottlenecks, reduce manual rework, and deliver tangible operational ROI.',
+          'Currently building full-stack web applications, automation bots (Telegram/RPA), and data pipelines integrated with AI models.',
+        ],
       },
-      timeline_title: 'SYSTEM LOGS: TRAJECTORY',
+      timeline_title: 'BACKGROUND & CAREER',
       timeline: {
         t1_title: 'Initialization (2006)',
         t1_desc:
-          'First hardware contact at age 13. PC building and the beginning of binary logic fascination.',
-
-        t2_title: 'The Industrial Forge (2014-2016)',
+          'First contact with hardware at age 13. Beginning of a lifelong interest in binary logic and structured problem solving.',
+        t2_title: 'Industrial Forge (2014-2016)',
         t2_desc:
-          'SANTOS CMI: Machine Assembler. Critical work on Gas Turbines alignment within Steelworks.',
-
-        t3_title: 'Textile Operation (2020-2023)',
+          'SANTOS CMI: Machine Assembler. Critical alignment and assembly of Gas Turbines and heavy machinery in steel plants.',
+        t3_title: 'Polyvalent Operations (2020-2023)',
         t3_desc:
-          'FIAÇÃO FIO PURO: Industrial Operator. Rigorous quality control and complex textile machinery operation.',
-
-        t4_title: 'Critical Missions (2024)',
+          'FIAÇÃO FIO PURO: Industrial Operator. Strict quality control and operation of complex textile industrial machinery.',
+        t4_title: 'Field Engineering (2024)',
         t4_desc:
-          'ENESA ENGINEERING: Assembly of electrostatic precipitators in Pulp & Paper plant. High-precision work.',
-
-        t5_title: 'System Reboot (2023-2025)',
+          'ENESA ENGENHARIA: Assembly of electrostatic precipitators in pulp and paper facilities with high precision requirements.',
+        t5_title: 'Education & Certifications (2023-2026)',
         t5_desc:
-          'Technical Certifications: OneBitCode (Full Stack), Adobe (Design), and IBQP (Mechanical Technician).',
-
-        t6_title: 'Parallel Processing (Current)',
+          'Software Engineering (UniCesumar), Full Stack Bootcamp OneBitCode, Mechanical Technician (IBQP), and Adobe Design.',
+        t6_title: 'Current Operations',
         t6_desc:
-          'KARSTEN S.A.: Production Mechanic I (Looms) + Operational Engineering at CODIM DEV (Freelance).',
+          'Production Mechanic I at KARSTEN S.A. and Software & Automations Engineer at CODIM DEV.',
       },
       certificates: {
-        title: 'CERTIFIED PROTOCOLS',
-        subtitle: 'System upgrades and technical qualifications.',
+        title: 'TECHNICAL SKILLS & CERTIFICATIONS',
+        subtitle: 'Hands-on proven skills and ongoing technical credentials.',
         groups: [
           {
             id: '01',
-            category: 'AUTOMATION & FLOWS',
-            icon: 'BrainCircuit',
+            category: 'FRONT-END',
+            icon: 'Code2',
             items: [
-              'Python I',
-              'Prompt Engineering (ChatGPT)',
-              'n8n & Process Automation',
-              'AI Fundamentals',
+              'React & Next.js',
+              'TypeScript & JavaScript (ES6+)',
+              'Tailwind CSS & Shadcn UI',
+              'Framer Motion & HTML5/CSS3',
             ],
           },
           {
             id: '02',
-            category: 'CORE DEV STACK',
-            icon: 'Code2',
+            category: 'BACK-END & DATABASE',
+            icon: 'Database',
             items: [
-              'JavaScript I',
-              'HTML5 & Modern CSS3',
-              'React (In Progress)',
               'Supabase & PostgreSQL',
+              'Edge Functions & RPCs',
+              'Python & Node.js',
+              'REST APIs & Webhooks',
             ],
           },
           {
             id: '03',
-            category: 'DASHBOARDS & UI',
-            icon: 'PenTool',
+            category: 'AUTOMATION & INTEGRATIONS',
+            icon: 'BrainCircuit',
             items: [
-              'Adobe Photoshop (Advanced)',
-              'Adobe Illustrator (Advanced)',
-              'UI/UX for Operational Panels',
+              'Telegram Bot API & RPA',
+              'Web Scraping (BeautifulSoup/Python)',
+              'AI Models & RAG / Embeddings',
+              'Legacy Systems Integration',
             ],
           },
           {
             id: '04',
-            category: 'HARDWARE & OPS',
-            icon: 'Wrench',
+            category: 'DESIGN & TOOLS',
+            icon: 'PenTool',
             items: [
-              'Industrial Mechanics Technician',
-              'Project Planning',
-              'Process Control',
+              'Git & GitHub',
+              'VS Code & DevTools',
+              'Figma',
+              'Adobe Photoshop & Illustrator',
             ],
           },
         ],
@@ -412,110 +461,168 @@ export const translations = {
     },
     services: {
       header: {
-        badge: '// Technical Documentation',
+        badge: '// SERVICES & EXPERTISE',
         title: 'OPERATIONAL',
-        title_highlight: 'MODULES',
+        title_highlight: 'SOLUTIONS',
         description:
-          'Lean solutions to eliminate real bottlenecks. No unnecessary complexity.',
+          'Custom engineering designed to remove bottlenecks, automate workflows, and scale operations with precision.',
       },
       blocks: {
-        automation: {
-          badge: '[FLOW: AUTOMATED]',
-          title: 'Process Automation & Workflows',
-          p1: 'I eliminate operational bottlenecks by connecting isolated systems. I use n8n and Python scripts to create autonomous flows that integrate CRM, WhatsApp, and Databases.',
-          p2: 'The result is a lean ecosystem working 24/7 without errors, eliminating rework and giving the team time to focus on what matters.',
-        },
         fullstack: {
-          badge: '[SYS: INTERNAL]',
-          title: 'Internal Systems & Dashboards',
-          p1: 'I build custom internal tools: operational dashboards, admin panels, and production controls. I use Supabase for real-time data and React for responsive interfaces.',
-          p2: 'The focus is not "delivering a site", but giving real visibility and control over business operations.',
+          badge: '[WEB: FULL-STACK]',
+          title: 'Full-Stack Web Development',
+          p1: 'Building responsive, secure admin panels, dashboards, and web applications with React, TypeScript, Tailwind CSS, and Supabase (PostgreSQL).',
+          p2: 'Modular architecture, strict TypeScript typing, solid authentication, and user interfaces crafted for operational performance.',
           list: [
-            'Operational Dashboards & Control Panels',
-            'Lean Production Control Systems',
-            'Real-Time Data Integration (Supabase)',
+            'Admin Panels & Interactive Dashboards',
+            'Responsive Web Apps in React & TypeScript',
+            'Granular Permissions & Security (RLS)',
+            'Real-Time PostgreSQL Data Streaming via Supabase',
           ],
         },
-        design: {
-          badge: '[BOT: ACTIVE]',
-          title: 'Bots & Operational Agents',
-          p1: 'Bots for Telegram, WhatsApp, and internal systems. Dispatch centralization, real-time alerts, and automated service.',
-          p2: "Not a generic chatbot. It's an operational agent that receives data, processes it, and executes concrete actions in your operation.",
+        automation: {
+          badge: '[OPS-TECH: AUTOMATIONS & BOTS]',
+          title: 'Process Automation & Bots (RPA / Ops-Tech)',
+          p1: 'Engineering Python robots (Telegram Bots, web scraping, automatic alerts, and webhooks) to eliminate manual tasks and bridge legacy systems.',
+          p2: 'Stop human errors and speed up response times with 24/7 unattended, resilient background automations.',
+          list: [
+            'Python Operational Bots & Telegram Bot API',
+            'Web Scraping & Continuous Data Extraction',
+            'Real-Time Webhooks & Triggers',
+            'Elimination of Repetitive Manual Work',
+          ],
+        },
+        ai: {
+          badge: '[AI: ASSISTANTS & SEMANTIC SEARCH]',
+          title: 'Artificial Intelligence & API Integration',
+          p1: 'Implementing smart assistants with semantic document search (RAG), operational manual querying, Edge Functions, and REST APIs.',
+          p2: 'Equip your team to query technical SOPs and operational records in natural language with grounded answers.',
+          list: [
+            'Semantic Search on Documents & PDFs (RAG)',
+            'Fast Querying of Technical Manuals',
+            'LLM Integration (OpenAI / Claude / Gemini)',
+            'Optimized REST APIs and Edge Functions',
+          ],
+        },
+        database: {
+          badge: '[DATA: MODELING & SECURITY]',
+          title: 'Database Modeling & Optimization',
+          p1: 'Structuring relational schemas in PostgreSQL/Supabase, granular Row Level Security (RLS) policies, and high-speed RPC functions.',
+          p2: 'Ensuring database-level access control, data consistency, and high-performance queries to support business growth.',
+          list: [
+            'Relational Modeling in PostgreSQL & Supabase',
+            'Row Level Security (RLS) Policy Architecture',
+            'High-Performance Stored Procedures & RPCs',
+            'Optimized Indexes and Complex Query Tuning',
+          ],
         },
       },
       cta: {
         title: 'Have an operational bottleneck to solve?',
-        subtitle: "Let's diagnose and design the right lean solution.",
-        button: 'SCHEDULE DIAGNOSIS',
+        subtitle: "Let's diagnose your workflow and engineer the exact solution your team needs.",
+        button: 'CHAT ON WHATSAPP',
       },
     },
     work: {
       header: {
-        badge: '// ACCESS LEVEL: PUBLIC',
-        title: 'DEPLOYED SYSTEMS',
-        description:
-          'Bottlenecks resolved. Operations optimized.',
+        badge: '// PORTFOLIO CASES // LEVEL: PUBLIC',
+        title: 'FEATURED PROJECTS',
+        description: 'Software engineering applied to real-world operational challenges.',
       },
       projects: {
         kraflo: {
-          title: 'KRAFLO // Industrial CMMS',
+          title: 'Kraflo-CMMS — Industrial Maintenance Management',
           description:
-            'Development of a complete SaaS for industrial maintenance management. Digitization of torque calculation and service orders for a factory plant.',
+            'Comprehensive platform for managing and monitoring work orders (WO) and predictive/corrective maintenance routines in industrial facilities.',
+          context:
+            'Comprehensive platform for managing and monitoring work orders (WO) and predictive/corrective maintenance routines in industrial facilities.',
+          stack: 'React, TypeScript, Tailwind CSS, Supabase (PostgreSQL / Edge Functions), Telegram Bot API, Generative AI.',
+          highlights: [
+            'Interactive operational dashboard with granular Row Level Security (RLS).',
+            'Telegram webhook integration for on-field photo/report dispatch directly from smartphones.',
+            'Generative AI assistant with semantic search across technical PDF manuals for instant operator guidance.',
+          ],
         },
         agents: {
-          title: 'Autonomous CRM Agents',
+          title: 'Workflow Automations & Data Extraction Bots',
           description:
-            'Sales orchestration via n8n and OpenAI. The system receives leads, qualifies via AI, and schedules meetings automatically, eliminating 90% of manual work.',
+            'Continuous monitoring and web scraping solutions for operational and administrative routines.',
+          context:
+            'Continuous monitoring and web scraping solutions for operational and administrative routines.',
+          stack: 'Python, BeautifulSoup, REST APIs, Telegram Bot API.',
+          highlights: [
+            'Resilient data extraction and continuous service monitoring.',
+            'Instant status alerts and administrative routine dispatches.',
+            'Direct messaging integration for real-time decision-making.',
+          ],
         },
         identity: {
-          title: 'Internal Operational Dashboard',
+          title: 'Codim Studio Initiatives & Hackathons',
           description:
-            'Real-time control panel with operational metrics, alerts, and automated workflow management for the operations team.',
+            'Tailored tool engineering and participation in the UniCesumar + Qlik Hackathon (Team Lumen devs), focusing on data analytics and operational problem-solving dashboards.',
+          context:
+            'Tailored tool engineering and participation in the UniCesumar + Qlik Hackathon (Team Lumen devs).',
+          stack: 'React, TypeScript, Python, Dashboards, Qlik Sense, REST APIs.',
+          highlights: [
+            'Data analysis and interactive dashboards tailored to operational problem-solving.',
+            'Participation in the UniCesumar + Qlik Hackathon with team Lumen devs.',
+            'Scalable architecture built for fast managerial decisions and transparent metrics.',
+          ],
         },
       },
       minor_projects: {
-        title: 'EXPERIMENTAL MODULES',
-        subtitle: '// PROTOTYPES_AND_SCRIPTS',
+        title: 'SUPPORT MODULES & TOOLS',
+        subtitle: '// TAILORED_ENGINEERING',
         items: [
           {
-            title: 'Operational Bot (Telegram/WhatsApp)',
-            description: 'Real-time dispatch and alert centralization.',
+            title: 'Operational Bots (Telegram/WhatsApp)',
+            description: 'Automated alerts, dispatching, and system ticketing.',
           },
           {
-            title: 'Supabase Integration Workflow',
-            description: 'Database automated processing routines.',
+            title: 'Data Pipelines & Web Scraping',
+            description: 'Python scripts for continuous data collection and ETL.',
           },
           {
-            title: 'Dynamic Dashboards & Reports',
-            description: 'Management visualization with real-time data.',
+            title: 'Real-Time Operational Dashboards',
+            description: 'KPI visual tracking with PostgreSQL and modern React UI.',
           },
         ],
       },
       cta: {
         title: 'Have an operational bottleneck to solve?',
-        subtitle: "Let's diagnose and design the right lean solution.",
-        button: 'SCHEDULE DIAGNOSIS',
+        subtitle: "Let's diagnose and build the right lean solution.",
+        button: 'START A PROJECT',
       },
     },
     contact: {
-      title: 'DIAGNOSIS',
-      title_highlight: 'CHANNELS',
-      location: 'Blumenau, SC // Operational Engineering Hub',
+      title: "LET'S TALK ABOUT",
+      title_highlight: 'YOUR PROJECT',
+      location: 'Blumenau, SC – Brazil (Remote availability worldwide)',
       availability:
-        'Available for automation, internal systems, and operational engineering projects.',
+        'Available for full-stack web development, process automation, bots, and AI integrations.',
       form: {
-        header_badge: 'OPERATIONAL_DIAGNOSIS_PROTOCOL',
-        label_name: 'IDENTIFICATION (NAME)',
-        placeholder_name: 'IDENTIFY YOURSELF',
-        label_email: 'RETURN ADDRESS (EMAIL)',
-        placeholder_email: 'ENTER_FREQUENCY (EMAIL)',
-        label_message: 'BOTTLENECK DESCRIPTION',
-        placeholder_message: 'DESCRIBE THE OPERATIONAL PROBLEM...',
-        button: 'REQUEST DIAGNOSIS >',
+        header_badge: 'PROJECT_REQUEST',
+        label_name: 'FULL NAME',
+        placeholder_name: 'YOUR NAME',
+        label_email: 'CONTACT EMAIL',
+        placeholder_email: 'YOUR-EMAIL@COMPANY.COM',
+        label_message: 'DESCRIBE YOUR PROJECT OR BOTTLENECK',
+        placeholder_message: 'Tell me about your needs, required system, or process to automate...',
+        button: 'SEND MESSAGE >',
+      },
+      details: {
+        location: 'Blumenau, SC – Brazil (Remote availability worldwide)',
+        email: 'zaca793@gmail.com',
+        phone: '+55 (47) 9 9649-6281',
+        github: 'https://github.com/lino167',
+        github_display: 'github.com/lino167',
+        linkedin: 'https://linkedin.com/in/zacariaslino',
+        linkedin_display: 'linkedin.com/in/zacariaslino',
+        whatsapp_url: 'https://wa.me/5547996496281?text=Hi%20Lino%2C%20I%20would%20like%20to%20talk%20about%20a%20project',
       },
     },
     cta_global: {
-      button: 'SCHEDULE DIAGNOSIS',
+      button: 'CHAT ON WHATSAPP',
     },
   },
 }

@@ -111,49 +111,57 @@ export default function Contact() {
               </div>
 
               <div className="space-y-6">
-                <div className="flex items-center gap-4 group">
-                  <div className="p-3 rounded-md bg-neutral-900 border border-neutral-800 group-hover:border-crimson/50 transition-colors">
-                    <Mail className="w-6 h-6 text-white" />
-                  </div>
-                  <span className="text-neutral-300 group-hover:text-white transition-colors">
-                    contato@codimdev.com.br
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-4 group">
-                  <div className="p-3 rounded-md bg-neutral-900 border border-neutral-800 group-hover:border-crimson/50 transition-colors">
-                    <Smartphone className="w-6 h-6 text-white" />
-                  </div>
-                  <span className="text-neutral-300 group-hover:text-white transition-colors">
-                    (47) 9 9649-6281
-                  </span>
-                </div>
-
                 <a
-                  href="https://www.linkedin.com/public-profile/settings/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_contact_info%3BMx3Sd%2BnkSZ2AC1SHIHA%2FAA%3D%3D"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-4 group"
+                  href="mailto:zaca793@gmail.com"
+                  className="flex items-center gap-4 group transition-colors"
                 >
                   <div className="p-3 rounded-md bg-neutral-900 border border-neutral-800 group-hover:border-crimson/50 transition-colors">
-                    <Linkedin className="w-6 h-6 text-white" />
+                    <Mail className="w-6 h-6 text-white group-hover:text-crimson transition-colors" />
                   </div>
                   <span className="text-neutral-300 group-hover:text-white transition-colors">
-                    /in/zacariaslino
+                    zaca793@gmail.com
                   </span>
                 </a>
 
                 <a
-                  href="https://github.com/codim-dev"
+                  href="https://wa.me/5547996496281?text=Ol%C3%A1%20Lino%2C%20gostaria%20de%20conversar%20sobre%20um%20projeto"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-4 group"
+                  className="flex items-center gap-4 group transition-colors"
                 >
-                  <div className="p-3 rounded-md bg-neutral-900 border border-neutral-800 group-hover:border-crimson/50 transition-colors">
-                    <Github className="w-6 h-6 text-white" />
+                  <div className="p-3 rounded-md bg-neutral-900 border border-neutral-800 group-hover:border-emerald-500/50 transition-colors">
+                    <Smartphone className="w-6 h-6 text-white group-hover:text-emerald-400 transition-colors" />
                   </div>
                   <span className="text-neutral-300 group-hover:text-white transition-colors">
-                    /codim-dev
+                    (47) 9 9649-6281
+                  </span>
+                </a>
+
+                <a
+                  href="https://linkedin.com/in/zacariaslino"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-4 group transition-colors"
+                >
+                  <div className="p-3 rounded-md bg-neutral-900 border border-neutral-800 group-hover:border-cyan-500/50 transition-colors">
+                    <Linkedin className="w-6 h-6 text-white group-hover:text-cyan-400 transition-colors" />
+                  </div>
+                  <span className="text-neutral-300 group-hover:text-white transition-colors">
+                    linkedin.com/in/zacariaslino
+                  </span>
+                </a>
+
+                <a
+                  href="https://github.com/lino167"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-4 group transition-colors"
+                >
+                  <div className="p-3 rounded-md bg-neutral-900 border border-neutral-800 group-hover:border-white/50 transition-colors">
+                    <Github className="w-6 h-6 text-white group-hover:text-white transition-colors" />
+                  </div>
+                  <span className="text-neutral-300 group-hover:text-white transition-colors">
+                    github.com/lino167
                   </span>
                 </a>
               </div>
