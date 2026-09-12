@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import logoIcon from '@/assets/logo-icon.png'
+import { symbolDark } from '@/assets/logos'
 import { CoordinatesDisplay } from '@/components/ui/hud-elements'
 
 const Footer = () => {
@@ -15,7 +15,7 @@ const Footer = () => {
               <div className="flex items-center gap-2">
                 <span>© {new Date().getFullYear()}</span>
                 <img
-                  src={logoIcon}
+                  src={symbolDark}
                   alt="CODIM"
                   className="h-5 w-5 md:h-6 md:w-6 opacity-70"
                 />

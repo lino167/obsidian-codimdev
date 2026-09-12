@@ -3,8 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { Terminal, Code2, Briefcase, User, Mail } from 'lucide-react'
-import logoHorizontal from '@/assets/logo-horizontal.png'
-import logoIcon from '@/assets/logo-icon.png'
+import { logoHorizontalDark, symbolDark } from '@/assets/logos'
 import { useLanguage } from '@/hooks/use-language'
 import { LanguageToggle } from '@/components/LanguageToggle'
 
@@ -49,13 +48,13 @@ export function Navbar() {
           >
             {/* Desktop / Tablet Logo (Horizontal) */}
             <img
-              src={logoHorizontal}
+              src={logoHorizontalDark}
               alt="CODIM DEV Logo"
               className="hidden md:block h-8 sm:h-12 w-auto object-contain"
             />
             {/* Mobile Logo (Icon Only) */}
             <img
-              src={logoIcon}
+              src={symbolDark}
               alt="CODIM DEV Icon"
               className="block md:hidden h-8 w-auto object-contain"
             />

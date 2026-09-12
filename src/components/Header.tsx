@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import logoHorizontal from '@/assets/logo-horizontal.png'
+import { logoHorizontalDark } from '@/assets/logos'
 
 const navItems = [
   { label: 'Home', href: '/' },
@@ -24,7 +24,7 @@ const Header = () => {
           className="flex items-center justify-between py-4 px-6 glass rounded"
         >
           <a href="/" className="flex items-center">
-            <img src={logoHorizontal} alt="CODIM DEV" className="h-8 w-auto" />
+            <img src={logoHorizontalDark} alt="CODIM DEV" className="h-8 w-auto" />
           </a>
 
           {/* Desktop Navigation */}
